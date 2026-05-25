@@ -13,11 +13,11 @@
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#dc2626">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden}
+body{font-family:'Oswald','Arial Black',Impact,sans-serif;font-weight:400;background:#000;color:#fff;overflow-x:hidden}
 .font-display{font-family:'Bebas Neue',cursive;letter-spacing:2px}
 
 /* ===== ANIMACIONES ===== */
@@ -106,10 +106,10 @@ h2 span{color:#dc2626;display:inline-block;animation:float 4s ease-in-out infini
 .products{background:#0a0a0a}
 .product-toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2rem}
 .product-filters{display:flex;gap:8px;flex-wrap:wrap}
-.filter-btn{padding:8px 18px;border:1px solid rgba(255,255,255,.1);background:0;color:#999;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition:all .3s;font-family:'Inter',sans-serif}
+.filter-btn{padding:8px 18px;border:1px solid rgba(255,255,255,.1);background:0;color:#999;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition:all .3s;font-family:'Oswald',sans-serif}
 .filter-btn.active,.filter-btn:hover{border-color:#dc2626;background:rgba(220,38,38,.1);color:#fff}
 .product-search{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);padding:0 14px;max-width:260px;width:100%}
-.product-search input{flex:1;background:0;border:none;padding:10px 0;color:#fff;font-size:.82rem;outline:0;font-family:'Inter',sans-serif}
+.product-search input{flex:1;background:0;border:none;padding:10px 0;color:#fff;font-size:.82rem;outline:0;font-family:'Oswald',sans-serif}
 .product-search input::placeholder{color:#555}
 .product-search .icon{color:#555;font-size:.9rem}
 /* Shimmer */
@@ -291,10 +291,10 @@ footer .brand-name span{color:#dc2626}
 .msg .typing span:nth-child(2){animation-delay:.2s}
 .msg .typing span:nth-child(3){animation-delay:.4s}
 .chat-input{display:flex;border-top:1px solid rgba(255,255,255,.08);padding:10px 12px;background:#0d0d0d;gap:8px}
-.chat-input input{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:10px 14px;color:#fff;font-size:.82rem;outline:0;transition:border .3s;font-family:'Inter',sans-serif}
+.chat-input input{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:10px 14px;color:#fff;font-size:.82rem;outline:0;transition:border .3s;font-family:'Oswald',sans-serif}
 .chat-input input:focus{border-color:#dc2626}
 .chat-input input::placeholder{color:#555}
-.chat-input button{background:#dc2626;border:none;color:#fff;padding:10px 16px;cursor:pointer;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;transition:.3s;font-family:'Inter',sans-serif}
+.chat-input button{background:#dc2626;border:none;color:#fff;padding:10px 16px;cursor:pointer;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;transition:.3s;font-family:'Oswald',sans-serif}
 .chat-input button:hover{background:#b91c1c}
 
 /* Scroll top */
@@ -360,7 +360,7 @@ footer .brand-name span{color:#dc2626}
 .selector-group{margin-bottom:1rem}
 .selector-group label{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#999;margin-bottom:8px;display:block}
 .selector-options{display:flex;flex-wrap:wrap;gap:8px}
-.selector-options .opt{padding:8px 16px;border:1px solid rgba(255,255,255,.12);background:0;color:#ccc;cursor:pointer;font-size:.8rem;transition:all .3s;font-family:'Inter',sans-serif}
+.selector-options .opt{padding:8px 16px;border:1px solid rgba(255,255,255,.12);background:0;color:#ccc;cursor:pointer;font-size:.8rem;transition:all .3s;font-family:'Oswald',sans-serif}
 .selector-options .opt.active{border-color:#dc2626;background:rgba(220,38,38,.15);color:#fff}
 .selector-options .opt.disabled{opacity:.3;cursor:not-allowed;text-decoration:line-through}
 .selector-options .opt:not(.disabled):hover{border-color:#dc2626}
@@ -1346,7 +1346,7 @@ setTimeout(() => {
   });
 })();
 
-// ===== IPHONE TAP RIPPLE =====
+/* ===== IPHONE TAP RIPPLE =====
 document.getElementById('productGrid').addEventListener('click', e => {
   const card = e.target.closest('.product-card');
   if(!card || e.target.closest('.overlay-btn')) return;

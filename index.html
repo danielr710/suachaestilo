@@ -34,6 +34,51 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
 @keyframes slideInRight{from{opacity:0;transform:translateX(100px)}to{opacity:1;transform:translateX(0)}}
 @keyframes slideOutRight{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(100px)}}
 @keyframes toastProgress{to{width:0%}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes popIn{0%{transform:scale(0)}50%{transform:scale(1.15)}100%{transform:scale(1)}}
+@keyframes heartBeat{0%,100%{transform:scale(1)}15%{transform:scale(1.3)}30%{transform:scale(1)}45%{transform:scale(1.15)}60%{transform:scale(1)}}
+
+/* Preloader */
+.preloader{position:fixed;inset:0;z-index:9999;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s,visibility .8s}
+.preloader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.preloader-logo{font-family:'Bebas Neue',cursive;font-size:3rem;letter-spacing:6px;margin-bottom:1rem}
+.preloader-logo span{color:#dc2626}
+.preloader-bar{width:200px;height:3px;background:#1a1a1a;border-radius:2px;overflow:hidden}
+.preloader-bar-fill{height:100%;width:0%;background:linear-gradient(90deg,#dc2626,#fca311);border-radius:2px;animation:preloaderLoad 1.8s ease forwards}
+@keyframes preloaderLoad{0%{width:0%}50%{width:70%}100%{width:100%}}
+.preloader-text{color:#555;font-size:.7rem;text-transform:uppercase;letter-spacing:3px;margin-top:1rem}
+
+/* Wishlist */
+.wishlist-btn{position:absolute;top:10px;right:10px;z-index:3;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.1);color:#fff;font-size:1rem;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.wishlist-btn.liked{color:#dc2626;border-color:#dc2626;background:rgba(220,38,38,.15)}
+.wishlist-btn:hover{transform:scale(1.1);border-color:#dc2626}
+.product-card:hover .wishlist-btn{opacity:1}
+.wishlist-btn{opacity:0}
+.product-card:hover .wishlist-btn{opacity:1}
+
+/* Sale badge */
+.sale-badge{position:absolute;top:10px;left:10px;z-index:3;background:#dc2626;color:#fff;font-size:.6rem;font-weight:700;padding:3px 8px;text-transform:uppercase;letter-spacing:1px;animation:pulse 2s infinite}
+
+/* No results */
+.no-results{display:none;text-align:center;padding:4rem 1rem;grid-column:1/-1}
+.no-results.show{display:block}
+.no-results .icon{font-size:4rem;margin-bottom:1rem;opacity:.3}
+.no-results h3{font-family:'Bebas Neue',cursive;font-size:1.5rem;color:#555}
+.no-results p{color:#444;font-size:.85rem;margin-top:4px}
+
+/* Price filter */
+.price-filter{display:flex;align-items:center;gap:10px}
+.price-filter input[type=range]{width:100px;height:4px;-webkit-appearance:none;background:#333;border-radius:2px;outline:0}
+.price-filter input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:#dc2626;cursor:pointer;border:2px solid #fff}
+.price-filter .price-label{color:#999;font-size:.75rem;white-space:nowrap}
+
+/* Cart item animation */
+.cart-item.added{animation:popIn .4s ease}
+
+/* Share buttons */
+.share-buttons{display:flex;gap:8px;margin-top:1rem}
+.share-btn{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#999;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;font-size:.9rem;text-decoration:none}
+.share-btn:hover{background:#dc2626;border-color:#dc2626;color:#fff;transform:translateY(-2px)}
 
 .reveal{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.25,.46,.45,.94)}
 .reveal.active{opacity:1;transform:translateY(0)}
@@ -125,9 +170,11 @@ h2 span{color:#dc2626;display:inline-block;animation:float 4s ease-in-out infini
 .product-card:hover::before{transform:scaleX(1)}
 .product-card:hover .product-img-wrap img{transform:scale(1.08)}
 .product-card:hover .product-img-overlay{opacity:1}
+.product-card:hover .product-img-wrap img{transform:scale(1.08)}
 .product-img-wrap{position:relative;aspect-ratio:1;overflow:hidden;background:#1a1a1a}
 .product-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
 .product-img-wrap .emoji-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3.5rem}
+.product-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
 .product-img-overlay{position:absolute;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;opacity:0;transition:all .4s;gap:12px;backdrop-filter:blur(4px)}
 .product-img-overlay .overlay-btn{background:#dc2626;color:#fff;border:none;padding:12px 24px;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition:all .3s;text-decoration:none;animation:glow 2s infinite}
 .product-img-overlay .overlay-btn:hover{background:#b91c1c;transform:scale(1.05)}
@@ -415,6 +462,11 @@ footer .brand-name span{color:#dc2626}
 </style>
 </head>
 <body>
+<div class="preloader" id="preloader">
+  <div class="preloader-logo">SUACHA<span>.</span>ESTILO</div>
+  <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
+  <div class="preloader-text">Cargando...</div>
+</div>
 <div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- Header -->
@@ -479,12 +531,25 @@ footer .brand-name span{color:#dc2626}
         <button class="filter-btn" data-filter="Jogger" onclick="filtrarProductos('Jogger',this)">👖 Joggers</button>
         <button class="filter-btn" data-filter="Conjunto" onclick="filtrarProductos('Conjunto',this)">👜 Conjuntos</button>
       </div>
-      <div class="product-search">
-        <span class="icon">🔍</span>
-        <input type="text" id="productSearch" placeholder="Buscar producto..." oninput="buscarProductos(this.value)">
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <div class="product-search">
+          <span class="icon">🔍</span>
+          <input type="text" id="productSearch" placeholder="Buscar producto..." oninput="buscarProductos()">
+        </div>
+        <div class="price-filter">
+          <span style="color:#666;font-size:.7rem;text-transform:uppercase;letter-spacing:1px;">Precio</span>
+          <input type="range" id="priceRange" min="0" max="140" value="140" oninput="actualizarPrecio(this.value)">
+          <span class="price-label" id="priceLabel">Hasta $140k</span>
+        </div>
       </div>
     </div>
-    <div class="product-grid stagger-children" id="productGrid"></div>
+    <div class="product-grid stagger-children" id="productGrid">
+      <div class="no-results" id="noResults">
+        <div class="icon">🔍</div>
+        <h3>Sin resultados</h3>
+        <p>No encontramos productos con ese filtro. Intenta con otra categoría.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -734,21 +799,29 @@ function filtrarProductos(cat, btn) {
   filtroActual = cat;
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   if(btn) btn.classList.add('active');
-  aplicarFiltros();
+  buscarProductos();
 }
 
-function buscarProductos(texto) {
+function buscarProductos() {
+  const texto = document.getElementById('productSearch').value;
+  const priceMax = parseInt(document.getElementById('priceRange').value) * 1000;
   const cards = document.querySelectorAll('.product-card');
+  const noResults = document.getElementById('noResults');
+  let visibles = 0;
   cards.forEach(c => {
     const matchCat = filtroActual === 'todo' || c.dataset.category === filtroActual;
     const matchSearch = !texto || c.dataset.name.includes(texto.toLowerCase());
-    c.style.display = matchCat && matchSearch ? '' : 'none';
+    const matchPrice = parseInt(c.dataset.price) <= priceMax;
+    const show = matchCat && matchSearch && matchPrice;
+    c.style.display = show ? '' : 'none';
+    if(show) visibles++;
   });
+  noResults.classList.toggle('show', visibles === 0);
 }
 
-function aplicarFiltros() {
-  const input = document.getElementById('productSearch');
-  buscarProductos(input.value);
+function actualizarPrecio(val) {
+  document.getElementById('priceLabel').textContent = `Hasta $${val}k`;
+  buscarProductos();
 }
 
 // ===== PRODUCTOS =====
@@ -767,10 +840,12 @@ const productGrid = document.getElementById('productGrid');
 products.forEach(p => {
   const stockPct = p.stock > 0 ? Math.round(p.sold/(p.sold+p.stock)*100) : 80;
   productGrid.innerHTML += `
-    <div class="product-card" data-category="${p.category}" data-name="${p.name.toLowerCase()}">
+    <div class="product-card" data-category="${p.category}" data-name="${p.name.toLowerCase()}" data-price="${parseInt(p.price.replace(/\D/g,''))}">
       <div class="product-img-wrap">
+        ${p.old ? `<div class="sale-badge">-${Math.round((1-parseInt(p.price.replace(/\D/g,''))/parseInt(p.old.replace(/\D/g,'')))*100)}%</div>` : ''}
+        <button class="wishlist-btn" id="wishlist-${p.id}" onclick="toggleWishlist(${p.id},this)">❤</button>
         <div class="skeleton skeleton-img" style="position:absolute;inset:0;"></div>
-        <img src="img${p.id}.jpeg" alt="${p.name}" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none';this.previousElementSibling.style.display='none';this.nextElementSibling.style.display='flex'"><div class="emoji-placeholder" style="background:linear-gradient(135deg,${p.color});display:none">${p.emoji}</div>
+        <img src="img${p.id}.jpeg" alt="${p.name}" loading="lazy" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none';this.previousElementSibling.style.display='none';this.nextElementSibling.style.display='flex'"><div class="emoji-placeholder" style="background:linear-gradient(135deg,${p.color});display:none">${p.emoji}</div>
         <div class="product-img-overlay">
           <button class="overlay-btn" onclick="openQuickView(${p.id})" style="animation:none;background:#222;border:1px solid rgba(255,255,255,.15);">👁 Vista rápida</button>
           <button class="overlay-btn" onclick="agregarAlCarrito(${p.id})">🛒 Agregar</button>
@@ -781,6 +856,10 @@ products.forEach(p => {
         <p class="product-name">${p.name}</p>
         <p class="product-price">${p.price}${p.old ? `<span class="product-old-price">${p.old}</span>` : ''}</p>
         <div class="product-stock"><span>${p.sold} vendidos</span><div class="bar"><div class="bar-fill" style="width:${stockPct}%"></div></div></div>
+        <div class="share-buttons">
+          <a href="https://wa.me/573112112023?text=${encodeURIComponent('Hola! Me interesa ' + p.name + ' ' + p.price)}" target="_blank" class="share-btn" title="WhatsApp">💬</a>
+          <button class="share-btn" title="Compartir" onclick="compartirProducto(${p.id})">📤</button>
+        </div>
       </div>
     </div>`;
 });
@@ -1029,7 +1108,8 @@ function actualizarUI() {
   const items = document.getElementById('cartItems');
 
   if(cart.length === 0) {
-    empty.style.display = 'block';
+    empty ? empty.style.display = 'block' : null;
+    if(empty) empty.innerHTML = '<div style="text-align:center;padding:3rem 1rem;"><div style="font-size:4rem;margin-bottom:1rem;opacity:.3;">🛒</div><p style="color:#555;">Tu carrito está vacío</p><p style="color:#333;font-size:.8rem;margin-top:4px;">Agrega productos para empezar a comprar</p></div>';
     footer.style.display = 'none';
     return;
   }
@@ -1115,7 +1195,7 @@ function notificar(msg, tipo) {
   const bg = tipo === 'success' ? '#22c55e' : tipo === 'error' ? '#dc2626' : '#f59e0b';
   const icon = tipo === 'success' ? '✅' : tipo === 'error' ? '❌' : '⚠️';
   const el = document.createElement('div');
-  el.style.cssText = `position:fixed;bottom:170px;right:24px;z-index:80;background:${bg};color:#fff;padding:14px 20px;font-size:.82rem;animation:slideInRight .4s ease;box-shadow:0 8px 30px rgba(0,0,0,.4);border-radius:0;display:flex;align-items:center;gap:10px;min-width:280px;`;
+  el.style.cssText = `position:fixed;bottom:170px;right:24px;z-index:80;background:${bg};color:#fff;padding:14px 20px;font-size:.82rem;animation:popIn .4s ease;box-shadow:0 8px 30px rgba(0,0,0,.4);border-radius:0;display:flex;align-items:center;gap:10px;min-width:280px;`;
   el.innerHTML = `${icon} <span style="flex:1;">${msg}</span>`;
   const bar = document.createElement('div');
   bar.style.cssText = 'position:absolute;bottom:0;left:0;height:3px;background:rgba(255,255,255,.4);animation:toastProgress 2.5s linear forwards;';
@@ -1207,6 +1287,37 @@ function qvAddToCart(id) {
   toggleCart();
   notificar(`✅ ${p.name} (${window._qvColor}, ${window._qvSize}) agregado al carrito`);
 }
+
+// ===== WISHLIST =====
+function toggleWishlist(id, btn) {
+  let wishlist = JSON.parse(localStorage.getItem('se_wishlist') || '[]');
+  const idx = wishlist.indexOf(id);
+  if(idx > -1) { wishlist.splice(idx,1); btn.classList.remove('liked'); }
+  else { wishlist.push(id); btn.classList.add('liked'); }
+  localStorage.setItem('se_wishlist', JSON.stringify(wishlist));
+}
+
+function compartirProducto(id) {
+  const p = products.find(x => x.id === id);
+  if(!p) return;
+  const shareData = {title:`${p.name} - Suacha Estilo`,text:`🔥 ${p.name} - ${p.price}\n\n${p.description}\n\n📍 Suacha Estilo - Soacha, Colombia`,url:window.location.href};
+  if(navigator.share) navigator.share(shareData).catch(()=>{});
+  else navigator.clipboard.writeText(`${p.name} - ${p.price} | ${window.location.href}`).then(()=> notificar('📋 Link copiado al portapapeles'));
+}
+
+// ===== WISHLIST LOAD =====
+(function cargarWishlist() {
+  const wishlist = JSON.parse(localStorage.getItem('se_wishlist') || '[]');
+  wishlist.forEach(id => {
+    const btn = document.getElementById(`wishlist-${id}`);
+    if(btn) btn.classList.add('liked');
+  });
+})();
+
+// ===== PRELOADER =====
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('preloader').classList.add('hidden'), 400);
+});
 </script>
 </body>
 </html>

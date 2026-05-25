@@ -18,6 +18,11 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#0a0a0a}
+::-webkit-scrollbar-thumb{background:#dc2626;border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:#ef4444}
+::selection{background:#dc2626;color:#fff}
 .font-display{font-family:'Bebas Neue',cursive;letter-spacing:2px}
 
 /* ===== ANIMACIONES ===== */
@@ -210,6 +215,15 @@ h2 span{color:#dc2626;display:inline-block;animation:float 4s ease-in-out infini
 .brand-quote::before{top:-10px;left:10px}
 .brand-quote::after{bottom:-30px;right:10px;transform:rotate(180deg)}
 .brand-quote p{color:#fff;font-size:1.1rem;font-weight:300;line-height:1.7}
+
+/* Stats */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;padding:3rem 0;max-width:900px;margin:0 auto}
+.stat-item{text-align:center;padding:1.5rem}
+.stat-number{font-family:'Bebas Neue',cursive;font-size:3rem;letter-spacing:2px;color:#dc2626;line-height:1}
+.stat-label{color:#666;font-size:.75rem;text-transform:uppercase;letter-spacing:2px;margin-top:8px}
+.stat-icon{font-size:1.5rem;margin-bottom:8px;opacity:.6}
+@media(max-width:768px){.stats-row{grid-template-columns:repeat(2,1fr);gap:1rem;padding:1.5rem 0}}
+@media(max-width:480px){.stat-number{font-size:2.2rem}}
 
 /* Testimonios */
 .testimonials{background:#0a0a0a;position:relative}
@@ -590,6 +604,12 @@ footer .brand-name span{color:#dc2626}
         <span style="color:#666;text-transform:uppercase;letter-spacing:2px;font-size:.7rem;">El Equipo Suacha Estilo</span>
         <div style="width:40px;height:1px;background:#dc2626;"></div>
       </div>
+    </div>
+    <div class="stats-row reveal stagger-children" id="statsRow">
+      <div class="stat-item"><div class="stat-icon">📱</div><div class="stat-number"><span class="counter" data-target="20">0</span>K+</div><div class="stat-label">Seguidores</div></div>
+      <div class="stat-item"><div class="stat-icon">❤️</div><div class="stat-number"><span class="counter" data-target="500">0</span>+</div><div class="stat-label">Clientes felices</div></div>
+      <div class="stat-item"><div class="stat-icon">👕</div><div class="stat-number"><span class="counter" data-target="3200">0</span>+</div><div class="stat-label">Prendas vendidas</div></div>
+      <div class="stat-item"><div class="stat-icon">⭐</div><div class="stat-number"><span class="counter" data-target="4.9">0</span></div><div class="stat-label">Calificación</div></div>
     </div>
   </div>
 </section>
@@ -1321,6 +1341,61 @@ function compartirProducto(id) {
 window.addEventListener('load', () => {
   setTimeout(() => document.getElementById('preloader').classList.add('hidden'), 400);
 });
+
+// ===== TEXT SCRAMBLE =====
+(function() {
+  const el = document.querySelector('.hero h1');
+  if(!el) return;
+  const chars = '!<>-_\\/[]{}—=+*^?#$%&@';
+  let frame, queue = [], resolve;
+  function update() {
+    let out = '', complete = 0;
+    for(let i = 0; i < queue.length; i++) {
+      if(frame >= queue[i].end) { out += queue[i].to; complete++; }
+      else if(frame >= queue[i].start) {
+        if(!queue[i].char || Math.random() < 0.28) queue[i].char = chars[Math.floor(Math.random() * chars.length)];
+        out += `<span style="color:#dc2626">${queue[i].char}</span>`;
+      } else out += queue[i].from;
+    }
+    el.innerHTML = out;
+    if(complete === queue.length) resolve();
+    else { frame++; requestAnimationFrame(update); }
+  }
+  function scramble(text) {
+    const old = el.innerText;
+    const len = Math.max(old.length, text.length);
+    cancelAnimationFrame(frame);
+    queue = []; frame = 0;
+    for(let i = 0; i < len; i++) {
+      queue.push({from: old[i]||'', to: text[i]||'', start: Math.floor(Math.random()*40), end: Math.floor(Math.random()*40)+30});
+    }
+    requestAnimationFrame(update);
+  }
+  setTimeout(() => scramble('SUACHA\nESTILO'), 600);
+  setInterval(() => scramble('SUACHA\nESTILO'), 8000);
+})();
+
+// ===== ANIMATED COUNTERS =====
+const counterObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      const counters = entry.target.querySelectorAll('.counter');
+      counters.forEach(c => {
+        const target = parseFloat(c.dataset.target);
+        const isFloat = target % 1 !== 0;
+        const step = Math.max(1, Math.floor(target / 40));
+        let current = 0;
+        const timer = setInterval(() => {
+          current += step;
+          if(current >= target) { current = target; clearInterval(timer); }
+          c.textContent = isFloat ? current.toFixed(1) : Math.floor(current);
+        }, 30);
+      });
+      counterObserver.unobserve(entry.target);
+    }
+  });
+}, {threshold: .5});
+counterObserver.observe(document.getElementById('statsRow'));
 
 // ===== ESC KEY HANDLER =====
 document.addEventListener('keydown', e => {

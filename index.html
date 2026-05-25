@@ -800,6 +800,7 @@ function filtrarProductos(cat, btn) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   if(btn) btn.classList.add('active');
   buscarProductos();
+  document.getElementById('productos').scrollIntoView({behavior:'smooth', block:'start'});
 }
 
 function buscarProductos() {
@@ -839,6 +840,7 @@ const products = [
 const productGrid = document.getElementById('productGrid');
 products.forEach(p => {
   const stockPct = p.stock > 0 ? Math.round(p.sold/(p.sold+p.stock)*100) : 80;
+  const stockColor = p.stock >= 10 ? '#22c55e' : p.stock >= 3 ? '#f59e0b' : '#dc2626';
   productGrid.innerHTML += `
     <div class="product-card" data-category="${p.category}" data-name="${p.name.toLowerCase()}" data-price="${parseInt(p.price.replace(/\D/g,''))}">
       <div class="product-img-wrap">
@@ -855,7 +857,7 @@ products.forEach(p => {
         <p class="product-category">${p.category}</p>
         <p class="product-name">${p.name}</p>
         <p class="product-price">${p.price}${p.old ? `<span class="product-old-price">${p.old}</span>` : ''}</p>
-        <div class="product-stock"><span>${p.sold} vendidos</span><div class="bar"><div class="bar-fill" style="width:${stockPct}%"></div></div></div>
+        <div class="product-stock"><span>${p.sold} vendidos</span><div class="bar"><div class="bar-fill" style="width:${stockPct}%;background:${stockColor}"></div></div></div>
         <div class="share-buttons">
           <a href="https://wa.me/573112112023?text=${encodeURIComponent('Hola! Me interesa ' + p.name + ' ' + p.price)}" target="_blank" class="share-btn" title="WhatsApp">💬</a>
           <button class="share-btn" title="Compartir" onclick="compartirProducto(${p.id})">📤</button>
@@ -895,6 +897,7 @@ const urgencyProducts = [
 const urgencyGrid = document.getElementById('urgencyGrid');
 urgencyProducts.forEach((p,i) => {
   const pct = Math.round(p.sold/(p.sold+p.stock)*100);
+  const sc = p.stock >= 10 ? '#22c55e' : p.stock >= 3 ? '#f59e0b' : '#dc2626';
   urgencyGrid.innerHTML += `
     <div class="urgency-card">
       <div class="urgency-badge">🔥 Más Vendido</div>
@@ -906,7 +909,7 @@ urgencyProducts.forEach((p,i) => {
       <div class="product-info">
         <p class="product-name">${p.name}</p>
         <p class="product-price">${p.price}${p.old ? `<span class="product-old-price">${p.old}</span>` : ''}</p>
-        <div class="product-stock"><span>${p.sold} vendidos</span><span>${p.stock} disponibles</span><div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div></div>
+        <div class="product-stock"><span>${p.sold} vendidos</span><span>${p.stock} disponibles</span><div class="bar"><div class="bar-fill" style="width:${pct}%;background:${sc}"></div></div></div>
         <a href="https://wa.me/573112112023?text=${encodeURIComponent('Hola! Me interesa ' + p.name + ' - ' + p.price + ' (Oferta especial)')}" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:12px;">💬 Comprar Ahora</a>
       </div>
     </div>`;
@@ -1317,6 +1320,18 @@ function compartirProducto(id) {
 // ===== PRELOADER =====
 window.addEventListener('load', () => {
   setTimeout(() => document.getElementById('preloader').classList.add('hidden'), 400);
+});
+
+// ===== ESC KEY HANDLER =====
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape') {
+    const qv = document.getElementById('quickViewModal');
+    if(qv.classList.contains('open')) { closeQuickView(); return; }
+    const cart = document.getElementById('cartSidebar');
+    if(cart.classList.contains('open')) { toggleCart(); return; }
+    const chat = document.getElementById('chatBox');
+    if(chat.classList.contains('open')) { toggleChat(); return; }
+  }
 });
 </script>
 </body>

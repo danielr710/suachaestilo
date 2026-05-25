@@ -324,8 +324,8 @@ footer .brand-name span{color:#dc2626}
   .timer-display{gap:.5rem}
   .mobile-bottom{display:block}
   .whatsapp-float{bottom:76px}
-  .chat-box{right:12px;left:12px;width:auto;bottom:150px}
-  .chat-toggle{bottom:76px}
+  .chat-box{right:12px;left:12px;width:auto;bottom:160px;z-index:45}
+  .chat-toggle{bottom:96px;z-index:41}
   .scroll-top{bottom:140px}
   section{padding:3rem 1rem}
   .product-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.75rem}
@@ -412,9 +412,42 @@ footer .brand-name span{color:#dc2626}
   .modal-grid{grid-template-columns:1fr}
   .modal-img-wrap{min-height:250px}
 }
+/* ===== PRELOADER ===== */
+.preloader{position:fixed;inset:0;z-index:9999;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:1;visibility:visible;animation:preloaderFade .5s 1.5s forwards}
+@keyframes preloaderFade{to{opacity:0;visibility:hidden;pointer-events:none}}
+.preloader-logo{font-family:'Bebas Neue',cursive;font-size:3rem;letter-spacing:6px;margin-bottom:1rem}
+.preloader-logo span{color:#dc2626}
+.preloader-bar{width:200px;height:3px;background:#1a1a1a;border-radius:2px;overflow:hidden}
+.preloader-bar-fill{height:100%;width:0%;background:linear-gradient(90deg,#dc2626,#fca311);border-radius:2px;animation:preloaderLoad 1.2s ease forwards}
+@keyframes preloaderLoad{0%{width:0%}50%{width:70%}100%{width:100%}}
+.preloader-text{color:#555;font-size:.7rem;text-transform:uppercase;letter-spacing:3px;margin-top:1rem}
+/* ===== CART BOUNCE ===== */
+@keyframes cartBounce{0%{transform:scale(1)}30%{transform:scale(1.4)}60%{transform:scale(.85)}100%{transform:scale(1)}}
+/* ===== FLY TO CART ===== */
+.fly-dot{position:fixed;width:16px;height:16px;border-radius:50%;background:#dc2626;z-index:999;pointer-events:none;transition:all .7s cubic-bezier(.25,.46,.45,.94)}
+/* ===== RELATED PRODUCTS ===== */
+.related-section{border-top:1px solid rgba(255,255,255,.06);padding:1.5rem 2rem;display:none}
+.related-section.has-items{display:block}
+.related-section h4{font-family:'Bebas Neue',cursive;font-size:1.2rem;margin-bottom:1rem;color:#999;letter-spacing:1px}
+.related-scroll{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px}
+.related-scroll::-webkit-scrollbar{display:none}
+.related-card{width:130px;flex-shrink:0;background:#1a1a1a;border:1px solid rgba(255,255,255,.06);cursor:pointer;transition:all .3s}
+.related-card:hover{transform:translateY(-4px);border-color:rgba(220,38,38,.4)}
+.related-img{width:100%;aspect-ratio:1;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#1a1a1a;position:relative}
+.related-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.related-card:hover .related-img img{transform:scale(1.1)}
+.related-img .fallback2{font-size:2.5rem}
+.related-info{padding:10px}
+.related-name{font-size:.7rem;font-weight:600;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.related-price{font-family:'Bebas Neue',cursive;font-size:1rem;color:#dc2626}
 </style>
 </head>
 <body>
+<div class="preloader" id="preloader">
+  <div class="preloader-logo">SUACHA<span>.</span>ESTILO</div>
+  <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
+  <div class="preloader-text">Cargando...</div>
+</div>
 <div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- Header -->
@@ -680,6 +713,10 @@ footer .brand-name span{color:#dc2626}
   <div class="modal">
     <button class="modal-close" onclick="closeQuickView()">✕</button>
     <div class="modal-grid" id="quickViewContent"></div>
+    <div class="related-section" id="qvRelated">
+      <h4>También te podría interesar</h4>
+      <div class="related-scroll" id="qvRelatedScroll"></div>
+    </div>
   </div>
 </div>
 
@@ -1084,13 +1121,12 @@ function agregarAlCarrito(id) {
   const p = products.find(x => x.id === id);
   if(!p) return;
   const exist = cart.find(i => i.id === id && i.talla === p.sizes[0] && i.color === p.colors[0]);
-  if(exist) {
-    exist.qty++;
-  } else {
-    cart.push({id, qty:1, talla:p.sizes[0], color:p.colors[0], price:p.price});
-  }
+  if(exist) exist.qty++;
+  else cart.push({id, qty:1, talla:p.sizes[0], color:p.colors[0], price:p.price});
   guardarCart();
   toggleCart();
+  document.getElementById('cartCount').style.animation = 'cartBounce .5s ease';
+  setTimeout(() => document.getElementById('cartCount').style.animation = '', 600);
   notificar(`✅ ${p.name} agregado al carrito`);
 }
 
@@ -1175,10 +1211,33 @@ function openQuickView(id) {
   window._qvSize = p.sizes[0];
   window._qvColor = p.colors[0];
   window._qvQty = 1;
+  // Related products
+  const relatedContainer = document.getElementById('qvRelatedScroll');
+  const relatedSection = document.getElementById('qvRelated');
+  if(relatedContainer && relatedSection) {
+    const related = products.filter(x => x.id !== id && (x.category === p.category || x.colors.some(c => p.colors.includes(c))));
+    const picks = related.sort(() => Math.random() - .5).slice(0, 4);
+    if(picks.length) {
+      relatedContainer.innerHTML = picks.map(r => `
+        <div class="related-card" onclick="openQuickView(${r.id})">
+          <div class="related-img"><img src="img${r.id}.jpeg" alt="${r.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="fallback2" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center">${r.emoji}</div></div>
+          <div class="related-info">
+            <div class="related-name">${r.name}</div>
+            <div class="related-price">${r.price}</div>
+          </div>
+        </div>
+      `).join('');
+      relatedSection.classList.add('has-items');
+    } else {
+      relatedSection.classList.remove('has-items');
+    }
+  }
 }
 
 function closeQuickView() {
   document.getElementById('quickViewModal').classList.remove('open');
+  const rs = document.getElementById('qvRelatedScroll');
+  if(rs) rs.innerHTML = '';
 }
 
 function selectQvOption(type, val, btn) {
@@ -1197,16 +1256,92 @@ function qvAddToCart(id) {
   const p = products.find(x => x.id === id);
   if(!p) return;
   const exist = cart.find(i => i.id === id && i.talla === window._qvSize && i.color === window._qvColor);
-  if(exist) {
-    exist.qty += window._qvQty;
-  } else {
-    cart.push({id, qty: window._qvQty, talla: window._qvSize, color: window._qvColor, price: p.price});
-  }
+  if(exist) exist.qty += window._qvQty;
+  else cart.push({id, qty: window._qvQty, talla: window._qvSize, color: window._qvColor, price: p.price});
   guardarCart();
   closeQuickView();
   toggleCart();
+  document.getElementById('cartCount').style.animation = 'cartBounce .5s ease';
+  setTimeout(() => document.getElementById('cartCount').style.animation = '', 600);
   notificar(`✅ ${p.name} (${window._qvColor}, ${window._qvSize}) agregado al carrito`);
 }
+
+// ===== PRELOADER =====
+setTimeout(() => {
+  const p = document.getElementById('preloader');
+  if(p) p.style.display = 'none';
+}, 1700);
+
+// ===== SCROLL REVEAL =====
+(function() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting) {
+        e.target.classList.add('active');
+        if(e.target.classList.contains('stagger-children')) obs.unobserve(e.target);
+        else obs.unobserve(e.target);
+      }
+    });
+  }, {threshold: .1});
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-children').forEach(el => obs.observe(el));
+})();
+
+// ===== TEXT SCRAMBLE =====
+(function() {
+  const wrap = document.querySelector('.hero h1');
+  if(!wrap) return;
+  const original = wrap.innerHTML;
+  const chars = '!<>-_\\/[]{}—=+*^?#________';
+  let interval;
+  function scramble() {
+    let iterations = 0;
+    clearInterval(interval);
+    interval = setInterval(() => {
+      wrap.innerHTML = original.split('').map((c, i) => {
+        if(i < iterations) return original[i];
+        return chars[Math.floor(Math.random() * chars.length)];
+      }).join('');
+      iterations += 1/3;
+      if(iterations >= original.length) { clearInterval(interval); wrap.innerHTML = original; }
+    }, 30);
+  }
+  setInterval(scramble, 8000);
+  setTimeout(scramble, 1500);
+})();
+
+// ===== SCROLL PROGRESS =====
+(function() {
+  const bar = document.getElementById('scrollProgress');
+  if(!bar) return;
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+  });
+})();
+
+// ===== STAT COUNTERS =====
+(function() {
+  document.querySelectorAll('.gallery-stat .num').forEach(el => {
+    const txt = el.textContent.trim();
+    const target = txt.endsWith('K') ? parseInt(txt) * 1000 : txt.startsWith('#') ? parseInt(txt.slice(1)) : parseInt(txt.replace(/\D/g,''));
+    if(!target || isNaN(target)) return;
+    el.textContent = '0';
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if(!e.isIntersecting) return;
+        obs.unobserve(el);
+        let current = 0;
+        const step = Math.ceil(target / 40);
+        const timer = setInterval(() => {
+          current += step;
+          if(current >= target) { current = target; clearInterval(timer); }
+          el.textContent = current.toLocaleString('es-CO');
+        }, 40);
+      });
+    }, {threshold: .5});
+    obs.observe(el);
+  });
+})();
 </script>
 </body>
 </html>

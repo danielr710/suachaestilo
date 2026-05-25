@@ -119,7 +119,10 @@ h2 span{color:#dc2626;display:inline-block;animation:float 4s ease-in-out infini
 .skeleton-text{height:14px;margin:8px 0;border-radius:4px}
 .skeleton-text.short{width:60%}
 .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem}
-.product-card{background:#111;border:1px solid rgba(255,255,255,.06);transition:all .4s cubic-bezier(.25,.46,.45,.94);cursor:default;position:relative;overflow:hidden;transform:translateY(0)}
+.product-card{background:#111;border:1px solid rgba(255,255,255,.06);transition:all .4s cubic-bezier(.25,.46,.45,.94);cursor:pointer;position:relative;overflow:hidden;transform:translateY(0);-webkit-tap-highlight-color:transparent;user-select:none}
+.product-card:active{transform:scale(.96);transition:transform .15s ease}
+.product-card::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--x,50%) var(--y,50%),rgba(255,255,255,.15) 0,transparent 60%);opacity:0;pointer-events:none;transition:opacity .3s;z-index:1}
+.product-card:active::after{opacity:1;transition:opacity 0s}
 .product-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,#dc2626,#fca311);transform:scaleX(0);transform-origin:left;transition:transform .4s}
 .product-card:hover{transform:translateY(-8px);border-color:rgba(220,38,38,.3);box-shadow:0 20px 60px rgba(0,0,0,.5)}
 .product-card:hover::before{transform:scaleX(1)}
@@ -1342,6 +1345,17 @@ setTimeout(() => {
     obs.observe(el);
   });
 })();
+
+// ===== IPHONE TAP RIPPLE =====
+document.getElementById('productGrid').addEventListener('click', e => {
+  const card = e.target.closest('.product-card');
+  if(!card || e.target.closest('.overlay-btn')) return;
+  const rect = card.getBoundingClientRect();
+  card.style.setProperty('--x', ((e.clientX - rect.left) / rect.width * 100).toFixed(1) + '%');
+  card.style.setProperty('--y', ((e.clientY - rect.top) / rect.height * 100).toFixed(1) + '%');
+  const btn = card.querySelector('.overlay-btn');
+  if(btn) btn.click();
+});
 </script>
 </body>
 </html>

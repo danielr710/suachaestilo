@@ -361,6 +361,18 @@ footer .brand-name span{color:#dc2626}
 .chat-input input::placeholder{color:#555}
 .chat-input button{background:#dc2626;border:none;color:#fff;padding:10px 16px;cursor:pointer;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;transition:.3s;font-family:'Inter',sans-serif}
 .chat-input button:hover{background:#b91c1c}
+.chat-product-card{display:flex;gap:10px;padding:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);margin-top:8px;cursor:pointer;transition:.3s}
+.chat-product-card:hover{border-color:#dc2626;background:rgba(220,38,38,.08)}
+.chat-product-card img{width:50px;height:50px;object-fit:cover;background:#1a1a1a}
+.chat-product-card .info{flex:1}
+.chat-product-card .info .name{font-size:.78rem;font-weight:600}
+.chat-product-card .info .price{font-family:'Bebas Neue',cursive;font-size:1.1rem;color:#dc2626}
+.chat-product-card .info .meta{font-size:.65rem;color:#666}
+.chat-product-card .add-btn{background:#dc2626;border:none;color:#fff;padding:6px 12px;font-size:.65rem;cursor:pointer;transition:.3s;align-self:center;font-family:'Inter',sans-serif;font-weight:600;white-space:nowrap}
+.chat-product-card .add-btn:hover{background:#b91c1c}
+.chat-quick-replies{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.chat-quick-replies button{padding:6px 14px;background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.3);color:#dc2626;font-size:.7rem;cursor:pointer;transition:.3s;font-family:'Inter',sans-serif;border-radius:0}
+.chat-quick-replies button:hover{background:#dc2626;color:#fff}
 
 /* Scroll top */
 .scroll-top{position:fixed;bottom:90px;right:24px;z-index:59;width:44px;height:44px;border-radius:50%;background:#dc2626;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .4s;border:none;color:#fff;font-size:1.25rem;opacity:0;visibility:hidden;transform:translateY(10px)}
@@ -811,7 +823,7 @@ footer .brand-name span{color:#dc2626}
   </div>
   <div class="chat-key-status" id="chatKeyStatus" onclick="initChatKey()" title="Configurar API Key">🧠 ${chatKey ? 'DeepSeek' : 'Local'} <span style="font-size:.6rem;opacity:.6">⚙️</span></div>
   <div class="chat-messages" id="chatMessages">
-    <div class="msg bot">¡Hola, parce! 👋 Soy <strong>Sua</strong>, la asistente virtual de Suacha Estilo.<br><br>Puedo consultarte al toque:<br>• 🔍 <strong>Productos:</strong> "¿tienen buzos?", "camiseta oversize", "gorras"<br>• 📏 <strong>Tallas y colores:</strong> "hay talla M?", "colores del hoodie"<br>• 💵 <strong>Precios exactos</strong> con stock en tiempo real<br><br>¿Qué estás buscando? 😎🔥</div>
+    <div class="msg bot">¡Quiubo, parce! 👊 Soy <strong>Sua</strong>, tu asistente de Suacha Estilo.<br><br>Pregúntame sin pena:<br><br>👕 "¿tienen camisetas oversize?"<br>🧥 "buzos disponibles"<br>🧢 "gorras colombia"<br>💰 "cuánto cuesta el hoodie?"<br>📍 "dónde están?"<br><br>¿Qué se te ofrece hoy? 🔥👇</div>
   </div>
   <div class="chat-input">
     <input type="text" id="chatInput" placeholder="Escribe tu mensaje..." onkeydown="if(event.key==='Enter')sendMessage()">
@@ -1013,21 +1025,214 @@ window.addEventListener('scroll', () => {
   document.getElementById('scrollProgress').style.width = docH > 0 ? (window.scrollY / docH * 100) + '%' : '0%';
 });
 
-// ===== CHATBOT IA (DeepSeek + Smart Local) =====
+// ===== CHATBOT IA (DeepSeek + Smart Local v2) =====
 const DEEPSEEK_API = 'https://api.deepseek.com/v1/chat/completions';
 let chatKey = localStorage.getItem('se_deepseek_key') || '';
-let chatHistory = [{role:'system',content:'Eres "Sua", el asistente virtual amigable de Suacha Estilo, una marca de ropa urbana de Soacha, Colombia. Respondes en español colombiano, con energía y actitud. Ayudas a clientes a encontrar productos, dar info de tallas/colores/precios/stock, responder dudas de envíos, pagos, ubicación. Eres breve, directa y carismática. Usas emojis. Si preguntan por un producto, das nombre, precio, tallas, colores y stock exacto de la lista. Si no sabes algo, dices que pregunte al WhatsApp. NO inventes información.'}];
+let chatHistory = [{role:'system',content:'Eres "Sua" 👊, asistente virtual de Suacha Estilo, ropa urbana de Soacha, Colombia. Hablas como colombiano parcero. Respondes corto, con energía, usando emojis. Das info precisa de productos, tallas, colores, precios, stock. Si preguntan algo que no sabes, diles que pregunten al WhatsApp. NO inventes datos.'}];
+let chatContext = {lastTopic:'', lastProducts:[], turnCount:0};
 
 function initChatKey() {
   if(!chatKey) {
-    chatKey = prompt('🔑 Ingresa tu API Key de DeepSeek para activar el chat con IA (o deja vacío para modo local):') || '';
+    chatKey = prompt('🔑 API Key de DeepSeek (opcional — deja vacío para modo local):') || '';
     if(chatKey) localStorage.setItem('se_deepseek_key', chatKey);
   } else {
-    if(confirm('🔑 Ya tienes una API Key configurada. ¿Quieres cambiarla o eliminarla?')) {
-      chatKey = prompt('Nueva API Key (o vacío para eliminar):') || '';
-      if(chatKey) localStorage.setItem('se_deepseek_key', chatKey);
-      else localStorage.removeItem('se_deepseek_key');
+    if(confirm('🔑 ¿Cambiar o eliminar la API Key?')) {
+      chatKey = prompt('Nueva API Key (vacío para eliminar):') || '';
+      chatKey ? localStorage.setItem('se_deepseek_key', chatKey) : localStorage.removeItem('se_deepseek_key');
     }
+  }
+  document.getElementById('chatKeyStatus').innerHTML = `🧠 ${chatKey ? 'DeepSeek' : 'Local'} <span style="font-size:.6rem;opacity:.6">⚙️</span>`;
+}
+
+function toggleChat() {
+  const box = document.getElementById('chatBox');
+  box.classList.toggle('open');
+  if(box.classList.contains('open')) document.getElementById('chatInput').focus();
+}
+
+document.addEventListener('click', function(e) {
+  const box = document.getElementById('chatBox');
+  const toggle = document.getElementById('chatToggle');
+  if(box.classList.contains('open') && !box.contains(e.target) && !toggle.contains(e.target)) box.classList.remove('open');
+});
+
+function addMsg(html, cls='bot') {
+  const msgs = document.getElementById('chatMessages');
+  const div = document.createElement('div'); div.className = `msg ${cls}`; div.innerHTML = html;
+  msgs.appendChild(div); msgs.scrollTop = msgs.scrollHeight;
+  return div;
+}
+
+function addProductCard(p, action='vista') {
+  const btnHtml = action === 'vista'
+    ? `<button class="add-btn" onclick="closeQuickView();openQuickView(${p.id})">👁 Ver</button>`
+    : `<button class="add-btn" onclick="agregarAlCarrito(${p.id})">🛒 +Carrito</button>`;
+  return `<div class="chat-product-card" onclick="closeQuickView();openQuickView(${p.id})">
+    <img src="img${p.id}.jpeg" alt="" onerror="this.style.display='none'">
+    <div class="info">
+      <div class="name">${p.name}</div>
+      <div class="price">${p.price}</div>
+      <div class="meta">${p.sizes.slice(0,3).join(', ')}${p.sizes.length>3?'...':''} · ${p.colors.slice(0,3).join(', ')}${p.colors.length>3?'...':''}</div>
+    </div>
+    ${btnHtml}
+  </div>`;
+}
+
+function addQuickReplies(btns) {
+  return `<div class="chat-quick-replies">${btns.map(b => `<button onclick="sendQuick('${b}')">${b}</button>`).join('')}</div>`;
+}
+
+function sendQuick(text) {
+  document.getElementById('chatInput').value = text;
+  sendMessage();
+}
+
+function scoreProduct(texto, p) {
+  const t = texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+  let score = 0;
+  const name = p.name.toLowerCase();
+  const cat = p.category.toLowerCase();
+  const desc = p.description.toLowerCase();
+  const colors = p.colors.map(c => c.toLowerCase());
+  const sizes = p.sizes.map(s => s.toLowerCase());
+  const words = t.split(/\s+/);
+  for(const w of words) {
+    if(w.length < 3) continue;
+    if(name.includes(w)) score += 10;
+    if(cat.includes(w)) score += 8;
+    if(desc.includes(w)) score += 5;
+    if(colors.some(c => c.includes(w) || w.includes(c))) score += 6;
+    if(sizes.some(s => s === w)) score += 4;
+    if(p.name.split(' ').some(part => part.toLowerCase().startsWith(w))) score += 7;
+  }
+  if(t.includes(p.category.toLowerCase())) score += 6;
+  if(p.colors.some(c => t.includes(c.toLowerCase()))) score += 5;
+  if(p.sizes.some(s => t.includes(s.toLowerCase()))) score += 4;
+  return score;
+}
+
+async function sendMessage() {
+  const input = document.getElementById('chatInput');
+  const msg = input.value.trim();
+  if(!msg) return;
+  input.value = '';
+  chatContext.turnCount++;
+  addMsg(msg, 'user');
+
+  const typingDiv = addMsg('<div class="typing"><span></span><span></span><span></span></div>');
+  const delay = ms => new Promise(r => setTimeout(r, ms));
+
+  // --- DeepSeek Mode ---
+  if(chatKey) {
+    try {
+      const contextInfo = products.map(p => `${p.emoji} ${p.name} - ${p.price} - ${p.category} - Stock:${p.stock} - Tallas:${p.sizes.join('/')} - Colores:${p.colors.join('/')}`).join('\n');
+      const userMsg = msg + '\n\nCatálogo:\n' + contextInfo;
+      chatHistory.push({role:'user',content:userMsg});
+      const res = await fetch(DEEPSEEK_API, {
+        method:'POST', headers:{'Content-Type':'application/json','Authorization':`Bearer ${chatKey}`},
+        body:JSON.stringify({model:'deepseek-chat',messages:chatHistory,temperature:.7,max_tokens:600})
+      });
+      typingDiv.remove();
+      if(res.ok) {
+        const data = await res.json();
+        const reply = data.choices[0].message.content;
+        chatHistory.push({role:'assistant',content:reply});
+        if(chatHistory.length > 14) chatHistory.splice(1, 4);
+        addMsg(reply.replace(/\n/g,'<br>'));
+        return;
+      } else {
+        const err = await res.text();
+        if(res.status === 401) { chatKey=''; localStorage.removeItem('se_deepseek_key'); document.getElementById('chatKeyStatus').innerHTML='🧠 Local ⚙️'; }
+        else typingDiv.remove();
+      }
+    } catch(e) { typingDiv.remove(); }
+  }
+
+  // === SMART LOCAL V2 ===
+  await delay(500 + Math.random()*400);
+  typingDiv.remove();
+
+  const raw = msg;
+  const t = raw.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+  const words = t.split(/\s+/).filter(w => w.length > 2);
+
+  // 1. Score all products
+  const scored = products.map(p => ({p, score: scoreProduct(t, p)})).sort((a,b) => b.score - a.score);
+  const top = scored.filter(s => s.score > 0);
+  const best = top[0];
+
+  // 2. Detect intent
+  const isProduct = t.includes('producto') || t.includes('prend') || t.includes('ropa') || t.includes('coleccion') || t.includes('catalogo') || t.includes('tiene') || t.includes('hay ') || t.includes('quier') || t.includes('busco') || t.includes('necesito') || t.includes('venden') || t.includes('manejan') || t.includes('disponible');
+  const isSearch = words.some(w => ['camiseta','buzo','hoodie','gorra','jogger','conjunto','set','oversize','urban','colombia','deportivo','accesorio','peruano','exclusivo','bordada','unisex','cultura','urbana','crew','sudader','chaqueta','short','pantalon'].includes(w))
+    || t.includes('talla') || t.includes('tamañ') || t.includes('color') || t.includes('precio') || t.includes('cuanto') || t.includes('cost') || t.includes('vale');
+  const isStock = t.includes('stock') || t.includes('agot') || t.includes('disponible') || t.includes('queda');
+  const isInfo = t.includes('ubic') || t.includes('donde') || t.includes('direc') || t.includes('horario') || t.includes('abren') || t.includes('cierran');
+  const isShipping = t.includes('envio') || t.includes('domicilio') || t.includes('entrega') || t.includes('cuanto tarda') || t.includes('llega');
+  const isPayment = t.includes('pago') || t.includes('nequi') || t.includes('daviplata') || t.includes('transfer') || t.includes('efectivo') || t.includes('tarjeta');
+  const isGreeting = t.includes('hola') || t.includes('buenas') || t.includes('buen') || t.includes('que mas') || t.includes('quiubo') || t.includes('parce');
+  const isThanks = t.includes('gracias') || t.includes('muchas') || t.includes('thank');
+  const isWhatsapp = t.includes('whatsapp') || t.includes('contact') || t.includes('numero') || t.includes('telefono') || t.includes('hablar');
+  const isCart = t.includes('carrito') || t.includes('compr') || t.includes('orden') || t.includes('pedir');
+
+  // 3. Generate response
+  let response = '';
+
+  if(isGreeting) {
+    response = '¡Quiubo parce! 🙌 Soy **Sua**, la asistente de **Suacha Estilo**. ¿Qué se te ofrece? Una camiseta oversize, un buzo, una gorra… lo que busques te digo al toque si tenemos y a cómo 💪🔥';
+  }
+  else if(isWhatsapp) {
+    response = '💬 Escríbenos directo: **+57 311 211 2023** o toca el botón verde de WhatsApp en la esquina 👇 ¡Te atendemos al instante!';
+  }
+  else if(isInfo) {
+    response = '📍 Nos encuentras en **Calle 15 #6A-12, Soacha Centro** 🕐 Lun-Vie 9am-7pm, Sáb 10am-6pm, Dom 10am-4pm. ¿Te mando la ubicación por WhatsApp?';
+  }
+  else if(isShipping) {
+    response = '📦 Enviamos a **todo Colombia** 🇨🇴 (3-7 días hábiles). En **Soacha** entregamos el mismo día. ¿Pa dónde sería?';
+  }
+  else if(isPayment) {
+    response = '💳 Recibimos **Nequi, Daviplata, transferencias bancarias y efectivo** contraentrega en Soacha. ¿Cuál te sirve más?';
+  }
+  else if(isThanks) {
+    response = '¡A ti, parce! 🙌 Cuando quieras saber de alguna prenda, me dices. ¡Disfruta el estilo Suacha! 🔥';
+  }
+  else if(isCart) {
+    response = '🛒 Arriba a la derecha está el carrito. Ahí puedes revisar lo que agregues y pedir directo por WhatsApp. ¿Quieres que te muestre algo en específico?';
+  }
+  else if(best && (isSearch || isStock || isProduct || best.score >= 8)) {
+    const p = best.p;
+    response = `${p.emoji} **${p.name}** — ${p.price}${p.old ? ` ~~${p.old}~~` : ''}\n\n📦 **Stock:** ${p.stock} unidades\n📏 **Tallas:** ${p.sizes.join(', ')}\n🎨 **Colores:** ${p.colors.join(', ')}\n📝 ${p.description}`;
+    const html = response.replace(/\n/g,'<br>') + addProductCard(p, 'carrito') + addQuickReplies(['Ver más productos','Envíos','WhatsApp']);
+    addMsg(html);
+    chatContext.lastTopic = 'product';
+    chatContext.lastProducts = [p.id];
+    return;
+  }
+  else if(top.length > 0 && (isSearch || isProduct)) {
+    response = `Encontré ${top.length} productos relacionados:<br><br>`;
+    top.slice(0,3).forEach((s,i) => {
+      const p = s.p;
+      response += `${i+1}. ${p.emoji} **${p.name}** — ${p.price}<br>`;
+    });
+    response += '<br>¿Cuál te gusta más? Te doy todos los detalles 👇';
+    addMsg(response);
+    addQuickReplies(top.slice(0,3).map(s => s.p.name.split(' ').slice(0,3).join(' ')));
+    chatContext.lastProducts = top.slice(0,3).map(s => s.p.id);
+    return;
+  }
+  else if(best && best.score >= 5) {
+    const p = best.p;
+    response = `¿Te refieres a ${p.emoji} **${p.name}**? ${p.price} — ${p.colors.slice(0,3).join(', ')}${p.colors.length>3?'...':''}. ¿Te muestro los detalles?`;
+    addMsg(response + '<br>' + addProductCard(p, 'vista'));
+    return;
+  }
+  else {
+    response = 'No pillé bien, parce 🤔 ¿Puedes ser más específico? Pregúntame por:\n\n• **Productos:** "camiseta oversize", "buzo negro", "gorras"\n• **Stock:** "hay talla L?", "colores del hoodie"\n• **Info:** "ubicación", "domicilios", "pagos"\n\nO escríbenos directo al 💬 WhatsApp';
+  }
+
+  addMsg(response.replace(/\n/g,'<br>'));
+  if(isGreeting) addMsg(addQuickReplies(['Camisetas','Buzos','Gorras','Hoodies','Envíos']));
+  else if(isThanks || isInfo || isShipping || isPayment) addMsg(addQuickReplies(['Ver productos','WhatsApp','Ubicación']));
+}
   }
   updateChatKeyStatus();
 }

@@ -1344,35 +1344,40 @@ window.addEventListener('load', () => {
 
 // ===== TEXT SCRAMBLE =====
 (function() {
-  const el = document.querySelector('.hero h1');
-  if(!el) return;
+  const wrap = document.querySelector('.hero h1');
+  if(!wrap) return;
   const chars = '!<>-_\\/[]{}—=+*^?#$%&@';
-  let frame, queue = [], resolve;
+  let frame, queue = [], originalHTML = wrap.innerHTML;
   function update() {
     let out = '', complete = 0;
     for(let i = 0; i < queue.length; i++) {
+      if(queue[i].isBr) { out += '<br>'; complete++; continue; }
       if(frame >= queue[i].end) { out += queue[i].to; complete++; }
       else if(frame >= queue[i].start) {
         if(!queue[i].char || Math.random() < 0.28) queue[i].char = chars[Math.floor(Math.random() * chars.length)];
         out += `<span style="color:#dc2626">${queue[i].char}</span>`;
       } else out += queue[i].from;
     }
-    el.innerHTML = out;
-    if(complete === queue.length) resolve();
+    wrap.innerHTML = out;
+    if(complete === queue.length) { wrap.innerHTML = originalHTML; }
     else { frame++; requestAnimationFrame(update); }
   }
-  function scramble(text) {
-    const old = el.innerText;
-    const len = Math.max(old.length, text.length);
-    cancelAnimationFrame(frame);
-    queue = []; frame = 0;
-    for(let i = 0; i < len; i++) {
-      queue.push({from: old[i]||'', to: text[i]||'', start: Math.floor(Math.random()*40), end: Math.floor(Math.random()*40)+30});
+  function scramble() {
+    const text = wrap.innerText;
+    const children = wrap.childNodes;
+    let idx = 0; queue = []; frame = 0;
+    for(let i = 0; i < children.length; i++) {
+      if(children[i].tagName === 'BR') { queue.push({isBr:true}); continue; }
+      const str = children[i].textContent;
+      for(let j = 0; j < str.length; j++) {
+        queue.push({from: str[j], to: str[j], start: Math.floor(Math.random()*35), end: Math.floor(Math.random()*35)+25});
+      }
     }
+    cancelAnimationFrame(frame);
     requestAnimationFrame(update);
   }
-  setTimeout(() => scramble('SUACHA\nESTILO'), 600);
-  setInterval(() => scramble('SUACHA\nESTILO'), 8000);
+  setTimeout(scramble, 800);
+  setInterval(scramble, 8000);
 })();
 
 // ===== ANIMATED COUNTERS =====

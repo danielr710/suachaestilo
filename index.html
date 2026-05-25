@@ -12,12 +12,9 @@
 <meta property="og:image" content="https://scontent.fbog9-1.fna.fbcdn.net/v/t39.30808-1/474683159_1179293957530091_8567917066191410829_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=100&ccb=1-7&_nc_sid=f907e8&_nc_ohc=RVDl0ghXE2kQ7kNvwFW3SWm&_nc_oc=AdpuFKK1EHxIglIY4ah6_HPg9h6HxemPhN_cta8w_1l2rznwChBX0X9NUB-VjBnBNF6fBIoAXBlTRJ1gkKoG7WWt&_nc_zt=24&_nc_ht=scontent.fbog9-1.fna&edm=AKsJ254EAAAA&_nc_gid=NZ37D4fkJPilieT1Ujg9WQ&oh=00_Af4rHv3MwcCtsF_z1LUSUrPNkFWr2pTp0zabrv3P65KD0Q&oe=6A1A39D5">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#dc2626">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden}
+@font-face{font-family:'Bebas Neue';src:local('Bebas Neue Regular'),local('BebasNeueRegular'),url('https://fonts.gstatic.com/s/bebasneue/v14/JTUSjIg69CK48gW7PXooxW5F.woff2') format('woff2');font-display:swap}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;background:#000;color:#fff;overflow-x:hidden}
 ::-webkit-scrollbar{width:6px}
 ::-webkit-scrollbar-track{background:#0a0a0a}
 ::-webkit-scrollbar-thumb{background:#dc2626;border-radius:3px}
@@ -112,8 +109,6 @@ header{position:fixed;top:0;width:100%;z-index:50;background:rgba(0,0,0,.95);bac
 nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px;padding:0 1.5rem}
 .logo{display:flex;align-items:center;gap:12px;font-family:'Bebas Neue',cursive;font-size:1.5rem;letter-spacing:2px;text-decoration:none;color:#fff;transition:opacity .3s}
 .logo:hover{opacity:.8}
-.logo-img{width:42px;height:42px;border-radius:50%;border:2px solid #dc2626;object-fit:cover;transition:transform .4s}
-.logo:hover .logo-img{transform:rotate(360deg)}
 .nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
 .nav-links a{color:#999;text-decoration:none;font-size:.8rem;font-weight:500;letter-spacing:1px;transition:all .3s;text-transform:uppercase;position:relative}
 .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:#dc2626;transition:width .3s}
@@ -516,10 +511,9 @@ footer .brand-name span{color:#dc2626}
 <!-- Header -->
 <header>
   <nav>
-    <a href="#" class="logo">
-      <img class="logo-img" src="https://scontent.fbog9-1.fna.fbcdn.net/v/t39.30808-1/474683159_1179293957530091_8567917066191410829_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=100&ccb=1-7&_nc_sid=f907e8&_nc_ohc=RVDl0ghXE2kQ7kNvwFW3SWm&_nc_oc=AdpuFKK1EHxIglIY4ah6_HPg9h6HxemPhN_cta8w_1l2rznwChBX0X9NUB-VjBnBNF6fBIoAXBlTRJ1gkKoG7WWt&_nc_zt=24&_nc_ht=scontent.fbog9-1.fna&edm=AKsJ254EAAAA&_nc_gid=NZ37D4fkJPilieT1Ujg9WQ&oh=00_Af4rHv3MwcCtsF_z1LUSUrPNkFWr2pTp0zabrv3P65KD0Q&oe=6A1A39D5" alt="Suacha Estilo">
-      SUACHA<span style="color:#dc2626">.</span>ESTILO
-    </a>
+      <a href="#" class="logo">
+        SUACHA<span style="color:#dc2626">.</span>ESTILO
+      </a>
     <div style="display:flex;align-items:center;gap:4px;">
       <button class="header-cart-mobile" onclick="toggleCart()" aria-label="Carrito">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>

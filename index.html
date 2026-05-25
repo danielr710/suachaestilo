@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/jpeg" href="https://scontent.fbog9-1.fna.fbcdn.net/v/t39.30808-1/474683159_1179293957530091_8567917066191410829_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=100&ccb=1-7&_nc_sid=f907e8&_nc_ohc=RVDl0ghXE2kQ7kNvwFW3SWm&_nc_oc=AdpuFKK1EHxIglIY4ah6_HPg9h6HxemPhN_cta8w_1l2rznwChBX0X9NUB-VjBnBNF6fBIoAXBlTRJ1gkKoG7WWt&_nc_zt=24&_nc_ht=scontent.fbog9-1.fna&edm=AKsJ254EAAAA&_nc_gid=NZ37D4fkJPilieT1Ujg9WQ&oh=00_Af4rHv3MwcCtsF_z1LUSUrPNkFWr2pTp0zabrv3P65KD0Q&oe=6A1A39D5">
-<link rel="apple-touch-icon" href="https://scontent.fbog9-1.fna.fbcdn.net/v/t39.30808-1/474683159_1179293957530091_8567917066191410829_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=100&ccb=1-7&_nc_sid=f907e8&_nc_ohc=RVDl0ghXE2kQ7kNvwFW3SWm&_nc_oc=AdpuFKK1EHxIglIY4ah6_HPg9h6HxemPhN_cta8w_1l2rznwChBX0X9NUB-VjBnBNF6fBIoAXBlTRJ1gkKoG7WWt&_nc_zt=24&_nc_ht=scontent.fbog9-1.fna&edm=AKsJ254EAAAA&_nc_gid=NZ37D4fkJPilieT1Ujg9WQ&oh=00_Af4rHv3MwcCtsF_z1LUSUrPNkFWr2pTp0zabrv3P65KD0Q&oe=6A1A39D5">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23dc2626'/%3E%3Ctext x='50' y='68' font-family='Arial' font-weight='bold' font-size='50' fill='white' text-anchor='middle'%3ESE%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23dc2626'/%3E%3Ctext x='50' y='68' font-family='Arial' font-weight='bold' font-size='50' fill='white' text-anchor='middle'%3ESE%3C/text%3E%3C/svg%3E">
 <title>Suacha Estilo - Ropa Urbana</title>
 <meta name="description" content="Suacha Estilo - Ropa urbana desde Soacha, Colombia. Camisetas oversize, buzos, gorras y más. Premium algodón peruano. Envíos a todo Colombia.">
 <meta property="og:title" content="Suacha Estilo - Ropa Urbana">
@@ -42,13 +42,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubunt
 @keyframes cartBounce{0%,100%{transform:scale(1)}30%{transform:scale(1.5)}60%{transform:scale(.85)}80%{transform:scale(1.15)}}
 
 /* Preloader */
-.preloader{position:fixed;inset:0;z-index:9999;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s,visibility .8s}
+.preloader{position:fixed;inset:0;z-index:9999;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:1;visibility:visible;pointer-events:auto;animation:preloaderFade 0s 3.5s forwards}
 .preloader.hidden{opacity:0;visibility:hidden;pointer-events:none}
 .preloader-logo{font-family:'Bebas Neue',cursive;font-size:3rem;letter-spacing:6px;margin-bottom:1rem}
 .preloader-logo span{color:#dc2626}
 .preloader-bar{width:200px;height:3px;background:#1a1a1a;border-radius:2px;overflow:hidden}
 .preloader-bar-fill{height:100%;width:0%;background:linear-gradient(90deg,#dc2626,#fca311);border-radius:2px;animation:preloaderLoad 1.8s ease forwards}
 @keyframes preloaderLoad{0%{width:0%}50%{width:70%}100%{width:100%}}
+@keyframes preloaderFade{to{opacity:0;visibility:hidden;pointer-events:none}}
 .preloader-text{color:#555;font-size:.7rem;text-transform:uppercase;letter-spacing:3px;margin-top:1rem}
 
 /* Wishlist */

@@ -902,7 +902,7 @@ products.forEach(p => {
         <img src="img${p.id}.jpeg" alt="${p.name}" loading="lazy" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none';this.previousElementSibling.style.display='none';this.nextElementSibling.style.display='flex'"><div class="emoji-placeholder" style="background:linear-gradient(135deg,${p.color});display:none">${p.emoji}</div>
         <div class="product-img-overlay">
           <button class="overlay-btn" onclick="openQuickView(${p.id})" style="animation:none;background:#222;border:1px solid rgba(255,255,255,.15);">👁 Vista rápida</button>
-          <button class="overlay-btn" onclick="agregarAlCarrito(${p.id})">🛒 Agregar</button>
+          <button class="overlay-btn" onclick="agregarAlCarrito(${p.id},this)">🛒 Agregar</button>
         </div>
       </div>
       <div class="product-info">
@@ -1444,18 +1444,21 @@ function toggleCart() {
   document.getElementById('cartOverlay').classList.toggle('open');
 }
 
-function agregarAlCarrito(id) {
-  const p = products.find(x => x.id === id);
-  if(!p) return;
-  const exist = cart.find(i => i.id === id && i.talla === p.sizes[0] && i.color === p.colors[0]);
-  if(exist) {
-    exist.qty++;
-  } else {
-    cart.push({id, qty:1, talla:p.sizes[0], color:p.colors[0], price:p.price});
-  }
-  guardarCart();
-  toggleCart();
-  notificar(`✅ ${p.name} agregado al carrito`);
+function flyToCart(el) {
+  if(!el) return;
+  const rect = el.getBoundingClientRect();
+  const cartRect = (document.getElementById('cartCount')||document.getElementById('cartCountMobile')).getBoundingClientRect();
+  const dot = document.createElement('div');
+  dot.style.cssText = `position:fixed;width:16px;height:16px;border-radius:50%;background:#dc2626;z-index:999;pointer-events:none;top:${rect.top}px;left:${rect.left}px;transition:all .7s cubic-bezier(.25,.46,.45,.94)`;
+  document.body.appendChild(dot);
+  requestAnimationFrame(() => {
+    dot.style.top = (cartRect.top + cartRect.height/2) + 'px';
+    dot.style.left = (cartRect.left + cartRect.width/2) + 'px';
+    dot.style.width = '6px';
+    dot.style.height = '6px';
+    dot.style.opacity = '.4';
+  });
+  setTimeout(() => dot.remove(), 800);
 }
 
 function cambiarQty(idx, delta) {
@@ -1587,25 +1590,18 @@ function qvAddToCart(id) {
   notificar(`✅ ${p.name} (${window._qvColor}, ${window._qvSize}) agregado al carrito`);
 }
 
-function agregarAlCarrito(id) {
+function agregarAlCarrito(id, btn) {
   const p = products.find(x => x.id === id);
   if(!p) return;
   const exist = cart.find(i => i.id === id && i.talla === p.sizes[0] && i.color === p.colors[0]);
-  if(exist) {
-    exist.qty++;
-  } else {
-    cart.push({id, qty:1, talla:p.sizes[0], color:p.colors[0], price:p.price});
-  }
+  if(exist) exist.qty++;
+  else cart.push({id, qty:1, talla:p.sizes[0], color:p.colors[0], price:p.price});
   guardarCart();
   toggleCart();
   document.getElementById('cartCount').style.animation = 'cartBounce .5s ease';
   setTimeout(() => document.getElementById('cartCount').style.animation = '', 600);
   notificar(`✅ ${p.name} agregado al carrito`);
-}
-  guardarCart();
-  closeQuickView();
-  toggleCart();
-  notificar(`✅ ${p.name} (${window._qvColor}, ${window._qvSize}) agregado al carrito`);
+  flyToCart(btn || document.querySelector(`.overlay-btn[onclick*="agregarAlCarrito(${id})"]`));
 }
 
 // ===== WISHLIST =====

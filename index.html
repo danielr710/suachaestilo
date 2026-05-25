@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/jpeg" href="https://scontent.fbog9-1.fna.fbcdn.net/v/t39.30808-1/474683159_1179293957530091_8567917066191410829_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=100&ccb=1-7&_nc_sid=f907e8&_nc_ohc=RVDl0ghXE2kQ7kNvwFW3SWm&_nc_oc=AdpuFKK1EHxIglIY4ah6_HPg9h6HxemPhN_cta8w_1l2rznwChBX0X9NUB-VjBnBNF6fBIoAXBlTRJ1gkKoG7WWt&_nc_zt=24&_nc_ht=scontent.fbog9-1.fna&edm=AKsJ254EAAAA&_nc_gid=NZ37D4fkJPilieT1Ujg9WQ&oh=00_Af4rHv3MwcCtsF_z1LUSUrPNkFWr2pTp0zabrv3P65KD0Q&oe=6A1A39D5">
+<link rel="apple-touch-icon" href="https://scontent.fbog9-1.fna.fbcdn.net/v/t39.30808-1/474683159_1179293957530091_8567917066191410829_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=100&ccb=1-7&_nc_sid=f907e8&_nc_ohc=RVDl0ghXE2kQ7kNvwFW3SWm&_nc_oc=AdpuFKK1EHxIglIY4ah6_HPg9h6HxemPhN_cta8w_1l2rznwChBX0X9NUB-VjBnBNF6fBIoAXBlTRJ1gkKoG7WWt&_nc_zt=24&_nc_ht=scontent.fbog9-1.fna&edm=AKsJ254EAAAA&_nc_gid=NZ37D4fkJPilieT1Ujg9WQ&oh=00_Af4rHv3MwcCtsF_z1LUSUrPNkFWr2pTp0zabrv3P65KD0Q&oe=6A1A39D5">
+<title>Suacha Estilo - Ropa Urbana</title>
+<meta name="description" content="Suacha Estilo - Ropa urbana desde Soacha, Colombia. Camisetas oversize, buzos, gorras y más. Premium algodón peruano. Envíos a todo Colombia.">
+<meta property="og:title" content="Suacha Estilo - Ropa Urbana">
+<meta property="og:description" content="Ropa urbana con actitud. Cultura en movimiento. Premium algodón peruano, diseñado en Soacha para el mundo.">
+<meta property="og:image" content="https://scontent.fbog9-1.fna.fbcdn.net/v/t39.30808-1/474683159_1179293957530091_8567917066191410829_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=100&ccb=1-7&_nc_sid=f907e8&_nc_ohc=RVDl0ghXE2kQ7kNvwFW3SWm&_nc_oc=AdpuFKK1EHxIglIY4ah6_HPg9h6HxemPhN_cta8w_1l2rznwChBX0X9NUB-VjBnBNF6fBIoAXBlTRJ1gkKoG7WWt&_nc_zt=24&_nc_ht=scontent.fbog9-1.fna&edm=AKsJ254EAAAA&_nc_gid=NZ37D4fkJPilieT1Ujg9WQ&oh=00_Af4rHv3MwcCtsF_z1LUSUrPNkFWr2pTp0zabrv3P65KD0Q&oe=6A1A39D5">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#dc2626">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden}
+.font-display{font-family:'Bebas Neue',cursive;letter-spacing:2px}
+
+/* ===== ANIMACIONES ===== */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeInLeft{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:translateX(0)}}
+@keyframes fadeInRight{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes glow{0%,100%{box-shadow:0 0 5px rgba(220,38,38,.3)}50%{box-shadow:0 0 25px rgba(220,38,38,.6)}}
+@keyframes slideDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes bounceIn{0%{opacity:0;transform:scale(.3)}50%{transform:scale(1.05)}70%{transform:scale(.9)}100%{opacity:1;transform:scale(1)}}
+@keyframes typing{0%,100%{opacity:.3}50%{opacity:1}}
+@keyframes slideInRight{from{opacity:0;transform:translateX(100px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideOutRight{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(100px)}}
+@keyframes toastProgress{to{width:0%}}
+
+.reveal{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.25,.46,.45,.94)}
+.reveal.active{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:all .8s cubic-bezier(.25,.46,.45,.94)}
+.reveal-left.active{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:all .8s cubic-bezier(.25,.46,.45,.94)}
+.reveal-right.active{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.85);transition:all .8s cubic-bezier(.25,.46,.45,.94)}
+.reveal-scale.active{opacity:1;transform:scale(1)}
+.stagger-children > *{opacity:0;transform:translateY(30px);transition:all .6s cubic-bezier(.25,.46,.45,.94)}
+.stagger-children.active > *:nth-child(1){transition-delay:.1s;opacity:1;transform:translateY(0)}
+.stagger-children.active > *:nth-child(2){transition-delay:.2s;opacity:1;transform:translateY(0)}
+.stagger-children.active > *:nth-child(3){transition-delay:.3s;opacity:1;transform:translateY(0)}
+.stagger-children.active > *:nth-child(4){transition-delay:.4s;opacity:1;transform:translateY(0)}
+.stagger-children.active > *:nth-child(5){transition-delay:.5s;opacity:1;transform:translateY(0)}
+.stagger-children.active > *:nth-child(6){transition-delay:.6s;opacity:1;transform:translateY(0)}
+.stagger-children.active > *:nth-child(7){transition-delay:.7s;opacity:1;transform:translateY(0)}
+.stagger-children.active > *:nth-child(8){transition-delay:.8s;opacity:1;transform:translateY(0)}
+.stagger-children.active > *:nth-child(9){transition-delay:.9s;opacity:1;transform:translateY(0)}
+.stagger-children.active > *:nth-child(10){transition-delay:1s;opacity:1;transform:translateY(0)}
+
+/* Header */
+.scroll-progress{position:fixed;top:0;left:0;width:0%;height:3px;background:linear-gradient(90deg,#dc2626,#fca311);z-index:55;transition:width .1s linear}
+header{position:fixed;top:0;width:100%;z-index:50;background:rgba(0,0,0,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.05);animation:slideDown .5s ease}
+nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px;padding:0 1.5rem}
+.logo{display:flex;align-items:center;gap:12px;font-family:'Bebas Neue',cursive;font-size:1.5rem;letter-spacing:2px;text-decoration:none;color:#fff;transition:opacity .3s}
+.logo:hover{opacity:.8}
+.logo-img{width:42px;height:42px;border-radius:50%;border:2px solid #dc2626;object-fit:cover;transition:transform .4s}
+.logo:hover .logo-img{transform:rotate(360deg)}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{color:#999;text-decoration:none;font-size:.8rem;font-weight:500;letter-spacing:1px;transition:all .3s;text-transform:uppercase;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:#dc2626;transition:width .3s}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{width:100%}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:0;border:none;padding:4px}
+.hamburger span{width:24px;height:2px;background:#fff;transition:.3s;border-radius:2px}
+.header-cart-mobile{display:none;background:0;border:none;color:#fff;position:relative;cursor:pointer;padding:4px;margin-right:8px}
+.header-cart-mobile .count{position:absolute;top:-4px;right:-4px;width:16px;height:16px;background:#dc2626;color:#fff;font-size:.5rem;font-weight:700;border-radius:50%;display:flex;align-items:center;justify-content:center}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:6rem 1.5rem 4rem}
+.hero-bg{position:absolute;inset:0;z-index:0;transition:transform 10s ease}
+.hero:hover .hero-bg{transform:scale(1.05)}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.92)0,rgba(0,0,0,.4)50%,rgba(0,0,0,.85)100%)}
+.hero-content{position:relative;z-index:1;max-width:800px}
+.hero-tag{color:#dc2626;font-weight:600;letter-spacing:3px;text-transform:uppercase;font-size:.75rem;margin-bottom:.5rem;animation:fadeInUp .8s ease .2s both}
+.hero h1{font-family:'Bebas Neue',cursive;font-size:clamp(4rem,12vw,8rem);line-height:1;letter-spacing:4px;margin-bottom:.5rem;animation:fadeInUp .8s ease .4s both}
+.hero h1 span{color:#dc2626;display:inline-block;animation:float 3s ease-in-out infinite}
+.hero p{color:#aaa;font-size:1.05rem;margin:1rem auto 2rem;max-width:480px;line-height:1.7;animation:fadeInUp .8s ease .6s both}
+.hero .btn-group{animation:fadeInUp .8s ease .8s both;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 36px;border-radius:0;text-decoration:none;font-weight:600;font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .3s;border:none;cursor:pointer;position:relative;overflow:hidden}
+.btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);transition:left .5s}
+.btn:hover::before{left:100%}
+.btn-primary{background:#dc2626;color:#fff}
+.btn-primary:hover{background:#b91c1c;transform:translateY(-3px);box-shadow:0 8px 25px rgba(220,38,38,.35)}
+.btn-outline{border:2px solid rgba(255,255,255,.15);color:#fff;background:0}
+.btn-outline:hover{border-color:#dc2626;background:rgba(220,38,38,.1);transform:translateY(-3px)}
+.btn-green{background:#22c55e;color:#fff}
+.btn-green:hover{background:#16a34a;transform:translateY(-3px)}
+
+/* Section common */
+section{padding:5rem 1.5rem}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-flex;align-items:center;gap:8px;color:#dc2626;font-size:.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:1rem}
+h2{font-family:'Bebas Neue',cursive;font-size:clamp(2.5rem,5vw,4.5rem);letter-spacing:2px;line-height:1.1;margin-bottom:1rem}
+h2 span{color:#dc2626;display:inline-block;animation:float 4s ease-in-out infinite}
+.section-desc{color:#999;font-size:1rem;max-width:600px;line-height:1.7;margin-bottom:2.5rem}
+
+/* Products */
+.products{background:#0a0a0a}
+.product-toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2rem}
+.product-filters{display:flex;gap:8px;flex-wrap:wrap}
+.filter-btn{padding:8px 18px;border:1px solid rgba(255,255,255,.1);background:0;color:#999;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition:all .3s;font-family:'Inter',sans-serif}
+.filter-btn.active,.filter-btn:hover{border-color:#dc2626;background:rgba(220,38,38,.1);color:#fff}
+.product-search{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);padding:0 14px;max-width:260px;width:100%}
+.product-search input{flex:1;background:0;border:none;padding:10px 0;color:#fff;font-size:.82rem;outline:0;font-family:'Inter',sans-serif}
+.product-search input::placeholder{color:#555}
+.product-search .icon{color:#555;font-size:.9rem}
+/* Shimmer */
+@keyframes shimmer{0%{background-position:-200px 0}100%{background-position:calc(200px + 100%) 0}}
+.skeleton{background:#1a1a1a;background-image:linear-gradient(90deg,#1a1a1a 0,#222 40%,#1a1a1a 80%);background-size:200px 100%;background-repeat:no-repeat;animation:shimmer 1.5s infinite}
+.skeleton-img{aspect-ratio:1;width:100%}
+.skeleton-text{height:14px;margin:8px 0;border-radius:4px}
+.skeleton-text.short{width:60%}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem}
+.product-card{background:#111;border:1px solid rgba(255,255,255,.06);transition:all .4s cubic-bezier(.25,.46,.45,.94);cursor:default;position:relative;overflow:hidden;transform:translateY(0)}
+.product-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,#dc2626,#fca311);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.product-card:hover{transform:translateY(-8px);border-color:rgba(220,38,38,.3);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.product-card:hover::before{transform:scaleX(1)}
+.product-card:hover .product-img-wrap img{transform:scale(1.08)}
+.product-card:hover .product-img-overlay{opacity:1}
+.product-img-wrap{position:relative;aspect-ratio:1;overflow:hidden;background:#1a1a1a}
+.product-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.product-img-wrap .emoji-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3.5rem}
+.product-img-overlay{position:absolute;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;opacity:0;transition:all .4s;gap:12px;backdrop-filter:blur(4px)}
+.product-img-overlay .overlay-btn{background:#dc2626;color:#fff;border:none;padding:12px 24px;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition:all .3s;text-decoration:none;animation:glow 2s infinite}
+.product-img-overlay .overlay-btn:hover{background:#b91c1c;transform:scale(1.05)}
+.product-info{padding:1rem 1.25rem 1.25rem}
+.product-category{font-size:.65rem;text-transform:uppercase;letter-spacing:1.5px;color:#dc2626;font-weight:600}
+.product-name{font-weight:600;font-size:1rem;margin:4px 0 8px;color:#f5f5f5}
+.product-price{font-family:'Bebas Neue',cursive;font-size:1.5rem;color:#dc2626}
+.product-old-price{font-size:.8rem;color:#666;text-decoration:line-through;margin-left:8px}
+.product-stock{display:flex;align-items:center;gap:6px;margin-top:6px;font-size:.7rem;color:#666}
+.product-stock .bar{flex:1;height:4px;background:#222;border-radius:2px;overflow:hidden}
+.product-stock .bar-fill{height:100%;background:linear-gradient(90deg,#dc2626,#fca311);border-radius:2px;transition:width 1s ease}
+
+/* Brand Identity */
+.brand-section{background:#000;position:relative;overflow:hidden}
+.brand-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.brand-image-wrap{position:relative}
+.brand-image-wrap .main-img{width:100%;aspect-ratio:1;object-fit:cover;position:relative;overflow:hidden}
+.brand-image-wrap .main-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 8s ease}
+.brand-image-wrap:hover .main-img img{transform:scale(1.1)}
+.brand-image-wrap .badge{position:absolute;bottom:1.5rem;left:1.5rem;right:1.5rem;background:rgba(0,0,0,.9);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.08);padding:1.25rem;display:flex;align-items:center;gap:12px;animation:float 4s ease-in-out infinite}
+.badge-icon{width:48px;height:48px;border-radius:50%;background:rgba(220,38,38,.2);display:flex;align-items:center;justify-content:center;font-size:1.25rem}
+.badge-text .title{font-family:'Bebas Neue',cursive;font-size:1.25rem;color:#fff}
+.badge-text .sub{color:#999;font-size:.8rem}
+.brand-features{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+.brand-feat{display:flex;align-items:flex-start;gap:12px;padding:1.25rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);transition:all .4s;cursor:default}
+.brand-feat:hover{border-color:rgba(220,38,38,.4);transform:translateX(8px);background:rgba(220,38,38,.05)}
+.brand-feat-icon{width:40px;height:40px;background:rgba(220,38,38,.15);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;transition:transform .4s}
+.brand-feat:hover .brand-feat-icon{transform:scale(1.15)rotate(5deg)}
+.brand-feat h4{font-size:.85rem;font-weight:600;margin-bottom:2px}
+.brand-feat p{font-size:.78rem;color:#999;line-height:1.4}
+.brand-quote{text-align:center;margin-top:4rem;max-width:700px;margin-inline:auto;padding:2rem;border:1px solid rgba(220,38,38,.1);position:relative}
+.brand-quote::before,.brand-quote::after{content:'"';font-size:4rem;color:#dc2626;font-family:'Bebas Neue',cursive;line-height:1;position:absolute;opacity:.3}
+.brand-quote::before{top:-10px;left:10px}
+.brand-quote::after{bottom:-30px;right:10px;transform:rotate(180deg)}
+.brand-quote p{color:#fff;font-size:1.1rem;font-weight:300;line-height:1.7}
+
+/* Testimonios */
+.testimonials{background:#0a0a0a;position:relative}
+.testimonials::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#dc2626,transparent)}
+.testimonial-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;margin-top:2.5rem}
+.testimonial-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);padding:1.5rem;transition:all .4s;position:relative}
+.testimonial-card:hover{border-color:rgba(220,38,38,.3);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.testimonial-card .stars{color:#fbbf24;font-size:.9rem;margin-bottom:.5rem;letter-spacing:2px}
+.testimonial-card .text{color:#ccc;font-size:.85rem;line-height:1.7;margin-bottom:1rem;font-style:italic}
+.testimonial-card .author{display:flex;align-items:center;gap:12px}
+.testimonial-card .author-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#dc2626,#fca311);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;color:#fff}
+.testimonial-card .author-info .name{font-size:.85rem;font-weight:600}
+.testimonial-card .author-info .handle{font-size:.7rem;color:#666}
+
+/* Urgency */
+.urgency{background:#0a0a0a;position:relative;overflow:hidden}
+.urgency-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:rgba(220,38,38,.08);border-radius:50%;filter:blur(80px);pointer-events:none;animation:pulse 4s ease-in-out infinite}
+.urgency-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem;max-width:900px;margin:0 auto}
+.urgency-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);overflow:hidden;transition:all .4s;position:relative}
+.urgency-card:hover{border-color:rgba(220,38,38,.4);transform:translateY(-6px);box-shadow:0 15px 45px rgba(0,0,0,.4)}
+.urgency-card:hover img{transform:scale(1.08)}
+.urgency-badge{position:absolute;top:12px;left:12px;z-index:2;background:#dc2626;color:#fff;font-size:.65rem;font-weight:700;padding:4px 10px;text-transform:uppercase;letter-spacing:1px;animation:pulse 2s infinite}
+.urgency-stock{position:absolute;top:12px;right:12px;z-index:2;background:rgba(0,0,0,.8);color:#dc2626;font-size:.65rem;font-weight:700;padding:4px 10px;border:1px solid rgba(220,38,38,.3);text-transform:uppercase;letter-spacing:1px}
+.urgency-card .btn-primary{animation:glow 2s infinite}
+.timer-box{max-width:500px;margin:0 auto 2.5rem;background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.3);padding:1.5rem;text-align:center}
+.timer-box .label{display:flex;align-items:center;justify-content:center;gap:8px;color:#dc2626;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;margin-bottom:1rem}
+.timer-display{display:flex;align-items:center;justify-content:center;gap:1rem}
+.timer-item{text-align:center}
+.timer-item .num{width:56px;height:56px;background:#000;border:1px solid rgba(220,38,38,.4);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',cursive;font-size:1.75rem;color:#fff;transition:all .3s;animation:glow 2s infinite}
+.timer-item .lbl{font-size:.6rem;color:#666;text-transform:uppercase;letter-spacing:1px;margin-top:6px}
+
+/* Gallery */
+.gallery{background:#000}
+.gallery-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.gallery-item{position:relative;aspect-ratio:1;overflow:hidden;cursor:pointer;background:#111}
+.gallery-item .placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3rem;transition:transform .5s;position:relative}
+.gallery-item .placeholder img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.gallery-item:hover .placeholder img{transform:scale(1.12)}
+.gallery-item:hover .gallery-overlay{opacity:1}
+.gallery-overlay{position:absolute;inset:0;background:rgba(0,0,0,.75);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:all .4s;padding:1rem;text-align:center;backdrop-filter:blur(4px)}
+.gallery-overlay .stats{display:flex;gap:1rem;margin-bottom:8px}
+.gallery-overlay .stats span{display:flex;align-items:center;gap:4px;color:#fff;font-size:.75rem;font-weight:600}
+.gallery-overlay .caption{color:#ccc;font-size:.7rem;line-height:1.3}
+.gallery-cta{text-align:center;margin-top:3rem}
+.gallery-stats{display:flex;justify-content:center;gap:2rem;margin-bottom:2rem;flex-wrap:wrap}
+.gallery-stat{text-align:center}
+.gallery-stat .num{font-family:'Bebas Neue',cursive;font-size:2rem;color:#dc2626}
+.gallery-stat .lbl{color:#666;font-size:.7rem;text-transform:uppercase;letter-spacing:1px}
+
+/* Location */
+.location{background:#0a0a0a}
+.location-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.location-map{position:relative;min-height:400px;border:1px solid rgba(255,255,255,.08);overflow:hidden}
+.location-map iframe{width:100%;height:100%;position:absolute;inset:0;filter:grayscale(1)invert(.92)contrast(.83);transition:filter .4s}
+.location-map:hover iframe{filter:grayscale(0)invert(0)contrast(1)}
+.location-map .map-overlay{position:absolute;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .4s}
+.location-map:hover .map-overlay{opacity:1}
+.location-map .map-overlay a{padding:12px 24px;background:#dc2626;color:#fff;text-decoration:none;font-weight:600;font-size:.8rem;text-transform:uppercase;letter-spacing:1px;transition:all .3s}
+.location-map .map-overlay a:hover{background:#b91c1c;transform:scale(1.05)}
+.location-info{padding:2rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;justify-content:center}
+.location-info .info-header{display:flex;align-items:center;gap:1rem;margin-bottom:2rem}
+.location-info .info-header .icon{width:56px;height:56px;background:rgba(220,38,38,.15);display:flex;align-items:center;justify-content:center;font-size:1.5rem;border-radius:50%}
+.location-info .info-header h3{font-family:'Bebas Neue',cursive;font-size:1.5rem}
+.location-info .info-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:1.25rem;transition:transform .3s}
+.location-info .info-row:hover{transform:translateX(4px)}
+.location-info .info-row .icon-sm{width:36px;height:36px;background:rgba(220,38,38,.12);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;border-radius:8px}
+.location-info .info-row .text{color:#999;font-size:.85rem;line-height:1.6}
+.location-info .info-row .text strong{color:#fff}
+.schedule{width:100%}
+.schedule td{padding:4px 0;color:#999;font-size:.85rem;transition:color .3s}
+.schedule tr:hover td{color:#fff}
+.schedule td:last-child{text-align:right;color:#fff}
+.location-buttons{display:flex;gap:1rem;margin-top:1.5rem}
+.location-buttons a,.location-buttons button{flex:1;padding:12px;text-align:center;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition:all .3s;text-decoration:none}
+.location-features{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:2rem}
+.location-feat{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);padding:1rem;text-align:center;transition:all .4s}
+.location-feat:hover{background:rgba(220,38,38,.08);border-color:rgba(220,38,38,.3);transform:translateY(-4px)}
+.location-feat .icon{font-size:1.25rem;margin-bottom:6px}
+.location-feat .lbl{font-size:.75rem;color:#fff;font-weight:500}
+.location-feat .sub{font-size:.65rem;color:#666;margin-top:2px}
+
+/* Footer */
+footer{background:#000;border-top:1px solid rgba(255,255,255,.08)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:3rem;padding:4rem 1.5rem;max-width:1200px;margin:0 auto}
+footer h4{font-family:'Bebas Neue',cursive;font-size:1.1rem;margin-bottom:1.25rem;letter-spacing:1px}
+footer p,footer a{color:#999;font-size:.85rem;line-height:1.8;text-decoration:none;transition:all .3s;display:block}
+footer a:hover{color:#dc2626;transform:translateX(4px)}
+footer .social{display:flex;gap:12px;margin-top:1rem}
+footer .social a{width:36px;height:36px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;transition:all .3s}
+footer .social a:hover{background:#dc2626;border-color:#dc2626;transform:translateY(-3px)scale(1.1)}
+footer .brand-name{font-family:'Bebas Neue',cursive;font-size:2rem;color:#fff;margin-bottom:.5rem}
+footer .brand-name span{color:#dc2626}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.05);padding:1.5rem;text-align:center;color:#444;font-size:.75rem;display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;flex-wrap:wrap;gap:8px}
+.footer-bottom a{color:#444;display:inline;margin-left:1.5rem;transition:color .3s}
+.footer-bottom a:hover{color:#dc2626;transform:none}
+
+/* WhatsApp Float */
+.whatsapp-float{position:fixed;bottom:24px;right:24px;z-index:40;width:60px;height:60px;border-radius:50%;background:#22c55e;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(34,197,94,.4);transition:all .3s;text-decoration:none;animation:bounceIn .6s ease 1s both}
+.whatsapp-float:hover{transform:scale(1.12)rotate(-5deg);background:#16a34a;box-shadow:0 8px 35px rgba(34,197,94,.5)}
+.whatsapp-float svg{width:30px;height:30px;fill:#fff}
+
+/* Chatbot IA */
+.chat-toggle{position:fixed;bottom:90px;right:24px;z-index:40;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#dc2626,#fca311);border:none;color:#fff;font-size:1.25rem;cursor:pointer;transition:all .3s;box-shadow:0 4px 20px rgba(220,38,38,.35);display:flex;align-items:center;justify-content:center;animation:glow 2s infinite, bounceIn .6s ease 1.2s both}
+.chat-toggle:hover{transform:scale(1.12);box-shadow:0 8px 30px rgba(220,38,38,.5)}
+.chat-box{position:fixed;bottom:160px;right:24px;z-index:45;width:340px;background:#111;border:1px solid rgba(255,255,255,.1);box-shadow:0 20px 60px rgba(0,0,0,.6);display:none;flex-direction:column;overflow:hidden;animation:scaleIn .3s ease}
+.chat-box.open{display:flex}
+.chat-header{background:linear-gradient(135deg,#dc2626,#b91c1c);padding:14px 16px;display:flex;align-items:center;justify-content:space-between}
+.chat-header .left{display:flex;align-items:center;gap:10px}
+.chat-header .avatar{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:1rem}
+.chat-header .info .name{font-weight:600;font-size:.85rem}
+.chat-header .info .status{font-size:.7rem;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:4px}
+.chat-header .info .status .dot{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:pulse 1.5s infinite}
+.chat-header .close-btn{background:0;border:none;color:#fff;font-size:1.25rem;cursor:pointer;opacity:.7;transition:.3s;padding:4px}
+.chat-header .close-btn:hover{opacity:1;transform:rotate(90deg)}
+.chat-messages{flex:1;padding:16px;overflow-y:auto;max-height:320px;display:flex;flex-direction:column;gap:10px;background:#0d0d0d}
+.chat-messages::-webkit-scrollbar{width:4px}
+.chat-messages::-webkit-scrollbar-thumb{background:#333;border-radius:2px}
+.msg{max-width:85%;padding:10px 14px;font-size:.82rem;line-height:1.5;animation:slideDown .3s ease}
+.msg.bot{background:#1a1a1a;color:#ccc;border-radius:0 12px 12px 12px;align-self:flex-start;border:1px solid rgba(255,255,255,.05)}
+.msg.user{background:#dc2626;color:#fff;border-radius:12px 0 12px 12px;align-self:flex-end}
+.msg .typing{display:flex;gap:4px;padding:4px 0}
+.msg .typing span{width:6px;height:6px;border-radius:50%;background:#666;animation:typing 1.4s infinite}
+.msg .typing span:nth-child(2){animation-delay:.2s}
+.msg .typing span:nth-child(3){animation-delay:.4s}
+.chat-input{display:flex;border-top:1px solid rgba(255,255,255,.08);padding:10px 12px;background:#0d0d0d;gap:8px}
+.chat-input input{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:10px 14px;color:#fff;font-size:.82rem;outline:0;transition:border .3s;font-family:'Inter',sans-serif}
+.chat-input input:focus{border-color:#dc2626}
+.chat-input input::placeholder{color:#555}
+.chat-input button{background:#dc2626;border:none;color:#fff;padding:10px 16px;cursor:pointer;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;transition:.3s;font-family:'Inter',sans-serif}
+.chat-input button:hover{background:#b91c1c}
+
+/* Scroll top */
+.scroll-top{position:fixed;bottom:90px;right:24px;z-index:39;width:44px;height:44px;border-radius:50%;background:#dc2626;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .4s;border:none;color:#fff;font-size:1.25rem;opacity:0;visibility:hidden;transform:translateY(10px)}
+.scroll-top.visible{opacity:1;visibility:visible;transform:translateY(0)}
+.scroll-top:hover{background:#b91c1c;transform:translateY(-3px);box-shadow:0 8px 25px rgba(220,38,38,.35)}
+
+/* Mobile bottom */
+.mobile-bottom{display:none;position:fixed;bottom:0;left:0;right:0;z-index:39;background:rgba(0,0,0,.95);backdrop-filter:blur(10px);border-top:1px solid rgba(255,255,255,.08);padding:10px 16px;animation:slideDown .4s ease}
+.mobile-bottom .inner{display:flex;align-items:center;justify-content:space-between}
+.mobile-bottom .left{display:flex;align-items:center;gap:10px}
+.mobile-bottom .left .icon{width:36px;height:36px;background:rgba(220,38,38,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem}
+.mobile-bottom .left .t1{font-size:.8rem;font-weight:500}
+.mobile-bottom .left .t2{font-size:.7rem;color:#999}
+.mobile-bottom .right a{display:flex;align-items:center;gap:8px;background:#22c55e;color:#fff;padding:8px 16px;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;text-decoration:none;transition:.3s}
+.mobile-bottom .right a:hover{background:#16a34a}
+
+@media(max-width:768px){
+  .nav-links{display:none;position:fixed;top:72px;left:0;width:100%;background:rgba(0,0,0,.98);flex-direction:column;padding:2rem;gap:1.25rem;border-bottom:1px solid rgba(255,255,255,.05)}
+  .nav-links.open{display:flex}
+  .hamburger{display:flex}
+  .header-cart-mobile{display:flex}
+  .brand-grid,.location-grid{grid-template-columns:1fr}
+  .brand-features{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(3,1fr)}
+  .footer-grid{grid-template-columns:1fr;gap:2rem}
+  .location-features{grid-template-columns:repeat(2,1fr)}
+  .location-buttons{flex-direction:column}
+  .testimonial-grid{grid-template-columns:1fr}
+  .timer-display{gap:.5rem}
+  .mobile-bottom{display:block}
+  .whatsapp-float{bottom:76px}
+  .chat-box{right:12px;left:12px;width:auto;bottom:150px}
+  .chat-toggle{bottom:76px}
+  .scroll-top{bottom:140px}
+  section{padding:3rem 1rem}
+  .product-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.75rem}
+  .product-info{padding:.75rem}
+  .product-name{font-size:.85rem}
+  .gallery-stats{gap:1rem}
+}
+/* ===== QUICK VIEW MODAL ===== */
+.modal-overlay{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(8px)}
+.modal-overlay.open{display:flex}
+.modal{background:#111;border:1px solid rgba(255,255,255,.1);max-width:800px;width:100%;max-height:90vh;overflow-y:auto;position:relative;animation:scaleIn .3s ease}
+.modal-close{position:absolute;top:12px;right:12px;z-index:2;width:36px;height:36px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.1);color:#fff;font-size:1.25rem;cursor:pointer;transition:.3s;display:flex;align-items:center;justify-content:center}
+.modal-close:hover{background:#dc2626;transform:rotate(90deg)}
+.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.modal-img-wrap{position:relative;min-height:350px;background:#1a1a1a;display:flex;align-items:center;justify-content:center}
+.modal-img-wrap img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.modal-img-wrap .fallback{font-size:5rem}
+.modal-info{padding:2rem}
+.modal-info .cat{font-size:.65rem;text-transform:uppercase;letter-spacing:1.5px;color:#dc2626;font-weight:600;margin-bottom:4px}
+.modal-info h3{font-family:'Bebas Neue',cursive;font-size:1.75rem;margin-bottom:.5rem}
+.modal-info .desc{color:#999;font-size:.85rem;line-height:1.7;margin-bottom:1.25rem}
+.modal-info .price-row{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem}
+.modal-info .price-row .current{font-family:'Bebas Neue',cursive;font-size:2rem;color:#dc2626}
+.modal-info .price-row .old{font-size:.9rem;color:#666;text-decoration:line-through}
+.modal-info .stock-badge{display:inline-flex;align-items:center;gap:6px;font-size:.75rem;padding:4px 12px;margin-bottom:1rem}
+.modal-info .stock-badge.in-stock{background:rgba(34,197,94,.15);color:#22c55e;border:1px solid rgba(34,197,94,.3)}
+.modal-info .stock-badge.low{background:rgba(255,165,0,.15);color:#f59e0b;border:1px solid rgba(255,165,0,.3)}
+.modal-info .stock-badge.out{background:rgba(220,38,38,.15);color:#dc2626;border:1px solid rgba(220,38,38,.3)}
+.selector-group{margin-bottom:1rem}
+.selector-group label{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#999;margin-bottom:8px;display:block}
+.selector-options{display:flex;flex-wrap:wrap;gap:8px}
+.selector-options .opt{padding:8px 16px;border:1px solid rgba(255,255,255,.12);background:0;color:#ccc;cursor:pointer;font-size:.8rem;transition:all .3s;font-family:'Inter',sans-serif}
+.selector-options .opt.active{border-color:#dc2626;background:rgba(220,38,38,.15);color:#fff}
+.selector-options .opt.disabled{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+.selector-options .opt:not(.disabled):hover{border-color:#dc2626}
+.color-opt{width:32px;height:32px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:all .3s;position:relative}
+.color-opt.active{border-color:#fff;transform:scale(1.15)}
+.color-opt:hover{transform:scale(1.1)}
+.color-opt .tooltip{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:6px;background:#222;color:#fff;font-size:.65rem;padding:2px 8px;white-space:nowrap;opacity:0;transition:.3s;pointer-events:none}
+.color-opt:hover .tooltip{opacity:1}
+.modal-buttons{display:flex;gap:10px;margin-top:1.5rem}
+.modal-buttons .btn{flex:1;justify-content:center;padding:12px}
+
+/* ===== CART SIDEBAR ===== */
+.cart-toggle-btn{background:0;border:none;color:#fff;position:relative;cursor:pointer;padding:4px;transition:.3s;display:flex;align-items:center}
+.cart-toggle-btn:hover{color:#dc2626}
+.cart-count{position:absolute;top:-4px;right:-4px;width:18px;height:18px;background:#dc2626;color:#fff;font-size:.6rem;font-weight:700;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.cart-sidebar{position:fixed;top:0;right:0;width:380px;height:100vh;z-index:70;background:#0d0d0d;border-left:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .4s cubic-bezier(.25,.46,.45,.94);box-shadow:-10px 0 40px rgba(0,0,0,.5)}
+.cart-sidebar.open{transform:translateX(0)}
+.cart-overlay{position:fixed;inset:0;z-index:65;background:rgba(0,0,0,.6);display:none}
+.cart-overlay.open{display:block}
+.cart-header{display:flex;align-items:center;justify-content:space-between;padding:1.25rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.cart-header h3{font-family:'Bebas Neue',cursive;font-size:1.5rem}
+.cart-header .close-btn{background:0;border:none;color:#fff;font-size:1.5rem;cursor:pointer;transition:.3s;padding:4px}
+.cart-header .close-btn:hover{color:#dc2626;transform:rotate(90deg)}
+.cart-items{flex:1;overflow-y:auto;padding:1rem}
+.cart-items::-webkit-scrollbar{width:4px}
+.cart-items::-webkit-scrollbar-thumb{background:#333;border-radius:2px}
+.cart-empty{text-align:center;padding:3rem 1rem;color:#555}
+.cart-empty .icon{font-size:3rem;margin-bottom:1rem}
+.cart-item{display:flex;gap:12px;padding:12px;border:1px solid rgba(255,255,255,.05);margin-bottom:10px;transition:.3s}
+.cart-item:hover{border-color:rgba(220,38,38,.2)}
+.cart-item-img{width:64px;height:64px;background:#1a1a1a;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.5rem}
+.cart-item-img img{width:100%;height:100%;object-fit:cover}
+.cart-item-info{flex:1}
+.cart-item-info .name{font-size:.82rem;font-weight:600;margin-bottom:2px}
+.cart-item-info .variant{font-size:.7rem;color:#666;margin-bottom:4px}
+.cart-item-info .bottom{display:flex;align-items:center;justify-content:space-between}
+.cart-item-info .price{font-family:'Bebas Neue',cursive;font-size:1.15rem;color:#dc2626}
+.cart-item-qty{display:flex;align-items:center;gap:8px}
+.cart-item-qty button{width:26px;height:26px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#fff;cursor:pointer;font-size:.9rem;transition:.3s;display:flex;align-items:center;justify-content:center}
+.cart-item-qty button:hover{background:#dc2626;border-color:#dc2626}
+.cart-item-qty span{font-size:.82rem;min-width:16px;text-align:center}
+.cart-item .remove{background:0;border:none;color:#555;cursor:pointer;font-size:1rem;padding:0 4px;transition:.3s}
+.cart-item .remove:hover{color:#dc2626}
+.cart-footer{border-top:1px solid rgba(255,255,255,.08);padding:1.25rem}
+.cart-total{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.cart-total .lbl{font-size:.85rem;color:#999}
+.cart-total .val{font-family:'Bebas Neue',cursive;font-size:1.5rem;color:#dc2626}
+.cart-footer .btn{width:100%;justify-content:center}
+
+@media(max-width:768px){
+  .cart-sidebar{width:100%}
+  .modal-grid{grid-template-columns:1fr}
+  .modal-img-wrap{min-height:250px}
+}
+</style>
+</head>
+<body>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Header -->
+<header>
+  <nav>
+    <a href="#" class="logo">
+      <img class="logo-img" src="https://scontent.fbog9-1.fna.fbcdn.net/v/t39.30808-1/474683159_1179293957530091_8567917066191410829_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=100&ccb=1-7&_nc_sid=f907e8&_nc_ohc=RVDl0ghXE2kQ7kNvwFW3SWm&_nc_oc=AdpuFKK1EHxIglIY4ah6_HPg9h6HxemPhN_cta8w_1l2rznwChBX0X9NUB-VjBnBNF6fBIoAXBlTRJ1gkKoG7WWt&_nc_zt=24&_nc_ht=scontent.fbog9-1.fna&edm=AKsJ254EAAAA&_nc_gid=NZ37D4fkJPilieT1Ujg9WQ&oh=00_Af4rHv3MwcCtsF_z1LUSUrPNkFWr2pTp0zabrv3P65KD0Q&oe=6A1A39D5" alt="Suacha Estilo">
+      SUACHA<span style="color:#dc2626">.</span>ESTILO
+    </a>
+    <div style="display:flex;align-items:center;gap:4px;">
+      <button class="header-cart-mobile" onclick="toggleCart()" aria-label="Carrito">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+        <span class="count" id="cartCountMobile">0</span>
+      </button>
+      <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#productos" onclick="closeNav()">Productos</a></li>
+      <li><a href="#nosotros" onclick="closeNav()">Nosotros</a></li>
+      <li><a href="#testimonios" onclick="closeNav()">Reseñas</a></li>
+      <li><a href="#ofertas" onclick="closeNav()">Ofertas</a></li>
+      <li><a href="#ubicacion" onclick="closeNav()">Ubicación</a></li>
+      <li><a href="https://www.instagram.com/suachaestilo/" target="_blank" style="color:#dc2626;">IG</a></li>
+      <li>
+        <button class="cart-toggle-btn" onclick="toggleCart()" aria-label="Carrito">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-bg" style="background:url('https://lh3.googleusercontent.com/p/AF1QipPp-BO7CrDL0i9cUtgjZaBChKVPHDUaw0ZBvO1E=s1360-w1360-h1020-rw')center/cover no-repeat fixed"></div>
+  <div class="hero-content">
+    <p class="hero-tag">🔥 Hecho en Colombia</p>
+    <h1>SUACHA<br><span>ESTILO</span></h1>
+    <p>Ropa urbana con actitud. Cultura en movimiento. Premium algodón peruano, diseñado en Soacha para el mundo.</p>
+    <div class="btn-group">
+      <a href="#productos" class="btn btn-primary">Ver Colección</a>
+      <a href="#ofertas" class="btn btn-outline">Ofertas</a>
+    </div>
+  </div>
+</section>
+
+<!-- Products -->
+<section class="products" id="productos">
+  <div class="section-inner reveal">
+    <p class="section-tag">🔥 Colección 2025/2026</p>
+    <h2>Nuestros <span>Productos</span></h2>
+    <p class="section-desc">Prendas urbanas premium, diseñadas para quienes viven la cultura con actitud y autenticidad.</p>
+    <div class="product-toolbar">
+      <div class="product-filters" id="productFilters">
+        <button class="filter-btn active" data-filter="todo" onclick="filtrarProductos('todo',this)">Todo</button>
+        <button class="filter-btn" data-filter="Camiseta" onclick="filtrarProductos('Camiseta',this)">👕 Camisetas</button>
+        <button class="filter-btn" data-filter="Buzo" onclick="filtrarProductos('Buzo',this)">🧥 Buzos</button>
+        <button class="filter-btn" data-filter="Hoodie" onclick="filtrarProductos('Hoodie',this)">Hoodies</button>
+        <button class="filter-btn" data-filter="Accesorio" onclick="filtrarProductos('Accesorio',this)">🧢 Accesorios</button>
+        <button class="filter-btn" data-filter="Jogger" onclick="filtrarProductos('Jogger',this)">👖 Joggers</button>
+        <button class="filter-btn" data-filter="Conjunto" onclick="filtrarProductos('Conjunto',this)">👜 Conjuntos</button>
+      </div>
+      <div class="product-search">
+        <span class="icon">🔍</span>
+        <input type="text" id="productSearch" placeholder="Buscar producto..." oninput="buscarProductos(this.value)">
+      </div>
+    </div>
+    <div class="product-grid stagger-children" id="productGrid"></div>
+  </div>
+</section>
+
+<!-- Brand Identity -->
+<section class="brand-section" id="nosotros">
+  <div class="section-inner">
+    <div class="brand-grid">
+      <div class="brand-image-wrap reveal-left">
+        <div class="main-img" style="background:linear-gradient(135deg,#1a1a2e,#16213e);display:flex;align-items:center;justify-content:center;min-height:400px;">
+          <img src="img1.jpeg" alt="Suacha Estilo" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <span style="font-size:5rem;opacity:.3;font-family:'Bebas Neue',cursive;color:#dc2626;">SE</span>
+        </div>
+        <div class="badge">
+          <div class="badge-icon">🎯</div>
+          <div class="badge-text">
+            <div class="title">Desde 2021</div>
+            <div class="sub">Creciendo juntos</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <p class="section-tag">🎯 Nuestra Historia</p>
+        <h2>MÁS QUE ROPA,<br><span>ES IDENTIDAD</span></h2>
+        <p style="color:#aaa;font-size:.95rem;line-height:1.8;margin-bottom:1rem;">Suacha Estilo nace desde la calle, representando la cultura urbana, el flow y la autenticidad de Soacha. Cada prenda refleja actitud, estilo y personalidad.</p>
+        <p style="color:#888;font-size:.9rem;line-height:1.8;margin-bottom:1.5rem;">Somos un equipo de jóvenes apasionados por el streetwear que decidimos crear una marca que represente nuestra ciudad y nuestra gente.</p>
+        <div class="brand-features stagger-children" id="brandFeats">
+          <div class="brand-feat"><div class="brand-feat-icon">💯</div><div><h4>Autenticidad</h4><p>Cada prenda refleja la esencia real de la cultura urbana de Soacha.</p></div></div>
+          <div class="brand-feat"><div class="brand-feat-icon">⭐</div><div><h4>Calidad</h4><p>Materiales premium que duran y mantienen su estilo.</p></div></div>
+          <div class="brand-feat"><div class="brand-feat-icon">🤝</div><div><h4>Comunidad</h4><p>Más que clientes, somos una familia unida por el estilo.</p></div></div>
+          <div class="brand-feat"><div class="brand-feat-icon">🇨🇴</div><div><h4>Orgullo Local</h4><p>Representamos con orgullo el talento de Soacha.</p></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="brand-quote reveal">
+      <p>Nuestra misión es vestir a la juventud de Soacha con prendas que reflejen su esencia, su cultura y su actitud. Queremos que cada persona se sienta <strong style="color:#dc2626;">orgullosa de vestir local</strong>.</p>
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-top:1.5rem;">
+        <div style="width:40px;height:1px;background:#dc2626;"></div>
+        <span style="color:#666;text-transform:uppercase;letter-spacing:2px;font-size:.7rem;">El Equipo Suacha Estilo</span>
+        <div style="width:40px;height:1px;background:#dc2626;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonios -->
+<section class="testimonials" id="testimonios">
+  <div class="section-inner reveal">
+    <p class="section-tag" style="justify-content:center;">⭐ Reseñas</p>
+    <h2 style="text-align:center;">Lo que dicen <span>nuestros clientes</span></h2>
+    <p class="section-desc" style="text-align:center;margin-inline:auto;">Más de 500 clientes satisfechos en toda Colombia.</p>
+    <div class="testimonial-grid stagger-children" id="testimonialGrid"></div>
+  </div>
+</section>
+
+<!-- Urgency Sales -->
+<section class="urgency" id="ofertas">
+  <div class="urgency-glow"></div>
+  <div class="section-inner" style="position:relative;z-index:1;">
+    <div class="reveal">
+      <p class="section-tag" style="justify-content:center;">🔥 Ofertas Especiales</p>
+      <h2 style="text-align:center;">LO MÁS <span>VENDIDO</span></h2>
+      <p class="section-desc" style="text-align:center;margin-inline:auto;">Estas prendas están volando. Aprovecha antes de que se agoten.</p>
+    </div>
+    <div class="timer-box reveal">
+      <div class="label">⏰ Oferta termina en</div>
+      <div class="timer-display">
+        <div class="timer-item"><div class="num" id="timerHours">23</div><div class="lbl">Horas</div></div>
+        <div class="timer-item"><div class="num" id="timerMinutes">45</div><div class="lbl">Min</div></div>
+        <div class="timer-item"><div class="num" id="timerSeconds">30</div><div class="lbl">Seg</div></div>
+      </div>
+    </div>
+    <div class="urgency-grid stagger-children" id="urgencyGrid"></div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section class="gallery" id="galeria">
+  <div class="section-inner reveal">
+    <p class="section-tag" style="justify-content:center;">📸 Síguenos en Instagram</p>
+    <h2 style="text-align:center;">NUESTRA <span>COMUNIDAD</span></h2>
+    <p class="section-desc" style="text-align:center;margin-inline:auto;">Únete a nuestra familia y comparte tu estilo con <strong>#SuachaEstilo</strong></p>
+    <div class="gallery-grid stagger-children" id="galleryGrid"></div>
+    <div class="gallery-cta reveal">
+      <div class="gallery-stats">
+        <div class="gallery-stat"><div class="num">20K</div><div class="lbl">Seguidores</div></div>
+        <div class="gallery-stat"><div class="num">1.9K</div><div class="lbl">Publicaciones</div></div>
+        <div class="gallery-stat"><div class="num">#1</div><div class="lbl">Streetwear Soacha</div></div>
+      </div>
+      <a href="https://www.instagram.com/suachaestilo/" target="_blank" class="btn btn-primary" style="background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);background-size:200% 200%;animation:gradientShift 3s ease infinite;">📷 @suachaestilo</a>
+      <p style="color:#666;font-size:.8rem;margin-top:1rem;">Etiquétanos con <strong style="color:#dc2626;">#SuachaEstilo</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- Location -->
+<section class="location" id="ubicacion">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-tag" style="justify-content:center;">📍 Visítanos</p>
+      <h2 style="text-align:center;">NUESTRO <span>PUNTO FÍSICO</span></h2>
+      <p class="section-desc" style="text-align:center;margin-inline:auto;">Ven a conocernos y prueba nuestras prendas en persona</p>
+    </div>
+    <div class="location-grid">
+      <div class="location-map reveal-left" id="locationMap">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.031502628373!2d-74.218224!3d4.580052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f7596e4b2b4a7%3A0x7f8a5d3e2b1c4d0f!2sSuacha%20Estilo!5e0!3m2!1ses!2sco!4v1" allowfullscreen="" loading="lazy" title="Ubicación Suacha Estilo"></iframe>
+        <div class="map-overlay"><a href="https://maps.google.com/?q=Calle+15+6A-12+Soacha+Centro" target="_blank">Abrir en Maps</a></div>
+      </div>
+      <div class="location-info reveal-right">
+        <div class="info-header">
+          <div class="icon">📍</div>
+          <div><h3>Suacha Estilo</h3><p style="color:#999;font-size:.8rem;">Tienda Oficial</p></div>
+        </div>
+        <div class="info-row"><div class="icon-sm">📍</div><div class="text"><strong>Calle 15 #6A-12</strong><br>Soacha Centro, Cundinamarca<br>Colombia</div></div>
+        <div class="info-row">
+          <div class="icon-sm">⏰</div>
+          <div>
+            <table class="schedule">
+              <tr><td>Lunes - Viernes</td><td>9:00 AM - 7:00 PM</td></tr>
+              <tr><td>Sábado</td><td>10:00 AM - 6:00 PM</td></tr>
+              <tr><td>Domingo</td><td>10:00 AM - 4:00 PM</td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="info-row"><div class="icon-sm">📞</div><div class="text"><strong>+57 311 211 2023</strong><br><span style="color:#dc2626;">@suachaestilo</span> (Instagram)</div></div>
+        <div class="location-buttons">
+          <a href="https://maps.google.com/?q=Calle+15+6A-12+Soacha+Centro" target="_blank" class="btn btn-primary" style="border-radius:0;justify-content:center;">🗺️ Cómo Llegar</a>
+          <a href="https://wa.me/573112112023" target="_blank" class="btn btn-outline" style="border-radius:0;justify-content:center;">💬 Llamar</a>
+        </div>
+      </div>
+    </div>
+    <div class="location-features stagger-children" id="locFeats">
+      <div class="location-feat"><div class="icon">📍</div><div class="lbl">Showroom</div><div class="sub">Prueba tu talla</div></div>
+      <div class="location-feat"><div class="icon">🚗</div><div class="lbl">Fácil acceso</div><div class="sub">Soacha Centro</div></div>
+      <div class="location-feat"><div class="icon">⏰</div><div class="lbl">Horario extendido</div><div class="sub">Hasta 7pm</div></div>
+      <div class="location-feat"><div class="icon">💁</div><div class="lbl">Atención personalizada</div><div class="sub">Te asesoramos</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="brand-name">SUACHA<span>.</span>ESTILO</div>
+      <p>Ropa streetwear auténtica desde el corazón de Soacha. Más que ropa, es identidad.</p>
+      <div class="social">
+        <a href="https://www.instagram.com/suachaestilo/" target="_blank" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+        </a>
+        <a href="https://wa.me/573112112023" target="_blank" aria-label="WhatsApp">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H6l3-3a8.5 8.5 0 1112-5.5z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div><h4>Enlaces Rápidos</h4><a href="#hero">Inicio</a><a href="#productos">Productos</a><a href="#nosotros">Nosotros</a><a href="#ubicacion">Ubicación</a></div>
+    <div><h4>Categorías</h4><a href="#productos">Hoodies</a><a href="#productos">Camisetas</a><a href="#productos">Gorras</a><a href="#productos">Accesorios</a></div>
+    <div><h4>Contacto</h4><p>Calle 15 #6A-12<br>Soacha Centro, Cundinamarca</p><a href="tel:+573112112023">+57 311 211 2023</a><a href="mailto:info@suachaestilo.com">info@suachaestilo.com</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Suacha Estilo. Todos los derechos reservados. Designed by Daniel Rojas</span>
+    <div><a href="#">Términos</a><a href="#">Privacidad</a></div>
+  </div>
+</footer>
+
+<!-- Cart Overlay -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+<!-- Cart Sidebar -->
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3>🛒 Carrito</h3>
+    <button class="close-btn" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty" id="cartEmpty">
+      <div class="icon">🛒</div>
+      <p>Tu carrito está vacío</p>
+      <p style="font-size:.75rem;margin-top:4px;">Agrega productos desde "Vista rápida"</p>
+    </div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none;">
+    <div class="cart-total">
+      <span class="lbl">Total</span>
+      <span class="val" id="cartTotal">$0</span>
+    </div>
+    <a href="https://wa.me/573112112023" target="_blank" class="btn btn-green" id="cartWspBtn">💬 Comprar por WhatsApp</a>
+    <button class="btn btn-outline" style="width:100%;justify-content:center;margin-top:8px;" onclick="limpiarCarrito()">Vaciar carrito</button>
+  </div>
+</div>
+
+<!-- Quick View Modal -->
+<div class="modal-overlay" id="quickViewModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeQuickView()">✕</button>
+    <div class="modal-grid" id="quickViewContent"></div>
+  </div>
+</div>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/573112112023" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- Chatbot IA -->
+<button class="chat-toggle" id="chatToggle" onclick="toggleChat()">🤖</button>
+<div class="chat-box" id="chatBox">
+  <div class="chat-header">
+    <div class="left">
+      <div class="avatar">🤖</div>
+      <div class="info">
+        <div class="name">Asistente Suacha</div>
+        <div class="status"><span class="dot"></span> Online - IA activa</div>
+      </div>
+    </div>
+    <button class="close-btn" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="msg bot">¡Hola! 👋 Soy el asistente virtual de <strong>Suacha Estilo</strong>. Puedo consultar nuestros productos en tiempo real:<br>• 🔍 <strong>Stock:</strong> "¿hay camiseta oversize talla M?"<br>• 🎨 <strong>Colores:</strong> "¿de qué colores está el buzo?"<br>• 📏 <strong>Tallas:</strong> "¿tienen hoodie en XL?"<br>• 💵 <strong>Precios:</strong> "cuánto cuesta la gorra?"<br><br>¿Qué producto buscas? 🤔</div>
+  </div>
+  <div class="chat-input">
+    <input type="text" id="chatInput" placeholder="Escribe tu mensaje..." onkeydown="if(event.key==='Enter')sendMessage()">
+    <button onclick="sendMessage()">Enviar</button>
+  </div>
+</div>
+
+<!-- Scroll Top -->
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- Mobile Bottom -->
+<div class="mobile-bottom">
+  <div class="inner">
+    <div class="left" onclick="toggleCart()" style="cursor:pointer;">
+      <div class="icon">🛒</div>
+      <div><div class="t1">Mi carrito</div><div class="t2"><span id="mobileCartCount">0</span> artículos</div></div>
+    </div>
+    <div class="right"><a href="https://wa.me/573112112023" target="_blank">💬 WhatsApp</a></div>
+  </div>
+</div>
+
+<script>
+function closeNav(){document.querySelector('.nav-links').classList.remove('open')}
+
+// ===== FILTROS Y BÚSQUEDA =====
+let filtroActual = 'todo';
+
+function filtrarProductos(cat, btn) {
+  filtroActual = cat;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  aplicarFiltros();
+}
+
+function buscarProductos(texto) {
+  const cards = document.querySelectorAll('.product-card');
+  cards.forEach(c => {
+    const matchCat = filtroActual === 'todo' || c.dataset.category === filtroActual;
+    const matchSearch = !texto || c.dataset.name.includes(texto.toLowerCase());
+    c.style.display = matchCat && matchSearch ? '' : 'none';
+  });
+}
+
+function aplicarFiltros() {
+  const input = document.getElementById('productSearch');
+  buscarProductos(input.value);
+}
+
+// ===== PRODUCTOS =====
+const products = [
+  {id:1,name:"Oversize Premium Algodón Peruano",category:"Camiseta",price:"$69.900",old:null,color:"#2d1b3d #6b2fa0",emoji:"👕",sold:47,stock:8,sizes:["S","M","L","XL"],colors:["Negro","Blanco","Gris","Rojo"],description:"Camiseta oversize de algodón peruano premium. Diseño urbano con corte holgado."},
+  {id:2,name:"Buzo Urbano Exclusivo",category:"Buzo",price:"$99.900",old:"$129.900",color:"#1a2a3d #2c5f8a",emoji:"🧥",sold:38,stock:12,sizes:["M","L","XL","2XL"],colors:["Negro","Gris","Azul Marino"],description:"Buzo de frisa premium con capucha y bolsillo canguro."},
+  {id:3,name:"Full Color Unisex",category:"Camiseta",price:"$55.900",old:null,color:"#3d1a1a #8a2c2c",emoji:"👚",sold:52,stock:5,sizes:["S","M","L","XL"],colors:["Negro","Blanco","Rojo","Azul","Verde"],description:"Camiseta unisex full color. Ideal para el día a día."},
+  {id:4,name:"Jogger Urbano Algodón",category:"Jogger",price:"$74.900",old:null,color:"#1a3d2a #2c8a5f",emoji:"👖",sold:29,stock:15,sizes:["S","M","L","XL","2XL"],colors:["Negro","Gris","Oliva"],description:"Jogger de algodón con elastico en tobillos. Cómodo y fresco."},
+  {id:5,name:"Gorra Bordada Suacha",category:"Accesorio",price:"$34.900",old:null,color:"#2d2d1a #6b6b2f",emoji:"🧢",sold:44,stock:3,sizes:["Ajustable"],colors:["Negro","Rojo","Blanco"],description:"Gorra bordada con logo de Suacha Estilo. Ajustable."},
+  {id:6,name:"Set Deportivo Exclusivo",category:"Conjunto",price:"$139.900",old:"$169.900",color:"#1a1a3d #2f2f6b",emoji:"👜",sold:18,stock:7,sizes:["M","L","XL"],colors:["Negro","Gris"],description:"Conjunto deportivo de dos piezas. Buzo + pantalon."},
+  {id:7,name:"Hoodie Cultura Urbana",category:"Hoodie",price:"$89.900",old:"$119.900",color:"#3d2d1a #8a6b2f",emoji:"🧥",sold:33,stock:6,sizes:["S","M","L","XL","2XL"],colors:["Negro","Gris","Rojo"],description:"Hoodie cultura urbana. Algodón premium con capucha."},
+  {id:8,name:"Camiseta Urban Crew",category:"Camiseta",price:"$54.900",old:"$69.900",color:"#2d1a2d #6b2f6b",emoji:"👕",sold:41,stock:4,sizes:["S","M","L","XL"],colors:["Negro","Blanco"],description:"Camiseta Urban Crew. Estilo callejero con diseño exclusivo."},
+  {id:9,name:"Gorra Colombia Premium",category:"Accesorio",price:"$59.900",old:null,color:"#1a2d1a #2f6b2f",emoji:"🧢",sold:25,stock:10,sizes:["Ajustable"],colors:["Negro","Verde","Amarillo"],description:"Gorra Colombia Premium. Edición especial."}
+];
+const productGrid = document.getElementById('productGrid');
+products.forEach(p => {
+  const stockPct = p.stock > 0 ? Math.round(p.sold/(p.sold+p.stock)*100) : 80;
+  productGrid.innerHTML += `
+    <div class="product-card" data-category="${p.category}" data-name="${p.name.toLowerCase()}">
+      <div class="product-img-wrap">
+        <div class="skeleton skeleton-img" style="position:absolute;inset:0;"></div>
+        <img src="img${p.id}.jpeg" alt="${p.name}" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none';this.previousElementSibling.style.display='none';this.nextElementSibling.style.display='flex'"><div class="emoji-placeholder" style="background:linear-gradient(135deg,${p.color});display:none">${p.emoji}</div>
+        <div class="product-img-overlay">
+          <button class="overlay-btn" onclick="openQuickView(${p.id})" style="animation:none;background:#222;border:1px solid rgba(255,255,255,.15);">👁 Vista rápida</button>
+          <button class="overlay-btn" onclick="agregarAlCarrito(${p.id})">🛒 Agregar</button>
+        </div>
+      </div>
+      <div class="product-info">
+        <p class="product-category">${p.category}</p>
+        <p class="product-name">${p.name}</p>
+        <p class="product-price">${p.price}${p.old ? `<span class="product-old-price">${p.old}</span>` : ''}</p>
+        <div class="product-stock"><span>${p.sold} vendidos</span><div class="bar"><div class="bar-fill" style="width:${stockPct}%"></div></div></div>
+      </div>
+    </div>`;
+});
+
+// ===== TESTIMONIOS =====
+const testimonials = [
+  {name:"Carlos M.",handle:"@carlos_m",text:"Compré la camiseta oversize y la calidad es increíble. Algodón súper suave, el diseño impecable. Llegó antes de lo esperado. 100% recomendados.",rating:5,bg:"#dc2626"},
+  {name:"Andrea P.",handle:"@andrea_p",text:"El buzó urbano es una locura. Me encanta cómo se ve, la tela es gruesa y bien terminada. Ya quiero comprar más cosas. La atención por WhatsApp súper rápida.",rating:5,bg:"#2563eb"},
+  {name:"Jhon D.",handle:"@jhon_d",text:"Compré el conjunto deportivo para mi hijo y le quedó perfecto. La relación calidad-precio es excelente. Seguro vuelvo a comprar. ¡Orgulloso de vestir local!",rating:5,bg:"#16a34a"},
+  {name:"Laura G.",handle:"@laura_g",text:"La gorra bordada es hermosa, los detalles súper cuidados. Llevo un mes usándola y sigue como nueva. El envío fue rápido y bien empaquetado.",rating:4,bg:"#9333ea"},
+  {name:"Miguel R.",handle:"@miguel_r",text:"Me encanta que sea una marca de Soacha. La camiseta Urban Crew tiene un diseño único, no es la típica que ves en todos lados. Volveré por el hoodie.",rating:5,bg:"#ea580c"}
+];
+const testimonialGrid = document.getElementById('testimonialGrid');
+testimonials.forEach(t => {
+  const stars = '★'.repeat(t.rating) + '☆'.repeat(5-t.rating);
+  testimonialGrid.innerHTML += `
+    <div class="testimonial-card">
+      <div class="stars">${stars}</div>
+      <div class="text">"${t.text}"</div>
+      <div class="author">
+        <div class="author-avatar" style="background:${t.bg}">${t.name[0]}</div>
+        <div class="author-info"><div class="name">${t.name}</div><div class="handle">${t.handle}</div></div>
+      </div>
+    </div>`;
+});
+
+// ===== URGENCY PRODUCTS =====
+const urgencyProducts = [
+  {id:1,name:"Hoodie Cultura Urbana",price:"$89.900",old:"$119.900",color:"#3d2d1a #8a6b2f",emoji:"🧥",sold:47,stock:8},
+  {id:2,name:"Camiseta Urban Crew",price:"$54.900",old:"$69.900",color:"#2d1a2d #6b2f6b",emoji:"👕",sold:32,stock:5},
+  {id:3,name:"Gorra Colombia Premium",price:"$59.900",old:null,color:"#1a2d1a #2f6b2f",emoji:"🧢",sold:28,stock:3}
+];
+const urgencyGrid = document.getElementById('urgencyGrid');
+urgencyProducts.forEach((p,i) => {
+  const pct = Math.round(p.sold/(p.sold+p.stock)*100);
+  urgencyGrid.innerHTML += `
+    <div class="urgency-card">
+      <div class="urgency-badge">🔥 Más Vendido</div>
+      <div class="urgency-stock">Solo ${p.stock} restantes</div>
+      <div class="product-img-wrap">
+        <div class="skeleton skeleton-img" style="position:absolute;inset:0;"></div>
+        <img src="img${p.id+6}.jpeg" alt="${p.name}" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none';this.previousElementSibling.style.display='none';this.nextElementSibling.style.display='flex'"><div class="emoji-placeholder" style="background:linear-gradient(135deg,${p.color});display:none">${p.emoji}</div>
+      </div>
+      <div class="product-info">
+        <p class="product-name">${p.name}</p>
+        <p class="product-price">${p.price}${p.old ? `<span class="product-old-price">${p.old}</span>` : ''}</p>
+        <div class="product-stock"><span>${p.sold} vendidos</span><span>${p.stock} disponibles</span><div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div></div>
+        <a href="https://wa.me/573112112023?text=${encodeURIComponent('Hola! Me interesa ' + p.name + ' - ' + p.price + ' (Oferta especial)')}" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:12px;">💬 Comprar Ahora</a>
+      </div>
+    </div>`;
+});
+
+// ===== GALLERY =====
+const gallery = [
+  {emoji:"👕",likes:234,comments:18,caption:"Nueva colección 🔥 #SuachaEstilo"},
+  {emoji:"👥",likes:456,comments:32,caption:"La familia crece 💪 #Comunidad"},
+  {emoji:"🧥",likes:189,comments:12,caption:"Detalles que marcan 👌 #UrbanStyle"},
+  {emoji:"🇨🇴",likes:312,comments:24,caption:"Soacha con orgullo 🫡 #Colombia"},
+  {emoji:"🧥",likes:278,comments:21,caption:"Hoodie Best seller 🔥"},
+  {emoji:"👕",likes:198,comments:15,caption:"Diseños únicos ✨ #Camisetas"}
+];
+const colors = ['#2d1b3d #6b2fa0','#1a2a3d #2c5f8a','#3d1a1a #8a2c2c','#1a3d2a #2c8a5f','#2d2d1a #6b6b2f','#1a1a3d #2f2f6b'];
+const galleryGrid = document.getElementById('galleryGrid');
+gallery.forEach((g,i) => {
+  const c = colors[i];
+  galleryGrid.innerHTML += `
+    <div class="gallery-item">
+      <div class="placeholder" style="background:linear-gradient(135deg,${c});"><img src="img${i+10}.jpeg" alt="" onerror="this.style.display='none'">${g.emoji}</div>
+      <div class="gallery-overlay">
+        <div class="stats"><span>❤️ ${g.likes}</span><span>💬 ${g.comments}</span></div>
+        <div class="caption">${g.caption}</div>
+      </div>
+    </div>`;
+});
+
+// ===== TIMER =====
+let hours = 23, minutes = 45, seconds = 30;
+setInterval(() => {
+  if(seconds > 0) seconds--;
+  else if(minutes > 0) { minutes--; seconds = 59; }
+  else if(hours > 0) { hours--; minutes = 59; seconds = 59; }
+  document.getElementById('timerHours').textContent = String(hours).padStart(2,'0');
+  document.getElementById('timerMinutes').textContent = String(minutes).padStart(2,'0');
+  document.getElementById('timerSeconds').textContent = String(seconds).padStart(2,'0');
+}, 1000);
+
+// ===== SCROLL REVEAL =====
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      entry.target.classList.add('active');
+    }
+  });
+}, {threshold: .15, rootMargin: '0px 0px -50px 0px'});
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-children').forEach(el => observer.observe(el));
+
+// ===== SCROLL TOP & PROGRESS =====
+window.addEventListener('scroll', () => {
+  const btn = document.getElementById('scrollTop');
+  if(window.scrollY > 300) btn.classList.add('visible');
+  else btn.classList.remove('visible');
+  const docH = document.documentElement.scrollHeight - window.innerHeight;
+  document.getElementById('scrollProgress').style.width = docH > 0 ? (window.scrollY / docH * 100) + '%' : '0%';
+});
+
+// ===== CHATBOT IA =====
+function toggleChat() {
+  const box = document.getElementById('chatBox');
+  box.classList.toggle('open');
+  if(box.classList.contains('open')) {
+    document.getElementById('chatInput').focus();
+  }
+}
+
+document.addEventListener('click', function(e) {
+  const box = document.getElementById('chatBox');
+  const toggle = document.getElementById('chatToggle');
+  if(box.classList.contains('open') && !box.contains(e.target) && !toggle.contains(e.target)) {
+    box.classList.remove('open');
+  }
+});
+
+function buscarProducto(texto) {
+  const t = texto.toLowerCase();
+  let encontrados = [];
+
+  for(const p of products) {
+    const nombre = p.name.toLowerCase();
+    const categoria = p.category.toLowerCase();
+    const colores = p.colors.map(c => c.toLowerCase());
+    if(nombre.includes(t) || categoria.includes(t) || colores.some(c => c.includes(t) || t.includes(c))) {
+      encontrados.push(p);
+    }
+  }
+
+  if(encontrados.length === 0) return null;
+
+  let resp = "";
+  for(const p of encontrados) {
+    const stockText = p.stock > 0 ? `✅ Hay stock (${p.stock} unidades)` : "❌ Agotado";
+    resp += `\n\n${p.emoji} <strong>${p.name}</strong>\n💵 ${p.price}${p.old ? ` <span style="color:#999;text-decoration:line-through;">${p.old}</span>` : ''}\n📦 ${stockText}\n📏 Tallas: ${p.sizes.join(', ')}\n🎨 Colores: ${p.colors.join(', ')}\n📝 ${p.description}`;
+  }
+  return encontrados.length === 1
+    ? `¡Claro! Aquí tienes la info completa:${resp}\n\n¿Quieres comprarla? Te puedo pasar al WhatsApp para concretar el pedido 💬`
+    : `Encontré ${encontrados.length} productos:${resp}\n\n¿Cuál te interesa más? Te doy más detalles o te paso al WhatsApp 💬`;
+}
+
+function sendMessage() {
+  const input = document.getElementById('chatInput');
+  const msg = input.value.trim();
+  if(!msg) return;
+  input.value = '';
+
+  const msgs = document.getElementById('chatMessages');
+  msgs.innerHTML += `<div class="msg user">${msg}</div>`;
+  msgs.scrollTop = msgs.scrollHeight;
+
+  msgs.innerHTML += `<div class="msg bot"><div class="typing"><span></span><span></span><span></span></div></div>`;
+  msgs.scrollTop = msgs.scrollHeight;
+
+  setTimeout(() => {
+    const typingEl = msgs.querySelector('.msg.bot:last-child');
+    if(typingEl) typingEl.remove();
+
+    const lowMsg = msg.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+
+    // Primero buscar en productos
+    const nombresProductos = products.map(p => p.name.toLowerCase());
+    const palabrasClave = ["camiseta","buzo","hoodie","gorra","jogger","conjunto","set","oversize","urban","colombia","deportivo","accesorio","peruano","exclusivo","bordada","unisex","cultura","urbana","crew"];
+    const mencionaProducto = palabrasClave.some(k => lowMsg.includes(k)) || lowMsg.includes("talla") || lowMsg.includes("color") || lowMsg.includes("stock") || lowMsg.includes("hay") || lowMsg.includes("tiene") || lowMsg.includes("disponible");
+
+    if(mencionaProducto) {
+      // Buscar en nombres completos y categorías
+      let encontrado = null;
+      for(const p of products) {
+        if(lowMsg.includes(p.name.toLowerCase()) || lowMsg.includes(p.category.toLowerCase()) || lowMsg.includes(p.name.split(" ")[0].toLowerCase())) {
+          encontrado = p;
+          break;
+        }
+      }
+
+      if(!encontrado) {
+        // Búsqueda por palabra clave
+        for(const k of palabrasClave) {
+          if(lowMsg.includes(k)) {
+            encontrado = products.find(p => p.name.toLowerCase().includes(k) || p.category.toLowerCase().includes(k));
+            if(encontrado) break;
+          }
+        }
+      }
+
+      if(!encontrado) {
+        // Búsqueda ampliada
+        const res = buscarProducto(lowMsg);
+        if(res) {
+          msgs.innerHTML += `<div class="msg bot">${res}</div>`;
+          msgs.scrollTop = msgs.scrollHeight;
+          return;
+        }
+      }
+
+      if(encontrado) {
+        const stockTxt = encontrado.stock > 0 ? `✅ Sí hay stock. Quedan ${encontrado.stock} unidades.` : "❌ Agotado por el momento.";
+        const resp = `${encontrado.emoji} <strong>${encontrado.name}</strong>\n\n💵 <strong>Precio:</strong> ${encontrado.price}${encontrado.old ? ` (antes ${encontrado.old})` : ''}\n📦 <strong>Disponibilidad:</strong> ${stockTxt}\n📏 <strong>Tallas disponibles:</strong> ${encontrado.sizes.join(', ')}\n🎨 <strong>Colores:</strong> ${encontrado.colors.join(', ')}\n📝 ${encontrado.description}\n\n${encontrado.stock > 0 ? '¿Te interesa? Haz clic en el WhatsApp y la apartamos 😊' : '¡Pero tenemos otras opciones! Pregúntame por más productos 🙌'}`;
+        msgs.innerHTML += `<div class="msg bot">${resp}</div>`;
+        msgs.scrollTop = msgs.scrollHeight;
+        return;
+      }
+    }
+
+    // Respuestas generales (si no encontró producto)
+    let response = "Lo siento, no entendí bien 🤔 Puedes preguntarme:<br>• <strong>Productos:</strong> '¿tienen camisetas?', 'buzos disponibles', 'gorras'<br>• <strong>Stock:</strong> 'hay talla M?', 'colores disponibles', 'cuanto cuesta?'<br>• <strong>Info:</strong> 'ubicación', 'horarios', 'domicilios', 'pagos'<br>• O escríbenos directo al <a href='https://wa.me/573112112023' target='_blank' style='color:#22c55e;'>WhatsApp</a> 💬";
+
+    if(lowMsg.includes("hola")||lowMsg.includes("buenas")||lowMsg.includes("buen")) response = "¡Hola! 👋 Soy el asistente de <strong>Suacha Estilo</strong>. Puedo decirte si tenemos un producto en específico, las tallas, colores y precios. ¿Qué buscas?";
+    else if(lowMsg.includes("precio")||lowMsg.includes("cuanto")||lowMsg.includes("cost")||lowMsg.includes("vale")) response = "Nuestros precios van desde $34.900 hasta $139.900. Dime qué producto te interesa y te doy el precio exacto con todos los detalles 😊";
+    else if(lowMsg.includes("domicilio")||lowMsg.includes("envio")||lowMsg.includes("enví")||lowMsg.includes("entrega")) response = "Hacemos envíos a toda Colombia 🇨🇴 Tiempo de entrega: 3-7 días hábiles. El costo varía por zona. En Soacha puedes pedir con entrega el mismo día 🚀";
+    else if(lowMsg.includes("pago")||lowMsg.includes("transfer")||lowMsg.includes("nequi")||lowMsg.includes("daviplata")||lowMsg.includes("efectivo")) response = "Aceptamos 💳 Transferencias bancarias, Nequi, Daviplata y efectivo contraentrega en Soacha. ¿Cuál te queda mejor?";
+    else if(lowMsg.includes("donde")||lowMsg.includes("ubic")||lowMsg.includes("direc")||lowMsg.includes("mapa")) response = "📍 Estamos en <strong>Calle 15 #6A-12, Soacha Centro</strong>. Tenemos sección de niños en Kra 7ma #7-26. También en San Mateo. ¿Quieres la ubicación en Maps?";
+    else if(lowMsg.includes("horario")) response = "🕐 <strong>Horarios:</strong><br>Lunes a Viernes: 9am - 7pm<br>Sábados: 10am - 6pm<br>Domingos: 10am - 4pm";
+    else if(lowMsg.includes("talla")||lowMsg.includes("tamañ")) response = "Manejamos tallas <strong>S, M, L, XL y 2XL</strong> dependiendo del producto. Dime cuál te interesa y te confirmo disponibilidad de esa talla 😊";
+    else if(lowMsg.includes("whatsapp")||lowMsg.includes("contact")) response = "💬 Escríbenos directo: <a href='https://wa.me/573112112023' target='_blank' style='color:#22c55e;font-weight:600;'>+57 311 211 2023</a> O toca el botón verde de WhatsApp en la esquina 👇";
+    else if(lowMsg.includes("gracias")) response = "¡A ti! 🙌 Cuando quieras saber de algún producto, aquí estoy. ¡Buen día! 😊";
+
+    msgs.innerHTML += `<div class="msg bot">${response}</div>`;
+    msgs.scrollTop = msgs.scrollHeight;
+  }, 1200);
+}
+
+// ===== CARRITO =====
+let cart = JSON.parse(localStorage.getItem('suachaCart')) || [];
+
+function guardarCart() {
+  localStorage.setItem('suachaCart', JSON.stringify(cart));
+  actualizarUI();
+}
+
+function actualizarUI() {
+  const count = cart.reduce((s,i) => s + i.qty, 0);
+  document.getElementById('cartCount').textContent = count;
+  document.getElementById('cartCountMobile').textContent = count;
+  const mc = document.getElementById('mobileCartCount');
+  if(mc) mc.textContent = count;
+  const empty = document.getElementById('cartEmpty');
+  const footer = document.getElementById('cartFooter');
+  const items = document.getElementById('cartItems');
+
+  if(cart.length === 0) {
+    empty.style.display = 'block';
+    footer.style.display = 'none';
+    return;
+  }
+  empty.style.display = 'none';
+  footer.style.display = 'block';
+
+  let html = '';
+  let total = 0;
+  cart.forEach((item, idx) => {
+    const p = products.find(x => x.id === item.id);
+    if(!p) return;
+    const subtotal = parseInt(item.price.replace(/\D/g,'')) * item.qty;
+    total += subtotal;
+    html += `
+      <div class="cart-item">
+        <div class="cart-item-img">
+          <img src="img${p.id}.jpeg" alt="${p.name}" onerror="this.style.display='none';this.parentElement.textContent='${p.emoji}'">
+        </div>
+        <div class="cart-item-info">
+          <div class="name">${p.name}</div>
+          <div class="variant">${item.color} · ${item.talla}</div>
+          <div class="bottom">
+            <span class="price">$${(subtotal).toLocaleString('es-CO')}</span>
+            <div class="cart-item-qty">
+              <button onclick="cambiarQty(${idx},-1)">−</button>
+              <span>${item.qty}</span>
+              <button onclick="cambiarQty(${idx},1)">+</button>
+              <button class="remove" onclick="eliminarItem(${idx})">✕</button>
+            </div>
+          </div>
+        </div>
+      </div>`;
+  });
+  items.innerHTML = html + '<div id="cartEmpty" style="display:none"></div>';
+  document.getElementById('cartTotal').textContent = '$' + total.toLocaleString('es-CO');
+  const msg = cart.map(i => {
+    const p = products.find(x => x.id === i.id);
+    return p ? `${p.name} (${i.color}, ${i.talla}) x${i.qty} = $${(parseInt(i.price.replace(/\D/g,''))*i.qty).toLocaleString('es-CO')}` : '';
+  }).join('%0A');
+  document.getElementById('cartWspBtn').href = `https://wa.me/573112112023?text=${encodeURIComponent('Hola! Quiero comprar:%0A' + cart.map(i => {
+    const p = products.find(x => x.id === i.id);
+    return p ? `• ${p.name} - ${i.color} - ${i.talla} x${i.qty} = $${(parseInt(i.price.replace(/\D/g,''))*i.qty).toLocaleString('es-CO')}` : '';
+  }).join('%0A') + '%0A%0ATotal: $' + total.toLocaleString('es-CO'))}`;
+}
+
+function toggleCart() {
+  document.getElementById('cartSidebar').classList.toggle('open');
+  document.getElementById('cartOverlay').classList.toggle('open');
+}
+
+function agregarAlCarrito(id) {
+  const p = products.find(x => x.id === id);
+  if(!p) return;
+  const exist = cart.find(i => i.id === id && i.talla === p.sizes[0] && i.color === p.colors[0]);
+  if(exist) {
+    exist.qty++;
+  } else {
+    cart.push({id, qty:1, talla:p.sizes[0], color:p.colors[0], price:p.price});
+  }
+  guardarCart();
+  toggleCart();
+  notificar(`✅ ${p.name} agregado al carrito`);
+}
+
+function cambiarQty(idx, delta) {
+  cart[idx].qty += delta;
+  if(cart[idx].qty <= 0) cart.splice(idx, 1);
+  guardarCart();
+}
+
+function eliminarItem(idx) {
+  cart.splice(idx, 1);
+  guardarCart();
+}
+
+function limpiarCarrito() {
+  cart = [];
+  guardarCart();
+}
+
+function notificar(msg, tipo) {
+  tipo = tipo || 'success';
+  const bg = tipo === 'success' ? '#22c55e' : tipo === 'error' ? '#dc2626' : '#f59e0b';
+  const icon = tipo === 'success' ? '✅' : tipo === 'error' ? '❌' : '⚠️';
+  const el = document.createElement('div');
+  el.style.cssText = `position:fixed;bottom:170px;right:24px;z-index:80;background:${bg};color:#fff;padding:14px 20px;font-size:.82rem;animation:slideInRight .4s ease;box-shadow:0 8px 30px rgba(0,0,0,.4);border-radius:0;display:flex;align-items:center;gap:10px;min-width:280px;`;
+  el.innerHTML = `${icon} <span style="flex:1;">${msg}</span>`;
+  const bar = document.createElement('div');
+  bar.style.cssText = 'position:absolute;bottom:0;left:0;height:3px;background:rgba(255,255,255,.4);animation:toastProgress 2.5s linear forwards;';
+  el.appendChild(bar);
+  el.style.position = 'fixed';
+  document.body.appendChild(el);
+  setTimeout(() => { el.style.animation = 'slideOutRight .4s ease forwards'; setTimeout(() => el.remove(), 400); }, 2600);
+}
+
+// ===== QUICK VIEW =====
+function openQuickView(id) {
+  const p = products.find(x => x.id === id);
+  if(!p) return;
+  const content = document.getElementById('quickViewContent');
+  const stockClass = p.stock <= 0 ? 'out' : p.stock <= 5 ? 'low' : 'in-stock';
+  const stockText = p.stock <= 0 ? '❌ Agotado' : `✅ ${p.stock} en stock`;
+
+  let html = `
+    <div class="modal-img-wrap">
+      <img src="img${p.id}.jpeg" alt="${p.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="fallback" style="display:none">${p.emoji}</div>
+    </div>
+    <div class="modal-info">
+      <div class="cat">${p.category}</div>
+      <h3>${p.name}</h3>
+      <div class="desc">${p.description}</div>
+      <div class="stock-badge ${stockClass}">${stockText}</div>
+      <div class="price-row">
+        <span class="current">${p.price}</span>
+        ${p.old ? `<span class="old">${p.old}</span>` : ''}
+      </div>
+      <div class="selector-group">
+        <label>📏 Talla</label>
+        <div class="selector-options" id="qvSizes">`;
+  p.sizes.forEach(s => {
+    html += `<button class="opt${s === p.sizes[0] ? ' active' : ''}" onclick="selectQvOption('size','${s}',this)">${s}</button>`;
+  });
+  html += `</div></div>
+      <div class="selector-group">
+        <label>🎨 Color</label>
+        <div class="selector-options" id="qvColors">`;
+  p.colors.forEach(c => {
+    html += `<button class="opt${c === p.colors[0] ? ' active' : ''}" onclick="selectQvOption('color','${c}',this)">${c}</button>`;
+  });
+  html += `</div></div>
+      <div class="selector-group">
+        <label>Cantidad</label>
+        <div class="selector-options"><button class="opt" onclick="qvQty(-1)">−</button><span style="padding:8px 20px;font-size:1rem;font-weight:600;" id="qvQty">1</span><button class="opt" onclick="qvQty(1)">+</button></div>
+      </div>
+      <div class="modal-buttons">
+        <button class="btn btn-primary" onclick="qvAddToCart(${p.id})">🛒 Agregar al carrito</button>
+        <a href="https://wa.me/573112112023?text=${encodeURIComponent('Hola! Quiero ' + p.name + ' - ' + p.price)}" target="_blank" class="btn btn-green">💬 WhatsApp</a>
+      </div>
+    </div>`;
+  content.innerHTML = html;
+  document.getElementById('quickViewModal').classList.add('open');
+  window._qvId = p.id;
+  window._qvSize = p.sizes[0];
+  window._qvColor = p.colors[0];
+  window._qvQty = 1;
+}
+
+function closeQuickView() {
+  document.getElementById('quickViewModal').classList.remove('open');
+}
+
+function selectQvOption(type, val, btn) {
+  btn.parentElement.querySelectorAll('.opt').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  if(type === 'size') window._qvSize = val;
+  else window._qvColor = val;
+}
+
+function qvQty(delta) {
+  window._qvQty = Math.max(1, (window._qvQty || 1) + delta);
+  document.getElementById('qvQty').textContent = window._qvQty;
+}
+
+function qvAddToCart(id) {
+  const p = products.find(x => x.id === id);
+  if(!p) return;
+  const exist = cart.find(i => i.id === id && i.talla === window._qvSize && i.color === window._qvColor);
+  if(exist) {
+    exist.qty += window._qvQty;
+  } else {
+    cart.push({id, qty: window._qvQty, talla: window._qvSize, color: window._qvColor, price: p.price});
+  }
+  guardarCart();
+  closeQuickView();
+  toggleCart();
+  notificar(`✅ ${p.name} (${window._qvColor}, ${window._qvSize}) agregado al carrito`);
+}
+</script>
+</body>
+</html>

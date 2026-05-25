@@ -343,10 +343,12 @@ footer .brand-name span{color:#dc2626}
 .chat-header .info .status .dot{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:pulse 1.5s infinite}
 .chat-header .close-btn{background:0;border:none;color:#fff;font-size:1.25rem;cursor:pointer;opacity:.7;transition:.3s;padding:4px}
 .chat-header .close-btn:hover{opacity:1;transform:rotate(90deg)}
+.chat-key-status{padding:6px 16px;background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.05);font-size:.65rem;color:#555;cursor:pointer;display:flex;align-items:center;gap:6px;transition:.3s;letter-spacing:.5px}
+.chat-key-status:hover{background:rgba(220,38,38,.08);color:#dc2626}
 .chat-messages{flex:1;padding:16px;overflow-y:auto;max-height:320px;display:flex;flex-direction:column;gap:10px;background:#0d0d0d}
 .chat-messages::-webkit-scrollbar{width:4px}
 .chat-messages::-webkit-scrollbar-thumb{background:#333;border-radius:2px}
-.msg{max-width:85%;padding:10px 14px;font-size:.82rem;line-height:1.5;animation:slideDown .3s ease}
+.msg{max-width:85%;padding:10px 14px;font-size:.82rem;line-height:1.5;animation:fadeInUp .35s ease;opacity:1}
 .msg.bot{background:#1a1a1a;color:#ccc;border-radius:0 12px 12px 12px;align-self:flex-start;border:1px solid rgba(255,255,255,.05)}
 .msg.user{background:#dc2626;color:#fff;border-radius:12px 0 12px 12px;align-self:flex-end}
 .msg .typing{display:flex;gap:4px;padding:4px 0}
@@ -801,14 +803,15 @@ footer .brand-name span{color:#dc2626}
     <div class="left">
       <div class="avatar">🤖</div>
       <div class="info">
-        <div class="name">Asistente Suacha</div>
+        <div class="name">Sua 🤖</div>
         <div class="status"><span class="dot"></span> Online - IA activa</div>
       </div>
     </div>
     <button class="close-btn" onclick="toggleChat()">✕</button>
   </div>
+  <div class="chat-key-status" id="chatKeyStatus" onclick="initChatKey()" title="Configurar API Key">🧠 ${chatKey ? 'DeepSeek' : 'Local'} <span style="font-size:.6rem;opacity:.6">⚙️</span></div>
   <div class="chat-messages" id="chatMessages">
-    <div class="msg bot">¡Hola! 👋 Soy el asistente virtual de <strong>Suacha Estilo</strong>. Puedo consultar nuestros productos en tiempo real:<br>• 🔍 <strong>Stock:</strong> "¿hay camiseta oversize talla M?"<br>• 🎨 <strong>Colores:</strong> "¿de qué colores está el buzo?"<br>• 📏 <strong>Tallas:</strong> "¿tienen hoodie en XL?"<br>• 💵 <strong>Precios:</strong> "cuánto cuesta la gorra?"<br><br>¿Qué producto buscas? 🤔</div>
+    <div class="msg bot">¡Hola, parce! 👋 Soy <strong>Sua</strong>, la asistente virtual de Suacha Estilo.<br><br>Puedo consultarte al toque:<br>• 🔍 <strong>Productos:</strong> "¿tienen buzos?", "camiseta oversize", "gorras"<br>• 📏 <strong>Tallas y colores:</strong> "hay talla M?", "colores del hoodie"<br>• 💵 <strong>Precios exactos</strong> con stock en tiempo real<br><br>¿Qué estás buscando? 😎🔥</div>
   </div>
   <div class="chat-input">
     <input type="text" id="chatInput" placeholder="Escribe tu mensaje..." onkeydown="if(event.key==='Enter')sendMessage()">
@@ -1010,12 +1013,35 @@ window.addEventListener('scroll', () => {
   document.getElementById('scrollProgress').style.width = docH > 0 ? (window.scrollY / docH * 100) + '%' : '0%';
 });
 
-// ===== CHATBOT IA =====
+// ===== CHATBOT IA (DeepSeek + Smart Local) =====
+const DEEPSEEK_API = 'https://api.deepseek.com/v1/chat/completions';
+let chatKey = localStorage.getItem('se_deepseek_key') || '';
+let chatHistory = [{role:'system',content:'Eres "Sua", el asistente virtual amigable de Suacha Estilo, una marca de ropa urbana de Soacha, Colombia. Respondes en español colombiano, con energía y actitud. Ayudas a clientes a encontrar productos, dar info de tallas/colores/precios/stock, responder dudas de envíos, pagos, ubicación. Eres breve, directa y carismática. Usas emojis. Si preguntan por un producto, das nombre, precio, tallas, colores y stock exacto de la lista. Si no sabes algo, dices que pregunte al WhatsApp. NO inventes información.'}];
+
+function initChatKey() {
+  if(!chatKey) {
+    chatKey = prompt('🔑 Ingresa tu API Key de DeepSeek para activar el chat con IA (o deja vacío para modo local):') || '';
+    if(chatKey) localStorage.setItem('se_deepseek_key', chatKey);
+  } else {
+    if(confirm('🔑 Ya tienes una API Key configurada. ¿Quieres cambiarla o eliminarla?')) {
+      chatKey = prompt('Nueva API Key (o vacío para eliminar):') || '';
+      if(chatKey) localStorage.setItem('se_deepseek_key', chatKey);
+      else localStorage.removeItem('se_deepseek_key');
+    }
+  }
+  updateChatKeyStatus();
+}
+function updateChatKeyStatus() {
+  const el = document.getElementById('chatKeyStatus');
+  if(el) el.innerHTML = `🧠 ${chatKey ? 'DeepSeek' : 'Local'} <span style="font-size:.6rem;opacity:.6">⚙️</span>`;
+}
+
 function toggleChat() {
   const box = document.getElementById('chatBox');
   box.classList.toggle('open');
   if(box.classList.contains('open')) {
     document.getElementById('chatInput').focus();
+    if(!chatKey) initChatKey();
   }
 }
 
@@ -1027,110 +1053,123 @@ document.addEventListener('click', function(e) {
   }
 });
 
-function buscarProducto(texto) {
-  const t = texto.toLowerCase();
-  let encontrados = [];
+function addMsg(html, cls = 'bot') {
+  const msgs = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = `msg ${cls}`;
+  div.innerHTML = html;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
 
+function buscarProducto(texto) {
+  const t = texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+  let encontrados = [];
   for(const p of products) {
     const nombre = p.name.toLowerCase();
     const categoria = p.category.toLowerCase();
+    const desc = p.description.toLowerCase();
     const colores = p.colors.map(c => c.toLowerCase());
-    if(nombre.includes(t) || categoria.includes(t) || colores.some(c => c.includes(t) || t.includes(c))) {
+    if(nombre.includes(t) || categoria.includes(t) || desc.includes(t) || colores.some(c => c.includes(t) || t.includes(c))) {
       encontrados.push(p);
     }
   }
-
   if(encontrados.length === 0) return null;
-
-  let resp = "";
+  let resp = '';
   for(const p of encontrados) {
-    const stockText = p.stock > 0 ? `✅ Hay stock (${p.stock} unidades)` : "❌ Agotado";
-    resp += `\n\n${p.emoji} <strong>${p.name}</strong>\n💵 ${p.price}${p.old ? ` <span style="color:#999;text-decoration:line-through;">${p.old}</span>` : ''}\n📦 ${stockText}\n📏 Tallas: ${p.sizes.join(', ')}\n🎨 Colores: ${p.colors.join(', ')}\n📝 ${p.description}`;
+    const stockText = p.stock > 0 ? `✅ ${p.stock} en stock` : "❌ Agotado";
+    resp += `\n• ${p.emoji} *${p.name}*\n  💵 ${p.price}${p.old ? ` ~~${p.old}~~` : ''}\n  📦 ${stockText}\n  📏 ${p.sizes.join(', ')}\n  🎨 ${p.colors.join(', ')}`;
   }
   return encontrados.length === 1
-    ? `¡Claro! Aquí tienes la info completa:${resp}\n\n¿Quieres comprarla? Te puedo pasar al WhatsApp para concretar el pedido 💬`
-    : `Encontré ${encontrados.length} productos:${resp}\n\n¿Cuál te interesa más? Te doy más detalles o te paso al WhatsApp 💬`;
+    ? `¡Claro! Aquí está:\n${resp}\n\n¿Te interesa? Te paso al WhatsApp 💬`
+    : `Encontré ${encontrados.length} productos:\n${resp}\n\n¿Cuál te llama más la atención?`;
 }
 
-function sendMessage() {
+async function sendMessage() {
   const input = document.getElementById('chatInput');
   const msg = input.value.trim();
   if(!msg) return;
   input.value = '';
+  addMsg(msg, 'user');
 
-  const msgs = document.getElementById('chatMessages');
-  msgs.innerHTML += `<div class="msg user">${msg}</div>`;
-  msgs.scrollTop = msgs.scrollHeight;
+  const typingDiv = document.createElement('div');
+  typingDiv.className = 'msg bot';
+  typingDiv.innerHTML = '<div class="typing"><span></span><span></span><span></span></div>';
+  document.getElementById('chatMessages').appendChild(typingDiv);
+  document.getElementById('chatMessages').scrollTop = document.getElementById('chatMessages').scrollHeight;
 
-  msgs.innerHTML += `<div class="msg bot"><div class="typing"><span></span><span></span><span></span></div></div>`;
-  msgs.scrollTop = msgs.scrollHeight;
+  if(chatKey) {
+    try {
+      const userMsg = msg + '\n\nProductos disponibles:\n' + products.map(p => `${p.emoji} ${p.name} - ${p.price} - ${p.category} - Stock:${p.stock} - Tallas:${p.sizes.join('/')} - Colores:${p.colors.join('/')}`).join('\n');
+      chatHistory.push({role:'user',content:userMsg});
+      const res = await fetch(DEEPSEEK_API, {
+        method:'POST', headers:{'Content-Type':'application/json','Authorization':`Bearer ${chatKey}`},
+        body:JSON.stringify({model:'deepseek-chat',messages:chatHistory,temperature:.7,max_tokens:500})
+      });
+      typingDiv.remove();
+      if(res.ok) {
+        const data = await res.json();
+        const reply = data.choices[0].message.content;
+        chatHistory.push({role:'assistant',content:reply});
+        if(chatHistory.length > 12) chatHistory.splice(1, 2);
+        addMsg(reply.replace(/\n/g,'<br>'));
+      } else {
+        const err = await res.text();
+        if(res.status === 401) {
+          chatKey = ''; localStorage.removeItem('se_deepseek_key');
+          addMsg('🔑 La API Key no es válida. Tocá el 🤖 de nuevo para ingresar una nueva o usá el modo local.');
+        } else addMsg(`⚠️ Error de conexión (${res.status}). Uso modo local.`);
+      }
+      return;
+    } catch(e) {
+      typingDiv.remove();
+    }
+  }
 
+  // === SMART LOCAL MODE ===
   setTimeout(() => {
-    const typingEl = msgs.querySelector('.msg.bot:last-child');
-    if(typingEl) typingEl.remove();
-
+    typingDiv.remove();
     const lowMsg = msg.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+    const words = lowMsg.split(/\s+/);
 
-    // Primero buscar en productos
-    const nombresProductos = products.map(p => p.name.toLowerCase());
-    const palabrasClave = ["camiseta","buzo","hoodie","gorra","jogger","conjunto","set","oversize","urban","colombia","deportivo","accesorio","peruano","exclusivo","bordada","unisex","cultura","urbana","crew"];
-    const mencionaProducto = palabrasClave.some(k => lowMsg.includes(k)) || lowMsg.includes("talla") || lowMsg.includes("color") || lowMsg.includes("stock") || lowMsg.includes("hay") || lowMsg.includes("tiene") || lowMsg.includes("disponible");
+    // Detectar intención: producto, info general, saludo
+    const isProduct = words.some(w => ['camiseta','buzo','hoodie','gorra','jogger','conjunto','set','oversize','urban','colombia','deportivo','accesorio','peruano','exclusivo','bordada','unisex','cultura','urbana','crew','chomba','buso','camisa','pantalon','short','medias'].includes(w))
+      || lowMsg.includes('talla') || lowMsg.includes('tamañ') || lowMsg.includes('color') || lowMsg.includes('stock')
+      || lowMsg.includes('hay ') || lowMsg.includes('tiene') || lowMsg.includes('disponible') || lowMsg.includes('precio')
+      || lowMsg.includes('cuanto') || lowMsg.includes('cost') || lowMsg.includes('vale');
 
-    if(mencionaProducto) {
-      // Buscar en nombres completos y categorías
-      let encontrado = null;
-      for(const p of products) {
-        if(lowMsg.includes(p.name.toLowerCase()) || lowMsg.includes(p.category.toLowerCase()) || lowMsg.includes(p.name.split(" ")[0].toLowerCase())) {
-          encontrado = p;
-          break;
-        }
-      }
-
-      if(!encontrado) {
-        // Búsqueda por palabra clave
-        for(const k of palabrasClave) {
-          if(lowMsg.includes(k)) {
-            encontrado = products.find(p => p.name.toLowerCase().includes(k) || p.category.toLowerCase().includes(k));
-            if(encontrado) break;
-          }
-        }
-      }
-
-      if(!encontrado) {
-        // Búsqueda ampliada
-        const res = buscarProducto(lowMsg);
-        if(res) {
-          msgs.innerHTML += `<div class="msg bot">${res}</div>`;
-          msgs.scrollTop = msgs.scrollHeight;
+    if(isProduct) {
+      const res = buscarProducto(lowMsg);
+      if(res) { addMsg(res); return; }
+      // Fuzzy: match by word
+      for(const w of words) {
+        if(w.length < 3) continue;
+        const found = products.filter(p => p.name.toLowerCase().includes(w) || p.category.toLowerCase().includes(w) || p.description.toLowerCase().includes(w));
+        if(found.length > 0) {
+          const res = found.length === 1
+            ? `¡Sí! Tenemos *${found[0].name}* — ${found[0].price}\n📏 ${found[0].sizes.join(', ')}\n🎨 ${found[0].colors.join(', ')}\n📦 Stock: ${found[0].stock} unidades\n\n¿Te gusta? Te paso al WhatsApp para apartarla 💬`
+            : `Encontré ${found.length} productos relacionados:\n${found.map(p => `• ${p.emoji} ${p.name} - ${p.price}`).join('\n')}\n\n¿Cuál te gusta más?`;
+          addMsg(res);
           return;
         }
       }
-
-      if(encontrado) {
-        const stockTxt = encontrado.stock > 0 ? `✅ Sí hay stock. Quedan ${encontrado.stock} unidades.` : "❌ Agotado por el momento.";
-        const resp = `${encontrado.emoji} <strong>${encontrado.name}</strong>\n\n💵 <strong>Precio:</strong> ${encontrado.price}${encontrado.old ? ` (antes ${encontrado.old})` : ''}\n📦 <strong>Disponibilidad:</strong> ${stockTxt}\n📏 <strong>Tallas disponibles:</strong> ${encontrado.sizes.join(', ')}\n🎨 <strong>Colores:</strong> ${encontrado.colors.join(', ')}\n📝 ${encontrado.description}\n\n${encontrado.stock > 0 ? '¿Te interesa? Haz clic en el WhatsApp y la apartamos 😊' : '¡Pero tenemos otras opciones! Pregúntame por más productos 🙌'}`;
-        msgs.innerHTML += `<div class="msg bot">${resp}</div>`;
-        msgs.scrollTop = msgs.scrollHeight;
-        return;
-      }
+      addMsg('No encontré ese producto exacto 🤔 ¿Puedes decirme el nombre o categoría? Ej: "camiseta oversize", "buzo", "gorra colombia"');
+      return;
     }
 
-    // Respuestas generales (si no encontró producto)
-    let response = "Lo siento, no entendí bien 🤔 Puedes preguntarme:<br>• <strong>Productos:</strong> '¿tienen camisetas?', 'buzos disponibles', 'gorras'<br>• <strong>Stock:</strong> 'hay talla M?', 'colores disponibles', 'cuanto cuesta?'<br>• <strong>Info:</strong> 'ubicación', 'horarios', 'domicilios', 'pagos'<br>• O escríbenos directo al <a href='https://wa.me/573112112023' target='_blank' style='color:#22c55e;'>WhatsApp</a> 💬";
+    // Respuestas contextuales
+    if(lowMsg.includes('hola')||lowMsg.includes('buenas')||lowMsg.includes('buen')) { addMsg('¡Hola, parce! 👋 Soy Sua, la asistente de **Suacha Estilo**. ¿Buscas algo en especial? Una camiseta, un buzo, una gorra... Dime y te digo al toque si tenemos y a cómo 💪🔥'); return; }
+    if(lowMsg.includes('precio')||lowMsg.includes('cuanto')||lowMsg.includes('cost')||lowMsg.includes('vale')) { addMsg('Tenemos desde **$34.900** hasta **$139.900**. Dime qué producto te interesa y te doy el precio exacto con tallas y colores 😎'); return; }
+    if(lowMsg.includes('envio')||lowMsg.includes('domicilio')||lowMsg.includes('entrega')) { addMsg('📦 Hacemos envíos a **todo Colombia** (3-7 días hábiles). En **Soacha** podemos entregar el mismo día. ¿Dónde estás?'); return; }
+    if(lowMsg.includes('pago')||lowMsg.includes('nequi')||lowMsg.includes('daviplata')||lowMsg.includes('transfer')) { addMsg('💳 Recibimos **Nequi, Daviplata, transferencias bancarias y efectivo** contraentrega en Soacha. ¿Cuál te sirve más?'); return; }
+    if(lowMsg.includes('ubic')||lowMsg.includes('donde')||lowMsg.includes('direc')) { addMsg('📍 Estamos en **Calle 15 #6A-12, Soacha Centro**. También en San Mateo los fines de semana. ¿Te mando la ubicación por WhatsApp?'); return; }
+    if(lowMsg.includes('horario')) { addMsg('🕐 **Horarios:**\nLun-Vie: 9am-7pm\nSáb: 10am-6pm\nDom: 10am-4pm'); return; }
+    if(lowMsg.includes('whatsapp')||lowMsg.includes('contact')) { addMsg('💬 Escríbenos directo: **+57 311 211 2023** o toca el botón verde de WhatsApp en la esquina 👇'); return; }
+    if(lowMsg.includes('gracias')) { addMsg('¡Con gusto! 🙌 Cuando quieras saber de alguna prenda, aquí estoy. ¡Disfruta tu estilo, parce! 🔥'); return; }
 
-    if(lowMsg.includes("hola")||lowMsg.includes("buenas")||lowMsg.includes("buen")) response = "¡Hola! 👋 Soy el asistente de <strong>Suacha Estilo</strong>. Puedo decirte si tenemos un producto en específico, las tallas, colores y precios. ¿Qué buscas?";
-    else if(lowMsg.includes("precio")||lowMsg.includes("cuanto")||lowMsg.includes("cost")||lowMsg.includes("vale")) response = "Nuestros precios van desde $34.900 hasta $139.900. Dime qué producto te interesa y te doy el precio exacto con todos los detalles 😊";
-    else if(lowMsg.includes("domicilio")||lowMsg.includes("envio")||lowMsg.includes("enví")||lowMsg.includes("entrega")) response = "Hacemos envíos a toda Colombia 🇨🇴 Tiempo de entrega: 3-7 días hábiles. El costo varía por zona. En Soacha puedes pedir con entrega el mismo día 🚀";
-    else if(lowMsg.includes("pago")||lowMsg.includes("transfer")||lowMsg.includes("nequi")||lowMsg.includes("daviplata")||lowMsg.includes("efectivo")) response = "Aceptamos 💳 Transferencias bancarias, Nequi, Daviplata y efectivo contraentrega en Soacha. ¿Cuál te queda mejor?";
-    else if(lowMsg.includes("donde")||lowMsg.includes("ubic")||lowMsg.includes("direc")||lowMsg.includes("mapa")) response = "📍 Estamos en <strong>Calle 15 #6A-12, Soacha Centro</strong>. Tenemos sección de niños en Kra 7ma #7-26. También en San Mateo. ¿Quieres la ubicación en Maps?";
-    else if(lowMsg.includes("horario")) response = "🕐 <strong>Horarios:</strong><br>Lunes a Viernes: 9am - 7pm<br>Sábados: 10am - 6pm<br>Domingos: 10am - 4pm";
-    else if(lowMsg.includes("talla")||lowMsg.includes("tamañ")) response = "Manejamos tallas <strong>S, M, L, XL y 2XL</strong> dependiendo del producto. Dime cuál te interesa y te confirmo disponibilidad de esa talla 😊";
-    else if(lowMsg.includes("whatsapp")||lowMsg.includes("contact")) response = "💬 Escríbenos directo: <a href='https://wa.me/573112112023' target='_blank' style='color:#22c55e;font-weight:600;'>+57 311 211 2023</a> O toca el botón verde de WhatsApp en la esquina 👇";
-    else if(lowMsg.includes("gracias")) response = "¡A ti! 🙌 Cuando quieras saber de algún producto, aquí estoy. ¡Buen día! 😊";
-
-    msgs.innerHTML += `<div class="msg bot">${response}</div>`;
-    msgs.scrollTop = msgs.scrollHeight;
-  }, 1200);
+    // Fallback general
+    addMsg('No pillé muy bien 🤔 ¿Puedes repetirlo? Pregúntame por:\n• **Productos:** "¿tienen buzos?", "camiseta oversize", "gorras"\n• **Stock:** "hay talla M?", "colores disponibles"\n• **Info:** "ubicación", "horarios", "domicilios", "pagos"\n\nO escríbenos directo al WhatsApp 💬');
+  }, 1000);
 }
 
 // ===== CARRITO =====

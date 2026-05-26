@@ -13,11 +13,11 @@
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#dc2626">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Oswald','Arial Black',Impact,sans-serif;font-weight:400;background:#000;color:#fff;overflow-x:hidden}
+body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden}
 .font-display{font-family:'Bebas Neue',cursive;letter-spacing:2px}
 
 /* ===== ANIMACIONES ===== */
@@ -106,10 +106,10 @@ h2 span{color:#dc2626;display:inline-block;animation:float 4s ease-in-out infini
 .products{background:#0a0a0a}
 .product-toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2rem}
 .product-filters{display:flex;gap:8px;flex-wrap:wrap}
-.filter-btn{padding:8px 18px;border:1px solid rgba(255,255,255,.1);background:0;color:#999;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition:all .3s;font-family:'Oswald',sans-serif}
+.filter-btn{padding:8px 18px;border:1px solid rgba(255,255,255,.1);background:0;color:#999;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition:all .3s;font-family:'Inter',sans-serif}
 .filter-btn.active,.filter-btn:hover{border-color:#dc2626;background:rgba(220,38,38,.1);color:#fff}
 .product-search{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);padding:0 14px;max-width:260px;width:100%}
-.product-search input{flex:1;background:0;border:none;padding:10px 0;color:#fff;font-size:.82rem;outline:0;font-family:'Oswald',sans-serif}
+.product-search input{flex:1;background:0;border:none;padding:10px 0;color:#fff;font-size:.82rem;outline:0;font-family:'Inter',sans-serif}
 .product-search input::placeholder{color:#555}
 .product-search .icon{color:#555;font-size:.9rem}
 /* Shimmer */
@@ -119,18 +119,15 @@ h2 span{color:#dc2626;display:inline-block;animation:float 4s ease-in-out infini
 .skeleton-text{height:14px;margin:8px 0;border-radius:4px}
 .skeleton-text.short{width:60%}
 .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem}
-.product-card{background:#111;border:1px solid rgba(255,255,255,.06);transition:all .4s cubic-bezier(.25,.46,.45,.94);cursor:pointer;position:relative;overflow:hidden;transform:translateY(0);-webkit-tap-highlight-color:transparent;user-select:none}
-.product-card:active{transform:scale(.96);transition:transform .15s ease}
-.product-card::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--x,50%) var(--y,50%),rgba(255,255,255,.15) 0,transparent 60%);opacity:0;pointer-events:none;transition:opacity .3s;z-index:1}
-.product-card:active::after{opacity:1;transition:opacity 0s}
+.product-card{background:#111;border:1px solid rgba(255,255,255,.06);transition:all .4s cubic-bezier(.25,.46,.45,.94);cursor:default;position:relative;overflow:hidden;transform:translateY(0)}
 .product-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,#dc2626,#fca311);transform:scaleX(0);transform-origin:left;transition:transform .4s}
 .product-card:hover{transform:translateY(-8px);border-color:rgba(220,38,38,.3);box-shadow:0 20px 60px rgba(0,0,0,.5)}
 .product-card:hover::before{transform:scaleX(1)}
 .product-card:hover .product-img-wrap img{transform:scale(1.08)}
 .product-card:hover .product-img-overlay{opacity:1}
 .product-img-wrap{position:relative;aspect-ratio:1;overflow:hidden;background:#1a1a1a}
-.product-img-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
-.product-img-wrap .emoji-placeholder{position:absolute;inset:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3.5rem}
+.product-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.product-img-wrap .emoji-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3.5rem}
 .product-img-overlay{position:absolute;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;opacity:0;transition:all .4s;gap:12px;backdrop-filter:blur(4px)}
 .product-img-overlay .overlay-btn{background:#dc2626;color:#fff;border:none;padding:12px 24px;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition:all .3s;text-decoration:none;animation:glow 2s infinite}
 .product-img-overlay .overlay-btn:hover{background:#b91c1c;transform:scale(1.05)}
@@ -291,10 +288,10 @@ footer .brand-name span{color:#dc2626}
 .msg .typing span:nth-child(2){animation-delay:.2s}
 .msg .typing span:nth-child(3){animation-delay:.4s}
 .chat-input{display:flex;border-top:1px solid rgba(255,255,255,.08);padding:10px 12px;background:#0d0d0d;gap:8px}
-.chat-input input{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:10px 14px;color:#fff;font-size:.82rem;outline:0;transition:border .3s;font-family:'Oswald',sans-serif}
+.chat-input input{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:10px 14px;color:#fff;font-size:.82rem;outline:0;transition:border .3s;font-family:'Inter',sans-serif}
 .chat-input input:focus{border-color:#dc2626}
 .chat-input input::placeholder{color:#555}
-.chat-input button{background:#dc2626;border:none;color:#fff;padding:10px 16px;cursor:pointer;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;transition:.3s;font-family:'Oswald',sans-serif}
+.chat-input button{background:#dc2626;border:none;color:#fff;padding:10px 16px;cursor:pointer;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;transition:.3s;font-family:'Inter',sans-serif}
 .chat-input button:hover{background:#b91c1c}
 
 /* Scroll top */
@@ -327,8 +324,8 @@ footer .brand-name span{color:#dc2626}
   .timer-display{gap:.5rem}
   .mobile-bottom{display:block}
   .whatsapp-float{bottom:76px}
-  .chat-box{right:12px;left:12px;width:auto;bottom:160px;z-index:45}
-  .chat-toggle{bottom:96px;z-index:41}
+  .chat-box{right:12px;left:12px;width:auto;bottom:150px}
+  .chat-toggle{bottom:76px}
   .scroll-top{bottom:140px}
   section{padding:3rem 1rem}
   .product-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.75rem}
@@ -360,7 +357,7 @@ footer .brand-name span{color:#dc2626}
 .selector-group{margin-bottom:1rem}
 .selector-group label{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#999;margin-bottom:8px;display:block}
 .selector-options{display:flex;flex-wrap:wrap;gap:8px}
-.selector-options .opt{padding:8px 16px;border:1px solid rgba(255,255,255,.12);background:0;color:#ccc;cursor:pointer;font-size:.8rem;transition:all .3s;font-family:'Oswald',sans-serif}
+.selector-options .opt{padding:8px 16px;border:1px solid rgba(255,255,255,.12);background:0;color:#ccc;cursor:pointer;font-size:.8rem;transition:all .3s;font-family:'Inter',sans-serif}
 .selector-options .opt.active{border-color:#dc2626;background:rgba(220,38,38,.15);color:#fff}
 .selector-options .opt.disabled{opacity:.3;cursor:not-allowed;text-decoration:line-through}
 .selector-options .opt:not(.disabled):hover{border-color:#dc2626}
@@ -415,42 +412,9 @@ footer .brand-name span{color:#dc2626}
   .modal-grid{grid-template-columns:1fr}
   .modal-img-wrap{min-height:250px}
 }
-/* ===== PRELOADER ===== */
-.preloader{position:fixed;inset:0;z-index:9999;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:1;visibility:visible;animation:preloaderFade .5s 1.5s forwards}
-@keyframes preloaderFade{to{opacity:0;visibility:hidden;pointer-events:none}}
-.preloader-logo{font-family:'Bebas Neue',cursive;font-size:3rem;letter-spacing:6px;margin-bottom:1rem}
-.preloader-logo span{color:#dc2626}
-.preloader-bar{width:200px;height:3px;background:#1a1a1a;border-radius:2px;overflow:hidden}
-.preloader-bar-fill{height:100%;width:0%;background:linear-gradient(90deg,#dc2626,#fca311);border-radius:2px;animation:preloaderLoad 1.2s ease forwards}
-@keyframes preloaderLoad{0%{width:0%}50%{width:70%}100%{width:100%}}
-.preloader-text{color:#555;font-size:.7rem;text-transform:uppercase;letter-spacing:3px;margin-top:1rem}
-/* ===== CART BOUNCE ===== */
-@keyframes cartBounce{0%{transform:scale(1)}30%{transform:scale(1.4)}60%{transform:scale(.85)}100%{transform:scale(1)}}
-/* ===== FLY TO CART ===== */
-.fly-dot{position:fixed;width:16px;height:16px;border-radius:50%;background:#dc2626;z-index:999;pointer-events:none;transition:all .7s cubic-bezier(.25,.46,.45,.94)}
-/* ===== RELATED PRODUCTS ===== */
-.related-section{border-top:1px solid rgba(255,255,255,.06);padding:1.5rem 2rem;display:none}
-.related-section.has-items{display:block}
-.related-section h4{font-family:'Bebas Neue',cursive;font-size:1.2rem;margin-bottom:1rem;color:#999;letter-spacing:1px}
-.related-scroll{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px}
-.related-scroll::-webkit-scrollbar{display:none}
-.related-card{width:130px;flex-shrink:0;background:#1a1a1a;border:1px solid rgba(255,255,255,.06);cursor:pointer;transition:all .3s}
-.related-card:hover{transform:translateY(-4px);border-color:rgba(220,38,38,.4)}
-.related-img{width:100%;aspect-ratio:1;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#1a1a1a;position:relative}
-.related-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
-.related-card:hover .related-img img{transform:scale(1.1)}
-.related-img .fallback2{font-size:2.5rem}
-.related-info{padding:10px}
-.related-name{font-size:.7rem;font-weight:600;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.related-price{font-family:'Bebas Neue',cursive;font-size:1rem;color:#dc2626}
 </style>
 </head>
 <body>
-<div class="preloader" id="preloader">
-  <div class="preloader-logo">SUACHA<span>.</span>ESTILO</div>
-  <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
-  <div class="preloader-text">Cargando...</div>
-</div>
 <div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- Header -->
@@ -716,10 +680,6 @@ footer .brand-name span{color:#dc2626}
   <div class="modal">
     <button class="modal-close" onclick="closeQuickView()">✕</button>
     <div class="modal-grid" id="quickViewContent"></div>
-    <div class="related-section" id="qvRelated">
-      <h4>También te podría interesar</h4>
-      <div class="related-scroll" id="qvRelatedScroll"></div>
-    </div>
   </div>
 </div>
 
@@ -1124,12 +1084,13 @@ function agregarAlCarrito(id) {
   const p = products.find(x => x.id === id);
   if(!p) return;
   const exist = cart.find(i => i.id === id && i.talla === p.sizes[0] && i.color === p.colors[0]);
-  if(exist) exist.qty++;
-  else cart.push({id, qty:1, talla:p.sizes[0], color:p.colors[0], price:p.price});
+  if(exist) {
+    exist.qty++;
+  } else {
+    cart.push({id, qty:1, talla:p.sizes[0], color:p.colors[0], price:p.price});
+  }
   guardarCart();
   toggleCart();
-  document.getElementById('cartCount').style.animation = 'cartBounce .5s ease';
-  setTimeout(() => document.getElementById('cartCount').style.animation = '', 600);
   notificar(`✅ ${p.name} agregado al carrito`);
 }
 
@@ -1214,33 +1175,10 @@ function openQuickView(id) {
   window._qvSize = p.sizes[0];
   window._qvColor = p.colors[0];
   window._qvQty = 1;
-  // Related products
-  const relatedContainer = document.getElementById('qvRelatedScroll');
-  const relatedSection = document.getElementById('qvRelated');
-  if(relatedContainer && relatedSection) {
-    const related = products.filter(x => x.id !== id && (x.category === p.category || x.colors.some(c => p.colors.includes(c))));
-    const picks = related.sort(() => Math.random() - .5).slice(0, 4);
-    if(picks.length) {
-      relatedContainer.innerHTML = picks.map(r => `
-        <div class="related-card" onclick="openQuickView(${r.id})">
-          <div class="related-img"><img src="img${r.id}.jpeg" alt="${r.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="fallback2" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center">${r.emoji}</div></div>
-          <div class="related-info">
-            <div class="related-name">${r.name}</div>
-            <div class="related-price">${r.price}</div>
-          </div>
-        </div>
-      `).join('');
-      relatedSection.classList.add('has-items');
-    } else {
-      relatedSection.classList.remove('has-items');
-    }
-  }
 }
 
 function closeQuickView() {
   document.getElementById('quickViewModal').classList.remove('open');
-  const rs = document.getElementById('qvRelatedScroll');
-  if(rs) rs.innerHTML = '';
 }
 
 function selectQvOption(type, val, btn) {
@@ -1259,103 +1197,16 @@ function qvAddToCart(id) {
   const p = products.find(x => x.id === id);
   if(!p) return;
   const exist = cart.find(i => i.id === id && i.talla === window._qvSize && i.color === window._qvColor);
-  if(exist) exist.qty += window._qvQty;
-  else cart.push({id, qty: window._qvQty, talla: window._qvSize, color: window._qvColor, price: p.price});
+  if(exist) {
+    exist.qty += window._qvQty;
+  } else {
+    cart.push({id, qty: window._qvQty, talla: window._qvSize, color: window._qvColor, price: p.price});
+  }
   guardarCart();
   closeQuickView();
   toggleCart();
-  document.getElementById('cartCount').style.animation = 'cartBounce .5s ease';
-  setTimeout(() => document.getElementById('cartCount').style.animation = '', 600);
   notificar(`✅ ${p.name} (${window._qvColor}, ${window._qvSize}) agregado al carrito`);
 }
-
-// ===== PRELOADER =====
-setTimeout(() => {
-  const p = document.getElementById('preloader');
-  if(p) p.style.display = 'none';
-}, 1700);
-
-// ===== SCROLL REVEAL =====
-(function() {
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if(e.isIntersecting) {
-        e.target.classList.add('active');
-        if(e.target.classList.contains('stagger-children')) obs.unobserve(e.target);
-        else obs.unobserve(e.target);
-      }
-    });
-  }, {threshold: .1});
-  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-children').forEach(el => obs.observe(el));
-})();
-
-// ===== TEXT SCRAMBLE =====
-(function() {
-  const wrap = document.querySelector('.hero h1');
-  if(!wrap) return;
-  const original = wrap.innerHTML;
-  const chars = '!<>-_\\/[]{}—=+*^?#________';
-  let interval;
-  function scramble() {
-    let iterations = 0;
-    clearInterval(interval);
-    interval = setInterval(() => {
-      wrap.innerHTML = original.split('').map((c, i) => {
-        if(i < iterations) return original[i];
-        return chars[Math.floor(Math.random() * chars.length)];
-      }).join('');
-      iterations += 1/3;
-      if(iterations >= original.length) { clearInterval(interval); wrap.innerHTML = original; }
-    }, 30);
-  }
-  setInterval(scramble, 8000);
-  setTimeout(scramble, 1500);
-})();
-
-// ===== SCROLL PROGRESS =====
-(function() {
-  const bar = document.getElementById('scrollProgress');
-  if(!bar) return;
-  window.addEventListener('scroll', () => {
-    const h = document.documentElement;
-    bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
-  });
-})();
-
-// ===== STAT COUNTERS =====
-(function() {
-  document.querySelectorAll('.gallery-stat .num').forEach(el => {
-    const txt = el.textContent.trim();
-    const target = txt.endsWith('K') ? parseInt(txt) * 1000 : txt.startsWith('#') ? parseInt(txt.slice(1)) : parseInt(txt.replace(/\D/g,''));
-    if(!target || isNaN(target)) return;
-    el.textContent = '0';
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if(!e.isIntersecting) return;
-        obs.unobserve(el);
-        let current = 0;
-        const step = Math.ceil(target / 40);
-        const timer = setInterval(() => {
-          current += step;
-          if(current >= target) { current = target; clearInterval(timer); }
-          el.textContent = current.toLocaleString('es-CO');
-        }, 40);
-      });
-    }, {threshold: .5});
-    obs.observe(el);
-  });
-})();
-
-/* ===== IPHONE TAP RIPPLE =====
-document.getElementById('productGrid').addEventListener('click', e => {
-  const card = e.target.closest('.product-card');
-  if(!card || e.target.closest('.overlay-btn')) return;
-  const rect = card.getBoundingClientRect();
-  card.style.setProperty('--x', ((e.clientX - rect.left) / rect.width * 100).toFixed(1) + '%');
-  card.style.setProperty('--y', ((e.clientY - rect.top) / rect.height * 100).toFixed(1) + '%');
-  const btn = card.querySelector('.overlay-btn');
-  if(btn) btn.click();
-});
 </script>
 </body>
 </html>

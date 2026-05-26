@@ -128,10 +128,10 @@ h2 span{color:#dc2626;display:inline-block}
 .product-card:hover{transform:translateY(-4px);border-color:rgba(220,38,38,.3);box-shadow:0 12px 40px rgba(0,0,0,.5)}
 .product-card:hover::before{transform:scaleX(1)}
 .product-card:hover .product-img-overlay{opacity:1}
-.product-img-wrap{position:relative;aspect-ratio:1;overflow:hidden;background:#1a1a1a}
-.product-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+.product-img-wrap{position:relative;aspect-ratio:1;overflow:hidden;background:linear-gradient(135deg,#1a1a2e,#2d1a1a);display:flex;align-items:center;justify-content:center}
+.product-img-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .product-img-wrap .emoji-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3.5rem}
-.product-img-overlay{position:absolute;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;opacity:0;transition:all .4s;gap:12px;backdrop-filter:blur(4px)}
+.product-img-overlay{position:absolute;inset:0;z-index:2;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;opacity:0;transition:all .4s;gap:12px;backdrop-filter:blur(4px)}
 .product-img-overlay .overlay-btn{background:#dc2626;color:#fff;border:none;padding:12px 24px;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition:all .3s;text-decoration:none;animation:glow 2s infinite}
 .product-img-overlay .overlay-btn:hover{background:#b91c1c;transform:scale(1.05)}
 .product-info{padding:1rem 1.25rem 1.25rem}
@@ -708,8 +708,7 @@ let pid = 1;
 const products = [];
 productCats.forEach(c => {
   for(let i=1;i<=c.count;i++){
-    const suf = c.count > 1 ? ' Modelo ' + i : '';
-    products.push({id:pid++,name:c.cat + suf,category:c.cat,price:c.price,old:null,img:c.img+i+'.jpeg',emoji:c.emoji,sold:Math.floor(Math.random()*30+10),stock:Math.floor(Math.random()*15+3),sizes:c.sizes,description:c.desc});
+    products.push({id:pid++,name:c.cat,category:c.cat,price:c.price,old:null,img:c.img+i+'.jpeg',emoji:c.emoji,sold:Math.floor(Math.random()*30+10),stock:Math.floor(Math.random()*15+3),sizes:c.sizes,description:c.desc});
   }
 });
 const productGrid = document.getElementById('productGrid');
@@ -718,8 +717,7 @@ products.forEach(p => {
   productGrid.innerHTML += `
     <div class="product-card" data-category="${p.category}" data-name="${p.name.toLowerCase()}">
       <div class="product-img-wrap">
-        <div class="skeleton skeleton-img" style="position:absolute;inset:0;"></div>
-        <img src="${p.img}" alt="${p.name}" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none';this.previousElementSibling.style.display='none';this.nextElementSibling.style.display='flex'"><div class="emoji-placeholder" style="background:linear-gradient(135deg,#2d1b3d #6b2fa0);display:none">${p.emoji}</div>
+        <img src="${p.img}" alt="${p.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="emoji-placeholder" style="display:none">${p.emoji}</div>
         <div class="product-img-overlay">
           <button class="overlay-btn" onclick="openQuickView(${p.id})" style="animation:none;background:#222;border:1px solid rgba(255,255,255,.15);">👁 Vista rápida</button>
           <button class="overlay-btn" onclick="agregarAlCarrito(${p.id})">🛒 Agregar</button>

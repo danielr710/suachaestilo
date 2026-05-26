@@ -150,7 +150,7 @@ h2 span{color:#dc2626;display:inline-block}
 .product-card:hover{transform:translateY(-4px);border-color:rgba(220,38,38,.3);box-shadow:0 12px 40px rgba(0,0,0,.5)}
 .product-card:hover::before{transform:scaleX(1)}
 .product-card:hover .product-img-overlay{opacity:1;pointer-events:auto}
-.product-img-wrap{position:relative;aspect-ratio:1;overflow:hidden;background:linear-gradient(135deg,#1a1a2e,#2d1a1a)}
+.product-img-wrap{position:relative;overflow:hidden;background:linear-gradient(135deg,#1a1a2e,#2d1a1a)}
 .product-img-wrap img{display:block;width:100%}
 .product-img-overlay{position:absolute;inset:0;z-index:2;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;opacity:0;transition:all .4s;gap:12px;pointer-events:none}
 .product-img-overlay .overlay-btn{background:#dc2626;color:#fff;border:none;padding:12px 24px;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition:all .3s;text-decoration:none;animation:glow 2s infinite}
@@ -295,7 +295,6 @@ footer .brand-name span{color:#dc2626}
   .gallery-grid{grid-template-columns:repeat(3,1fr);gap:8px}
   .gallery-item{aspect-ratio:1}
   .product-grid{grid-template-columns:repeat(2,1fr);gap:.75rem}
-  .product-img-wrap{aspect-ratio:1}
   .footer-grid{grid-template-columns:1fr;gap:2rem}
   .location-features{grid-template-columns:repeat(2,1fr)}
   .location-buttons{flex-direction:column}
@@ -750,8 +749,7 @@ products.forEach(p => {
   const i = document.createElement('img');
   i.src = p.img;
   i.alt = p.name;
-  i.style.cssText = 'width:100%;object-fit:cover';
-  i.onerror = function() { this.style.display = 'none'; };
+  i.style.cssText = 'width:100%;height:auto;display:block';
   wrap.appendChild(i);
   productGrid.appendChild(card);
 });

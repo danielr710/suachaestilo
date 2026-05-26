@@ -872,7 +872,7 @@ function actualizarUI() {
   }).join('%0A');
   document.getElementById('cartWspBtn').href = `https://wa.me/573112112023?text=${encodeURIComponent('Hola! Quiero comprar:%0A' + cart.map(i => {
     const p = products.find(x => x.id === i.id);
-    return p ? `• ${p.name} - Talla ${i.talla} x${i.qty} = $${(parseInt(i.price.replace(/\D/g,''))*i.qty).toLocaleString('es-CO')}` : '';
+    return p ? `${p.name} Talla ${i.talla} x${i.qty} = $${(parseInt(i.price.replace(/\D/g,''))*i.qty).toLocaleString('es-CO')}` : '';
   }).join('%0A') + '%0A%0ATotal: $' + total.toLocaleString('es-CO'))}`;
 }
 

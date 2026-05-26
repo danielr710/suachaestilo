@@ -697,13 +697,21 @@ function aplicarFiltros() {
 }
 
 // ===== PRODUCTOS =====
-const products = [
-  {id:1,name:"Croptops",category:"Croptops",price:"$45.000",old:null,img:"croptop1.jpeg",emoji:"👚",sold:22,stock:9,sizes:["S","M","L"],description:"Croptop oversize 200 g/m². Corte moderno, diseño fresco y juvenil. Perfecto para looks urbanos con actitud."},
-  {id:2,name:"Pantaloneta Jean",category:"Pantaloneta Jean",price:"$90.000",old:null,img:"pantaloneta1.jpeg",emoji:"👖",sold:16,stock:11,sizes:["M","L","XL"],description:"Pantaloneta jean urbana corte recto. Mezcla denim con elastic, cintura ajustable, bolsillos utilitarios."},
-  {id:3,name:"Camisetas niño",category:"Camisetas niño",price:"$40.000",old:null,img:"kids1.jpeg",emoji:"👶",sold:31,stock:14,sizes:["4","6","8","10","12","16"],description:"Camiseta infantil 200 g/m², algodón suave. Diseños divertidos y cómodos para los más pequeños."},
-  {id:4,name:"Camisetas oversize",category:"Camisetas oversize",price:"$90.000",old:null,img:"oversize1.jpeg",emoji:"👕",sold:35,stock:6,sizes:["S","M","L","XL"],description:"Camiseta oversize edición limitada 240 g/m². Estampado exclusivo frontal y trasero. Algodón peruano premium, diseño único."},
-  {id:5,name:"Buckethat",category:"Buckethat",price:"$70.000",old:null,img:"buckethat1.jpeg",emoji:"🧢",sold:28,stock:20,sizes:["Única"],description:"Bucket Hat con logo bordado. Tela ripstop resistente, fresco y cómodo. El accesorio urbano perfecto."}
+const productCats = [
+  {cat:"Croptops",price:"$45.000",img:"croptop",emoji:"👚",sizes:["S","M","L"],desc:"Croptop oversize 200 g/m². Corte moderno, diseño fresco y juvenil.",count:4},
+  {cat:"Pantaloneta Jean",price:"$90.000",img:"pantaloneta",emoji:"👖",sizes:["M","L","XL"],desc:"Pantaloneta jean urbana corte recto. Mezcla denim con elastic.",count:4},
+  {cat:"Camisetas niño",price:"$40.000",img:"kids",emoji:"👶",sizes:["4","6","8","10","12","16"],desc:"Camiseta infantil 200 g/m², algodón suave. Diseños divertidos.",count:6},
+  {cat:"Camisetas oversize",price:"$90.000",img:"oversize",emoji:"👕",sizes:["S","M","L","XL"],desc:"Camiseta oversize 240 g/m². Estampado exclusivo. Algodón peruano premium.",count:7},
+  {cat:"Buckethat",price:"$70.000",img:"buckethat",emoji:"🧢",sizes:["Única"],desc:"Bucket Hat con logo bordado. Tela ripstop resistente.",count:6}
 ];
+let pid = 1;
+const products = [];
+productCats.forEach(c => {
+  for(let i=1;i<=c.count;i++){
+    const suf = c.count > 1 ? ' Modelo ' + i : '';
+    products.push({id:pid++,name:c.cat + suf,category:c.cat,price:c.price,old:null,img:c.img+i+'.jpeg',emoji:c.emoji,sold:Math.floor(Math.random()*30+10),stock:Math.floor(Math.random()*15+3),sizes:c.sizes,description:c.desc});
+  }
+});
 const productGrid = document.getElementById('productGrid');
 products.forEach(p => {
   const stockPct = p.stock > 0 ? Math.round(p.sold/(p.sold+p.stock)*100) : 80;

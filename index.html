@@ -119,7 +119,10 @@ h2 span{color:#dc2626;display:inline-block;animation:float 4s ease-in-out infini
 .skeleton-text{height:14px;margin:8px 0;border-radius:4px}
 .skeleton-text.short{width:60%}
 .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem}
-.product-card{background:#111;border:1px solid rgba(255,255,255,.06);transition:all .4s cubic-bezier(.25,.46,.45,.94);cursor:default;position:relative;overflow:hidden;transform:translateY(0)}
+.product-card{background:#111;border:1px solid rgba(255,255,255,.06);transition:all .4s cubic-bezier(.25,.46,.45,.94);cursor:pointer;position:relative;overflow:hidden;transform:translateY(0);-webkit-tap-highlight-color:transparent;user-select:none}
+.product-card:active{transform:scale(.96);transition:transform .15s ease}
+.product-card::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--x,50%) var(--y,50%),rgba(255,255,255,.15) 0,transparent 60%);opacity:0;pointer-events:none;transition:opacity .3s;z-index:1}
+.product-card:active::after{opacity:1;transition:opacity 0s}
 .product-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,#dc2626,#fca311);transform:scaleX(0);transform-origin:left;transition:transform .4s}
 .product-card:hover{transform:translateY(-8px);border-color:rgba(220,38,38,.3);box-shadow:0 20px 60px rgba(0,0,0,.5)}
 .product-card:hover::before{transform:scaleX(1)}
@@ -412,9 +415,27 @@ footer .brand-name span{color:#dc2626}
   .modal-grid{grid-template-columns:1fr}
   .modal-img-wrap{min-height:250px}
 }
+/* ===== PRELOADER ===== */
+.preloader{position:fixed;inset:0;z-index:9999;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:1;visibility:visible;animation:preloaderOut .6s 2s forwards}
+@keyframes preloaderOut{to{opacity:0;visibility:hidden;pointer-events:none}}
+.preloader-logo{font-family:'Bebas Neue',cursive;font-size:3rem;letter-spacing:6px;margin-bottom:1rem;animation:pulse 1.2s infinite}
+.preloader-logo span{color:#dc2626}
+.preloader-bar{width:200px;height:3px;background:#1a1a1a;border-radius:2px;overflow:hidden}
+.preloader-bar-fill{height:100%;width:0;background:linear-gradient(90deg,#dc2626,#fca311);border-radius:2px;animation:preloaderLoad 1.5s ease forwards}
+@keyframes preloaderLoad{0%{width:0}50%{width:70%}100%{width:100%}}
+.preloader-text{color:#555;font-size:.7rem;text-transform:uppercase;letter-spacing:3px;margin-top:1rem}
+/* ===== PARTICLES HERO ===== */
+#particles-canvas{position:absolute;inset:0;z-index:0;pointer-events:none}
+/* ===== CART BOUNCE ===== */
+@keyframes cartBounce{0%{transform:scale(1)}30%{transform:scale(1.5)}60%{transform:scale(.85)}100%{transform:scale(1)}}
 </style>
 </head>
 <body>
+<div class="preloader" id="preloader">
+  <div class="preloader-logo">SUACHA<span>.</span>ESTILO</div>
+  <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
+  <div class="preloader-text">Cargando...</div>
+</div>
 <div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- Header -->
@@ -451,6 +472,7 @@ footer .brand-name span{color:#dc2626}
 
 <!-- Hero -->
 <section class="hero" id="hero">
+  <canvas id="particles-canvas"></canvas>
   <div class="hero-bg" style="background:url('https://lh3.googleusercontent.com/p/AF1QipPp-BO7CrDL0i9cUtgjZaBChKVPHDUaw0ZBvO1E=s1360-w1360-h1020-rw')center/cover no-repeat fixed"></div>
   <div class="hero-content">
     <p class="hero-tag">🔥 Hecho en Colombia</p>
@@ -1084,13 +1106,12 @@ function agregarAlCarrito(id) {
   const p = products.find(x => x.id === id);
   if(!p) return;
   const exist = cart.find(i => i.id === id && i.talla === p.sizes[0] && i.color === p.colors[0]);
-  if(exist) {
-    exist.qty++;
-  } else {
-    cart.push({id, qty:1, talla:p.sizes[0], color:p.colors[0], price:p.price});
-  }
+  if(exist) exist.qty++;
+  else cart.push({id,qty:1,talla:p.sizes[0],color:p.colors[0],price:p.price});
   guardarCart();
   toggleCart();
+  const cc = document.getElementById('cartCount');
+  if(cc) { cc.style.animation='cartBounce .5s ease'; setTimeout(()=>cc.style.animation='',600); }
   notificar(`✅ ${p.name} agregado al carrito`);
 }
 
@@ -1197,16 +1218,89 @@ function qvAddToCart(id) {
   const p = products.find(x => x.id === id);
   if(!p) return;
   const exist = cart.find(i => i.id === id && i.talla === window._qvSize && i.color === window._qvColor);
-  if(exist) {
-    exist.qty += window._qvQty;
-  } else {
-    cart.push({id, qty: window._qvQty, talla: window._qvSize, color: window._qvColor, price: p.price});
-  }
+  if(exist) exist.qty += window._qvQty;
+  else cart.push({id,qty:window._qvQty,talla:window._qvSize,color:window._qvColor,price:p.price});
   guardarCart();
   closeQuickView();
   toggleCart();
+  const cc = document.getElementById('cartCount');
+  if(cc) { cc.style.animation='cartBounce .5s ease'; setTimeout(()=>cc.style.animation='',600); }
   notificar(`✅ ${p.name} (${window._qvColor}, ${window._qvSize}) agregado al carrito`);
 }
+
+// ===== PRELOADER =====
+setTimeout(()=>{const p=document.getElementById('preloader');if(p)p.style.display='none'},2100);
+
+// ===== SCROLL REVEAL =====
+(function(){
+  if(!window.IntersectionObserver) return;
+  const obs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('active');obs.unobserve(en.target)}})},{threshold:.1});
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale,.stagger-children').forEach(el=>obs.observe(el));
+})();
+
+// ===== TEXT SCRAMBLE =====
+(function(){
+  const w=document.querySelector('.hero h1');
+  if(!w) return;
+  const o=w.innerHTML,chars='!<>-_\\/[]{}—=+*^?#________';
+  let iv;
+  function sc(){
+    let i=0;
+    clearInterval(iv);
+    iv=setInterval(()=>{
+      w.innerHTML=o.split('').map((c,j)=>j<i?o[j]:chars[Math.floor(Math.random()*chars.length)]).join('');
+      i+=.33;
+      if(i>=o.length){clearInterval(iv);w.innerHTML=o}
+    },30);
+  }
+  setInterval(sc,8000);
+  setTimeout(sc,1500);
+})();
+
+// ===== SCROLL PROGRESS =====
+(function(){
+  const b=document.getElementById('scrollProgress');
+  if(!b) return;
+  window.addEventListener('scroll',()=>{
+    const h=document.documentElement;
+    b.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+  });
+})();
+
+// ===== IPHONE TAP RIPPLE =====
+document.getElementById('productGrid').addEventListener('click',e=>{
+  const c=e.target.closest('.product-card');
+  if(!c||e.target.closest('.overlay-btn')) return;
+  const r=c.getBoundingClientRect();
+  c.style.setProperty('--x',((e.clientX-r.left)/r.width*100).toFixed(1)+'%');
+  c.style.setProperty('--y',((e.clientY-r.top)/r.height*100).toFixed(1)+'%');
+  const btn=c.querySelector('.overlay-btn');
+  if(btn) btn.click();
+});
+
+// ===== PARTICLES HERO =====
+(function(){
+  const c=document.getElementById('particles-canvas');
+  if(!c) return;
+  const ctx=c.getContext('2d');
+  let w,h,particles=[];
+  function resize(){w=c.width=innerWidth;h=c.height=innerHeight}
+  resize();
+  window.addEventListener('resize',resize);
+  class P{
+    constructor(){this.reset()}
+    reset(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=(Math.random()-.5)*.6;this.vy=(Math.random()-.5)*.6;this.r=Math.random()*2+1;this.o=Math.random()*.4+.1}
+    update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>w||this.y<0||this.y>h)this.reset()}
+    draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=`rgba(220,38,38,${this.o})`;ctx.fill()}
+  }
+  for(let i=0;i<80;i++) particles.push(new P());
+  function anim(){
+    ctx.clearRect(0,0,w,h);
+    particles.forEach(p=>{p.update();p.draw()});
+    requestAnimationFrame(anim);
+  }
+  anim();
+})();
 </script>
 </body>
 </html>

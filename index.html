@@ -436,7 +436,7 @@ footer .brand-name span{color:#dc2626}
 <header>
   <nav>
     <a href="#" class="logo">
-      <img class="logo-img" src="SUACHA-ESTILO rojo (1).png" alt="Suacha Estilo">
+      <img class="logo-img" src="SUACHA-ESTILO rojo (1).png?v=2" alt="Suacha Estilo">
       SUACHA<span style="color:#dc2626">.</span>ESTILO
     </a>
     <div style="display:flex;align-items:center;gap:4px;">
@@ -506,7 +506,7 @@ footer .brand-name span{color:#dc2626}
   <div class="section-inner">
     <div class="brand-grid">
       <div class="brand-image-wrap reveal-left">
-        <div class="main-img" style="background:url('identidad.jpeg') center/cover no-repeat;min-height:400px;"></div>
+        <div class="main-img" style="background:url('identidad.jpeg?v=2') center/cover no-repeat;min-height:400px;"></div>
       </div>
       <div class="reveal-right">
         <p class="section-tag">🎯 Nuestra Historia</p>
@@ -721,7 +721,7 @@ let pid = 1;
 const products = [];
 productCats.forEach(c => {
   for(let i=1;i<=c.count;i++){
-    products.push({id:pid++,name:c.cat,category:c.cat,price:c.price,old:null,img:c.img+i+'.jpeg',sold:Math.floor(Math.random()*30+10),stock:Math.floor(Math.random()*15+3),sizes:c.sizes,description:c.desc});
+    products.push({id:pid++,name:c.cat,category:c.cat,price:c.price,old:null,img:c.img+i+'.jpeg?v=2',sold:Math.floor(Math.random()*30+10),stock:Math.floor(Math.random()*15+3),sizes:c.sizes,description:c.desc});
   }
 });
 const productGrid = document.getElementById('productGrid');
@@ -747,9 +747,7 @@ products.forEach(p => {
   const img = new Image();
   img.onload = function() {
     const wrap = card.querySelector('.product-img-wrap');
-    wrap.style.backgroundImage = `url('${p.img}')`;
-    wrap.style.backgroundSize = 'cover';
-    wrap.style.backgroundPosition = 'center';
+    wrap.style.background = `#1a1a1a url('${p.img}') center/cover no-repeat`;
   };
   img.onerror = function() {};
   img.src = p.img;
@@ -780,10 +778,10 @@ testimonials.forEach(t => {
 
 // ===== GALLERY =====
 const gallery = [
-  {img:"comunidad1.jpeg",likes:312,comments:24,caption:"Nuestra comunidad 🔥"},
-  {img:"comunidad2.jpeg",likes:287,comments:21,caption:"familia Suacha Estilo 💪"},
-  {img:"comunidad3.jpeg",likes:256,comments:18,caption:"Cultura en movimiento ✨"},
-  {img:"comunidad4.jpeg",likes:234,comments:16,caption:"Más que ropa, identidad 🔥"}
+  {img:"comunidad1.jpeg?v=2",likes:312,comments:24,caption:"Nuestra comunidad 🔥"},
+  {img:"comunidad2.jpeg?v=2",likes:287,comments:21,caption:"familia Suacha Estilo 💪"},
+  {img:"comunidad3.jpeg?v=2",likes:256,comments:18,caption:"Cultura en movimiento ✨"},
+  {img:"comunidad4.jpeg?v=2",likes:234,comments:16,caption:"Más que ropa, identidad 🔥"}
 ];
 const galleryGrid = document.getElementById('galleryGrid');
 gallery.forEach((g,i) => {

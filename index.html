@@ -508,7 +508,7 @@ footer .brand-name span{color:#dc2626}
   <div class="section-inner">
     <div class="brand-grid">
       <div class="brand-image-wrap reveal-left">
-        <div class="main-img"><img src="identidad.jpeg?v=2" alt="Suacha Estilo"></div>
+        <div class="main-img"><img src="identidad.png" alt="Suacha Estilo"></div>
       </div>
       <div class="reveal-right">
         <p class="section-tag">🎯 Nuestra Historia</p>
@@ -723,7 +723,7 @@ let pid = 1;
 const products = [];
 productCats.forEach(c => {
   for(let i=1;i<=c.count;i++){
-    products.push({id:pid++,name:c.cat,category:c.cat,price:c.price,old:null,img:c.img+i+'.jpeg?v=2',sold:Math.floor(Math.random()*30+10),stock:Math.floor(Math.random()*15+3),sizes:c.sizes,description:c.desc});
+    products.push({id:pid++,name:c.cat,category:c.cat,price:c.price,old:null,  img:c.img+i+'.png',sold:Math.floor(Math.random()*30+10),stock:Math.floor(Math.random()*15+3),sizes:c.sizes,description:c.desc});
   }
 });
 const productGrid = document.getElementById('productGrid');
@@ -780,10 +780,10 @@ testimonials.forEach(t => {
 
 // ===== GALLERY =====
 const gallery = [
-  {img:"comunidad1.jpeg?v=2",likes:312,comments:24,caption:"Nuestra comunidad 🔥"},
-  {img:"comunidad2.jpeg?v=2",likes:287,comments:21,caption:"familia Suacha Estilo 💪"},
-  {img:"comunidad3.jpeg?v=2",likes:256,comments:18,caption:"Cultura en movimiento ✨"},
-  {img:"comunidad4.jpeg?v=2",likes:234,comments:16,caption:"Más que ropa, identidad 🔥"}
+  {img:"comunidad1.png",likes:312,comments:24,caption:"Nuestra comunidad 🔥"},
+  {img:"comunidad2.png",likes:287,comments:21,caption:"familia Suacha Estilo 💪"},
+  {img:"comunidad3.png",likes:256,comments:18,caption:"Cultura en movimiento ✨"},
+  {img:"comunidad4.png",likes:234,comments:16,caption:"Más que ropa, identidad 🔥"}
 ];
 const galleryGrid = document.getElementById('galleryGrid');
 gallery.forEach((g,i) => {

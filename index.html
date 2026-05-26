@@ -180,7 +180,7 @@ h2 span{color:#dc2626;display:inline-block}
 
 /* Gallery */
 .gallery{background:#000}
-.gallery-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
 .gallery-item{position:relative;aspect-ratio:1;overflow:hidden;cursor:pointer;background:#111}
 .gallery-item .placeholder{width:100%;height:100%;position:relative;overflow:hidden}
 .gallery-item .placeholder img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
@@ -698,11 +698,11 @@ function aplicarFiltros() {
 
 // ===== PRODUCTOS =====
 const products = [
-  {id:1,name:"Croptops",category:"Croptops",price:"$45.000",old:null,img:"croptop.jpeg",emoji:"👚",sold:22,stock:9,sizes:["S","M","L"],description:"Croptop oversize 200 g/m². Corte moderno, diseño fresco y juvenil. Perfecto para looks urbanos con actitud."},
-  {id:2,name:"Pantaloneta Jean",category:"Pantaloneta Jean",price:"$90.000",old:null,img:"pantaloneta.jpeg",emoji:"👖",sold:16,stock:11,sizes:["M","L","XL"],description:"Pantaloneta jean urbana corte recto. Mezcla denim con elastic, cintura ajustable, bolsillos utilitarios."},
-  {id:3,name:"Camisetas niño",category:"Camisetas niño",price:"$40.000",old:null,img:"kids.jpeg",emoji:"👶",sold:31,stock:14,sizes:["4","6","8","10","12","16"],description:"Camiseta infantil 200 g/m², algodón suave. Diseños divertidos y cómodos para los más pequeños."},
-  {id:4,name:"Camisetas oversize",category:"Camisetas oversize",price:"$90.000",old:null,img:"oversize.jpeg",emoji:"👕",sold:35,stock:6,sizes:["S","M","L","XL"],description:"Camiseta oversize edición limitada 240 g/m². Estampado exclusivo frontal y trasero. Algodón peruano premium, diseño único."},
-  {id:5,name:"Buckethat",category:"Buckethat",price:"$70.000",old:null,img:"buckethat.jpeg",emoji:"🧢",sold:28,stock:20,sizes:["Única"],description:"Bucket Hat con logo bordado. Tela ripstop resistente, fresco y cómodo. El accesorio urbano perfecto."}
+  {id:1,name:"Croptops",category:"Croptops",price:"$45.000",old:null,img:"croptop1.jpeg",emoji:"👚",sold:22,stock:9,sizes:["S","M","L"],description:"Croptop oversize 200 g/m². Corte moderno, diseño fresco y juvenil. Perfecto para looks urbanos con actitud."},
+  {id:2,name:"Pantaloneta Jean",category:"Pantaloneta Jean",price:"$90.000",old:null,img:"pantaloneta1.jpeg",emoji:"👖",sold:16,stock:11,sizes:["M","L","XL"],description:"Pantaloneta jean urbana corte recto. Mezcla denim con elastic, cintura ajustable, bolsillos utilitarios."},
+  {id:3,name:"Camisetas niño",category:"Camisetas niño",price:"$40.000",old:null,img:"kids1.jpeg",emoji:"👶",sold:31,stock:14,sizes:["4","6","8","10","12","16"],description:"Camiseta infantil 200 g/m², algodón suave. Diseños divertidos y cómodos para los más pequeños."},
+  {id:4,name:"Camisetas oversize",category:"Camisetas oversize",price:"$90.000",old:null,img:"oversize1.jpeg",emoji:"👕",sold:35,stock:6,sizes:["S","M","L","XL"],description:"Camiseta oversize edición limitada 240 g/m². Estampado exclusivo frontal y trasero. Algodón peruano premium, diseño único."},
+  {id:5,name:"Buckethat",category:"Buckethat",price:"$70.000",old:null,img:"buckethat1.jpeg",emoji:"🧢",sold:28,stock:20,sizes:["Única"],description:"Bucket Hat con logo bordado. Tela ripstop resistente, fresco y cómodo. El accesorio urbano perfecto."}
 ];
 const productGrid = document.getElementById('productGrid');
 products.forEach(p => {
@@ -750,12 +750,33 @@ testimonials.forEach(t => {
 
 // ===== GALLERY =====
 const gallery = [
-  {img:"croptop.jpeg",emoji:"👚",likes:234,comments:18,caption:"Croptops edición limitada 🔥 #SuachaEstilo"},
-  {img:"pantaloneta.jpeg",emoji:"👖",likes:456,comments:32,caption:"Pantaloneta jean urbana 💪 #Comunidad"},
-  {img:"kids.jpeg",emoji:"👶",likes:189,comments:12,caption:"Camisetas para los más pequeños 👌 #Kids"},
-  {img:"oversize.jpeg",emoji:"👕",likes:312,comments:24,caption:"Camisetas oversize premium 🫡 #Colombia"},
-  {img:"buckethat.jpeg",emoji:"🧢",likes:278,comments:21,caption:"Bucket Hat Suacha 🔥"},
-  {img:"croptop.jpeg",emoji:"👚",likes:198,comments:15,caption:"Diseños únicos ✨ #SuachaEstilo"}
+  {img:"croptop1.jpeg",emoji:"👚",likes:234,comments:18,caption:"Croptops edición limitada 🔥"},
+  {img:"croptop2.jpeg",emoji:"👚",likes:198,comments:15,caption:"Detalles croptop ✨"},
+  {img:"croptop3.jpeg",emoji:"👚",likes:176,comments:12,caption:"Croptop frente 🔥"},
+  {img:"croptop4.jpeg",emoji:"👚",likes:145,comments:9,caption:"Croptop espalda 💪"},
+  {img:"pantaloneta1.jpeg",emoji:"👖",likes:312,comments:24,caption:"Pantaloneta jean urbana"},
+  {img:"pantaloneta2.jpeg",emoji:"👖",likes:287,comments:21,caption:"Pantaloneta detalle 💪"},
+  {img:"pantaloneta3.jpeg",emoji:"👖",likes:256,comments:18,caption:"Pantaloneta estilo 🔥"},
+  {img:"pantaloneta4.jpeg",emoji:"👖",likes:234,comments:16,caption:"Pantaloneta look completo"},
+  {img:"kids1.jpeg",emoji:"👶",likes:189,comments:12,caption:"Camisetas niño 🔥"},
+  {img:"kids2.jpeg",emoji:"👶",likes:167,comments:11,caption:"Kids diseño 💪"},
+  {img:"kids3.jpeg",emoji:"👶",likes:156,comments:10,caption:"Camiseta infantil frente"},
+  {img:"kids4.jpeg",emoji:"👶",likes:145,comments:8,caption:"Kids espalda ✨"},
+  {img:"kids5.jpeg",emoji:"👶",likes:134,comments:7,caption:"Niños colección 🔥"},
+  {img:"kids6.jpeg",emoji:"👶",likes:123,comments:6,caption:"Camisetas pequeños 💪"},
+  {img:"oversize1.jpeg",emoji:"👕",likes:456,comments:32,caption:"Camisetas oversize premium"},
+  {img:"oversize2.jpeg",emoji:"👕",likes:423,comments:29,caption:"Oversize detalle 🔥"},
+  {img:"oversize3.jpeg",emoji:"👕",likes:398,comments:27,caption:"Camiseta oversize frente"},
+  {img:"oversize4.jpeg",emoji:"👕",likes:376,comments:25,caption:"Oversize espalda 💪"},
+  {img:"oversize5.jpeg",emoji:"👕",likes:345,comments:22,caption:"Oversize look completo"},
+  {img:"oversize6.jpeg",emoji:"👕",likes:312,comments:20,caption:"Detalle estampado ✨"},
+  {img:"oversize7.jpeg",emoji:"👕",likes:298,comments:19,caption:"Oversize colección 🔥"},
+  {img:"buckethat1.jpeg",emoji:"🧢",likes:278,comments:21,caption:"Bucket Hat Suacha 🔥"},
+  {img:"buckethat2.jpeg",emoji:"🧢",likes:256,comments:18,caption:"Bucket Hat frente 💪"},
+  {img:"buckethat3.jpeg",emoji:"🧢",likes:234,comments:16,caption:"Bucket Hat detalle ✨"},
+  {img:"buckethat4.jpeg",emoji:"🧢",likes:212,comments:14,caption:"Bucket Hat estilo 🔥"},
+  {img:"buckethat5.jpeg",emoji:"🧢",likes:198,comments:12,caption:"Bucket Hat colección 💪"},
+  {img:"buckethat6.jpeg",emoji:"🧢",likes:176,comments:10,caption:"Bucket Hat look completo"}
 ];
 const galleryGrid = document.getElementById('galleryGrid');
 gallery.forEach((g,i) => {

@@ -150,7 +150,7 @@ h2 span{color:#dc2626;display:inline-block}
 .product-card:hover{transform:translateY(-4px);border-color:rgba(220,38,38,.3);box-shadow:0 12px 40px rgba(0,0,0,.5)}
 .product-card:hover::before{transform:scaleX(1)}
 .product-card:hover .product-img-overlay{opacity:1;pointer-events:auto}
-.product-img-wrap{position:relative;aspect-ratio:1;overflow:hidden;background:#1a1a1a;display:flex;align-items:center;justify-content:center;background-size:cover;background-position:center}
+.product-img-wrap{position:relative;aspect-ratio:1;overflow:hidden;background-color:#1a1a1a;display:flex;align-items:center;justify-content:center;background-size:cover;background-position:center;background-repeat:no-repeat}
 .product-img-wrap img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:1}
 .product-img-overlay{position:absolute;inset:0;z-index:2;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;opacity:0;transition:all .4s;gap:12px;pointer-events:none}
 .product-img-overlay .overlay-btn{background:#dc2626;color:#fff;border:none;padding:12px 24px;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition:all .3s;text-decoration:none;animation:glow 2s infinite}
@@ -506,7 +506,7 @@ footer .brand-name span{color:#dc2626}
   <div class="section-inner">
     <div class="brand-grid">
       <div class="brand-image-wrap reveal-left">
-        <div class="main-img" style="background:url('identidad.jpeg?v=2') center/cover no-repeat;min-height:400px;"></div>
+        <div class="main-img" id="brandImg" style="background-color:#1a1a1a;min-height:400px;background-size:cover;background-position:center;background-repeat:no-repeat"></div>
       </div>
       <div class="reveal-right">
         <p class="section-tag">🎯 Nuestra Historia</p>
@@ -753,12 +753,7 @@ products.forEach(p => {
   productGrid.appendChild(card);
   const img = new Image();
   img.onload = function() {
-    const c = document.createElement('canvas');
-    c.width = img.naturalWidth;
-    c.height = img.naturalHeight;
-    const ctx = c.getContext('2d');
-    ctx.drawImage(img, 0, 0);
-    document.getElementById('piw' + p.id).style.background = '#1a1a1a url("' + c.toDataURL('image/jpeg', 0.85) + '") center/cover no-repeat';
+    card.querySelector('.product-img-wrap').style.backgroundImage = 'url("' + p.img + '")';
   };
   img.onerror = function() {};
   img.src = p.img;
@@ -798,14 +793,26 @@ gallery.forEach((g,i) => {
   const item = document.createElement('div');
   item.className = 'gallery-item';
   item.innerHTML = `
-    <div class="placeholder" id="galleryPlaceholder${i}" style="background:#1a1a1a url('${g.img}') center/cover no-repeat">
+    <div class="placeholder" id="galleryPlaceholder${i}" style="background-color:#1a1a1a;background-size:cover;background-position:center;background-repeat:no-repeat">
       <div class="gallery-overlay">
         <div class="stats"><span>❤️ ${g.likes}</span><span>💬 ${g.comments}</span></div>
         <div class="caption">${g.caption}</div>
       </div>
     </div>`;
   galleryGrid.appendChild(item);
+  const gImg = new Image();
+  gImg.onload = function() {
+    document.getElementById('galleryPlaceholder' + i).style.backgroundImage = 'url("' + g.img + '")';
+  };
+  gImg.src = g.img;
 });
+
+const brandImg = new Image();
+brandImg.onload = function() {
+  const el = document.getElementById('brandImg');
+  if(el) el.style.backgroundImage = 'url("identidad.jpeg?v=2")';
+};
+brandImg.src = 'identidad.jpeg?v=2';
 
 // ===== SCROLL REVEAL =====
 const observer = new IntersectionObserver((entries) => {
@@ -862,7 +869,7 @@ function actualizarUI() {
     total += subtotal;
     html += `
       <div class="cart-item">
-        <div class="cart-item-img" id="cartItemImg${idx}" style="background:#1a1a1a url('${p.img}') center/cover no-repeat"></div>
+        <div class="cart-item-img" id="cartItemImg${idx}" style="background-color:#1a1a1a;background-size:cover;background-position:center;background-repeat:no-repeat"></div>
         <div class="cart-item-info">
           <div class="name">${p.name}</div>
           <div class="variant">Talla ${item.talla}</div>
@@ -879,6 +886,16 @@ function actualizarUI() {
       </div>`;
   });
   items.innerHTML = html + '<div id="cartEmpty" style="display:none"></div>';
+  cart.forEach((item, idx) => {
+    const p = products.find(x => x.id === item.id);
+    if(!p) return;
+    const cImg = new Image();
+    cImg.onload = function() {
+      const el = document.getElementById('cartItemImg' + idx);
+      if(el) el.style.backgroundImage = 'url("' + p.img + '")';
+    };
+    cImg.src = p.img;
+  });
   document.getElementById('cartTotal').textContent = '$' + total.toLocaleString('es-CO');
   const msg = cart.map(i => {
     const p = products.find(x => x.id === i.id);
@@ -948,7 +965,7 @@ function openQuickView(id) {
   const stockText = p.stock <= 0 ? '❌ Agotado' : `✅ ${p.stock} en stock`;
 
   let html = `
-    <div class="modal-img-wrap" id="modalImgWrap" style="background:#1a1a1a url('${p.img}') center/cover no-repeat">
+    <div class="modal-img-wrap" id="modalImgWrap" style="background-color:#1a1a1a;background-size:cover;background-position:center;background-repeat:no-repeat">
     </div>
     <div class="modal-info">
       <div class="cat">${p.category}</div>
@@ -981,13 +998,30 @@ function openQuickView(id) {
   const related = products.filter(x => x.id !== p.id && (x.category === p.category));
   related.slice(0,3).forEach(r => {
     html += `<div class="related-item" onclick="closeQuickView();openQuickView(${r.id})">
-      <div class="related-img" style="background:#1a1a1a url('${r.img}') center/cover no-repeat;"></div>
+      <div class="related-img" style="background-color:#1a1a1a;background-size:cover;background-position:center;background-repeat:no-repeat;"></div>
       <div class="related-name">${r.name}</div>
       <div class="related-price">${r.price}</div>
     </div>`;
   });
   html += `</div></div>`;
   content.innerHTML = html;
+  const mImg = new Image();
+  mImg.onload = function() {
+    document.getElementById('modalImgWrap').style.backgroundImage = 'url("' + p.img + '")';
+  };
+  mImg.src = p.img;
+  related.slice(0,3).forEach(r => {
+    const rImg = new Image();
+    rImg.onload = function() {
+      const items = document.querySelectorAll('.related-item');
+      for(let j=0;j<items.length;j++){
+        if(items[j].querySelector('.related-name').textContent === r.name){
+          items[j].querySelector('.related-img').style.backgroundImage = 'url("' + r.img + '")';
+        }
+      }
+    };
+    rImg.src = r.img;
+  });
   window._qvId = p.id;
   window._qvSize = p.sizes[0];
   window._qvQty = 1;

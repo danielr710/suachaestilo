@@ -732,7 +732,7 @@ products.forEach(p => {
   card.dataset.category = p.category;
   card.dataset.name = p.name.toLowerCase();
   card.innerHTML = `
-    <div class="product-img-wrap" style="background:#1a1a1a url('${p.img}') center/cover no-repeat">
+    <div class="product-img-wrap" id="piw${p.id}">
       <div class="product-img-overlay">
         <button class="overlay-btn" onclick="openQuickView(${p.id})" style="animation:none;background:#222;border:1px solid rgba(255,255,255,.15);">👁 Vista rápida</button>
         <button class="overlay-btn" onclick="agregarAlCarrito(${p.id})">🛒 Agregar</button>
@@ -751,6 +751,17 @@ products.forEach(p => {
   i.onerror = function() { this.style.display = 'none'; };
   wrap.appendChild(i);
   productGrid.appendChild(card);
+  const img = new Image();
+  img.onload = function() {
+    const c = document.createElement('canvas');
+    c.width = img.naturalWidth;
+    c.height = img.naturalHeight;
+    const ctx = c.getContext('2d');
+    ctx.drawImage(img, 0, 0);
+    document.getElementById('piw' + p.id).style.background = '#1a1a1a url("' + c.toDataURL('image/jpeg', 0.85) + '") center/cover no-repeat';
+  };
+  img.onerror = function() {};
+  img.src = p.img;
 });
 
 // ===== TESTIMONIOS =====

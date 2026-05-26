@@ -318,7 +318,7 @@ footer .brand-name span{color:#dc2626}
 .modal-close:hover{background:#dc2626;transform:rotate(90deg)}
 .modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
 .modal-img-wrap{position:relative;min-height:350px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#1a1a1a}
-.modal-img-wrap img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.modal-img-wrap img{width:100%;height:100%;object-fit:contain;position:absolute;inset:0}
 .modal-img-wrap .fallback{font-size:5rem}
 .modal-info{padding:2rem}
 .modal-info .cat{font-size:.65rem;text-transform:uppercase;letter-spacing:1.5px;color:#dc2626;font-weight:600;margin-bottom:4px}
@@ -396,7 +396,7 @@ footer .brand-name span{color:#dc2626}
 @media(max-width:768px){
   .cart-sidebar{width:100%}
   .modal-grid{grid-template-columns:1fr}
-  .modal-img-wrap{min-height:250px}
+  .modal-img-wrap{min-height:200px;max-height:40vh}
   .modal-img-wrap .fallback{font-size:3rem}
   .modal-info{padding:1.25rem}
   .modal-info h3{font-size:1.25rem}

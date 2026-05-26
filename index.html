@@ -129,6 +129,7 @@ h2 span{color:#dc2626;display:inline-block}
 .product-card:hover::before{transform:scaleX(1)}
 .product-card:hover .product-img-overlay{opacity:1}
 .product-img-wrap{position:relative;aspect-ratio:1;overflow:hidden;background:#1a1a1a}
+.product-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
 .product-img-wrap .emoji-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3.5rem}
 .product-img-overlay{position:absolute;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;opacity:0;transition:all .4s;gap:12px;backdrop-filter:blur(4px)}
 .product-img-overlay .overlay-btn{background:#dc2626;color:#fff;border:none;padding:12px 24px;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition:all .3s;text-decoration:none;animation:glow 2s infinite}
@@ -297,7 +298,8 @@ footer .brand-name span{color:#dc2626}
 .modal-close{position:absolute;top:12px;right:12px;z-index:2;width:36px;height:36px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.1);color:#fff;font-size:1.25rem;cursor:pointer;transition:.3s;display:flex;align-items:center;justify-content:center}
 .modal-close:hover{background:#dc2626;transform:rotate(90deg)}
 .modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
-.modal-img-wrap{position:relative;min-height:350px;display:flex;align-items:center;justify-content:center}
+.modal-img-wrap{position:relative;min-height:350px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.modal-img-wrap img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
 .modal-img-wrap .fallback{font-size:5rem}
 .modal-info{padding:2rem}
 .modal-info .cat{font-size:.65rem;text-transform:uppercase;letter-spacing:1.5px;color:#dc2626;font-weight:600;margin-bottom:4px}
@@ -330,7 +332,8 @@ footer .brand-name span{color:#dc2626}
 .related-grid{display:flex;gap:12px;flex-wrap:wrap}
 .related-item{flex:1;min-width:120px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);padding:12px;text-align:center;cursor:pointer;transition:all .3s}
 .related-item:hover{border-color:rgba(220,38,38,.4);transform:translateY(-2px)}
-.related-img{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:2rem;margin-bottom:8px}
+.related-img{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:2rem;margin-bottom:8px;overflow:hidden;position:relative}
+.related-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
 .related-name{font-size:.75rem;font-weight:600;color:#ccc;margin-bottom:4px;line-height:1.2}
 .related-price{font-family:'Urae Nium','Bebas Neue',cursive;font-size:.95rem;color:#dc2626}
 
@@ -465,10 +468,9 @@ footer .brand-name span{color:#dc2626}
         <button class="filter-btn active" data-filter="todo" onclick="filtrarProductos('todo',this)">Todo</button>
         <button class="filter-btn" data-filter="Croptops" onclick="filtrarProductos('Croptops',this)">👚 Croptops</button>
         <button class="filter-btn" data-filter="Pantaloneta Jean" onclick="filtrarProductos('Pantaloneta Jean',this)">👖 Pantaloneta Jean</button>
-        <button class="filter-btn" data-filter="Camisetas Kids" onclick="filtrarProductos('Camisetas Kids',this)">👶 Camisetas Kids</button>
-        <button class="filter-btn" data-filter="Camiseta oversize" onclick="filtrarProductos('Camiseta oversize',this)">👕 Camiseta oversize</button>
-        <button class="filter-btn" data-filter="Buckethat S" onclick="filtrarProductos('Buckethat S',this)">🧢 Buckethat S</button>
-        <button class="filter-btn" data-filter="Chaqueta" onclick="filtrarProductos('Chaqueta',this)">🧥 Chaqueta</button>
+        <button class="filter-btn" data-filter="Camisetas niño" onclick="filtrarProductos('Camisetas niño',this)">👶 Camisetas niño</button>
+        <button class="filter-btn" data-filter="Camisetas oversize" onclick="filtrarProductos('Camisetas oversize',this)">👕 Camisetas oversize</button>
+        <button class="filter-btn" data-filter="Buckethat" onclick="filtrarProductos('Buckethat',this)">🧢 Buckethat</button>
       </div>
       <div class="product-search">
         <span class="icon">🔍</span>
@@ -569,9 +571,7 @@ footer .brand-name span{color:#dc2626}
           <div class="icon-sm">⏰</div>
           <div>
             <table class="schedule">
-              <tr><td>Lunes - Viernes</td><td>9:00 AM - 7:00 PM</td></tr>
-              <tr><td>Sábado</td><td>10:00 AM - 6:00 PM</td></tr>
-              <tr><td>Domingo</td><td>10:00 AM - 4:00 PM</td></tr>
+              <tr><td>Lunes - Domingo</td><td>10:30 AM - 8:00 PM</td></tr>
             </table>
           </div>
         </div>
@@ -585,7 +585,7 @@ footer .brand-name span{color:#dc2626}
     <div class="location-features stagger-children" id="locFeats">
       <div class="location-feat"><div class="icon">📍</div><div class="lbl">Showroom</div><div class="sub">Prueba tu talla</div></div>
       <div class="location-feat"><div class="icon">🚗</div><div class="lbl">Fácil acceso</div><div class="sub">Soacha Centro</div></div>
-      <div class="location-feat"><div class="icon">⏰</div><div class="lbl">Horario extendido</div><div class="sub">Hasta 7pm</div></div>
+      <div class="location-feat"><div class="icon">⏰</div><div class="lbl">Horario extendido</div><div class="sub">Hasta 8pm</div></div>
       <div class="location-feat"><div class="icon">💁</div><div class="lbl">Atención personalizada</div><div class="sub">Te asesoramos</div></div>
     </div>
   </div>
@@ -698,12 +698,11 @@ function aplicarFiltros() {
 
 // ===== PRODUCTOS =====
 const products = [
-  {id:1,name:"Croptop Edición Limitada",category:"Croptops",price:"$59.900",old:null,color:"#4a1a3d #8a2c6b",emoji:"👚",sold:22,stock:9,sizes:["S","M","L"],colors:["Negro","Blanco","Rojo"],description:"Croptop oversize 200 g/m². Corte moderno, diseño fresco y juvenil. Perfecto para looks urbanos con actitud."},
-  {id:2,name:"Pantaloneta Jean Urbana",category:"Pantaloneta Jean",price:"$89.900",old:"$109.900",color:"#1a2d3d #2c5f8a",emoji:"👖",sold:16,stock:11,sizes:["S","M","L","XL","2XL"],colors:["Negro","Azul","Gris"],description:"Pantaloneta jean urbana corte recto. Mezcla denim con elastic, cintura ajustable, bolsillos utilitarios."},
-  {id:3,name:"Camiseta Infantil Kids",category:"Camisetas Kids",price:"$49.900",old:null,color:"#3d2d1a #8a6b2f",emoji:"👶",sold:31,stock:14,sizes:["4","6","8","10","12"],colors:["Negro","Blanco","Rojo","Azul"],description:"Camiseta infantil 200 g/m², algodón suave. Diseños divertidos y cómodos para los más pequeños. Resistente y fácil de lavar."},
-  {id:4,name:"Camiseta Oversize Ed. Limitada",category:"Camiseta oversize",price:"$89.900",old:"$109.900",color:"#2d1b3d #6b2fa0",emoji:"👕",sold:35,stock:6,sizes:["S","M","L","XL","2XL"],colors:["Negro","Blanco","Morado"],description:"Camiseta oversize edición limitada 240 g/m². Estampado exclusivo frontal y trasero. Algodón peruano premium, diseño único."},
-  {id:5,name:"Bucket Hat Suacha",category:"Buckethat S",price:"$34.900",old:null,color:"#1a3d2a #2c5f8a",emoji:"🧢",sold:28,stock:20,sizes:["Única"],colors:["Negro","Verde Militar","Beige"],description:"Bucket Hat con logo bordado. Tela ripstop resistente, fresco y cómodo. El accesorio urbano perfecto."},
-  {id:6,name:"Chaqueta Urbana Rompevientos",category:"Chaqueta",price:"$149.900",old:null,color:"#1a1a3d #2f2f6b",emoji:"🧥",sold:12,stock:8,sizes:["M","L","XL","2XL"],colors:["Negro","Azul Noche"],description:"Chaqueta rompevientos ligera 100% poliéster. Resistente al agua, cremallera frontal, capucha desmontable, bolsillos con cierre. Ideal para la calle."}
+  {id:1,name:"Croptops",category:"Croptops",price:"$45.000",old:null,img:"croptop.jpeg",emoji:"👚",sold:22,stock:9,sizes:["S","M","L"],description:"Croptop oversize 200 g/m². Corte moderno, diseño fresco y juvenil. Perfecto para looks urbanos con actitud."},
+  {id:2,name:"Pantaloneta Jean",category:"Pantaloneta Jean",price:"$90.000",old:null,img:"pantaloneta.jpeg",emoji:"👖",sold:16,stock:11,sizes:["M","L","XL"],description:"Pantaloneta jean urbana corte recto. Mezcla denim con elastic, cintura ajustable, bolsillos utilitarios."},
+  {id:3,name:"Camisetas niño",category:"Camisetas niño",price:"$40.000",old:null,img:"kids.jpeg",emoji:"👶",sold:31,stock:14,sizes:["4","6","8","10","12","16"],description:"Camiseta infantil 200 g/m², algodón suave. Diseños divertidos y cómodos para los más pequeños."},
+  {id:4,name:"Camisetas oversize",category:"Camisetas oversize",price:"$90.000",old:null,img:"oversize.jpeg",emoji:"👕",sold:35,stock:6,sizes:["S","M","L","XL"],description:"Camiseta oversize edición limitada 240 g/m². Estampado exclusivo frontal y trasero. Algodón peruano premium, diseño único."},
+  {id:5,name:"Buckethat",category:"Buckethat",price:"$70.000",old:null,img:"buckethat.jpeg",emoji:"🧢",sold:28,stock:20,sizes:["Única"],description:"Bucket Hat con logo bordado. Tela ripstop resistente, fresco y cómodo. El accesorio urbano perfecto."}
 ];
 const productGrid = document.getElementById('productGrid');
 products.forEach(p => {
@@ -711,7 +710,8 @@ products.forEach(p => {
   productGrid.innerHTML += `
     <div class="product-card" data-category="${p.category}" data-name="${p.name.toLowerCase()}">
       <div class="product-img-wrap">
-        <div class="emoji-placeholder" style="background:linear-gradient(135deg,${p.color});">${p.emoji}</div>
+        <div class="skeleton skeleton-img" style="position:absolute;inset:0;"></div>
+        <img src="${p.img}" alt="${p.name}" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none';this.previousElementSibling.style.display='none';this.nextElementSibling.style.display='flex'"><div class="emoji-placeholder" style="background:linear-gradient(135deg,#2d1b3d #6b2fa0);display:none">${p.emoji}</div>
         <div class="product-img-overlay">
           <button class="overlay-btn" onclick="openQuickView(${p.id})" style="animation:none;background:#222;border:1px solid rgba(255,255,255,.15);">👁 Vista rápida</button>
           <button class="overlay-btn" onclick="agregarAlCarrito(${p.id})">🛒 Agregar</button>
@@ -750,12 +750,12 @@ testimonials.forEach(t => {
 
 // ===== GALLERY =====
 const gallery = [
-  {img:"img10.jpeg",emoji:"👕",likes:234,comments:18,caption:"Nueva colección 🔥 #SuachaEstilo"},
-  {img:"img11.jpeg",emoji:"👥",likes:456,comments:32,caption:"La familia crece 💪 #Comunidad"},
-  {img:"img12.jpeg",emoji:"🧥",likes:189,comments:12,caption:"Detalles que marcan 👌 #UrbanStyle"},
-  {img:"img13.jpeg",emoji:"🇨🇴",likes:312,comments:24,caption:"Soacha con orgullo 🫡 #Colombia"},
-  {img:"img14.jpeg",emoji:"🧥",likes:278,comments:21,caption:"Hoodie Best seller 🔥"},
-  {img:"img15.jpeg",emoji:"👕",likes:198,comments:15,caption:"Diseños únicos ✨ #Camisetas"}
+  {img:"croptop.jpeg",emoji:"👚",likes:234,comments:18,caption:"Croptops edición limitada 🔥 #SuachaEstilo"},
+  {img:"pantaloneta.jpeg",emoji:"👖",likes:456,comments:32,caption:"Pantaloneta jean urbana 💪 #Comunidad"},
+  {img:"kids.jpeg",emoji:"👶",likes:189,comments:12,caption:"Camisetas para los más pequeños 👌 #Kids"},
+  {img:"oversize.jpeg",emoji:"👕",likes:312,comments:24,caption:"Camisetas oversize premium 🫡 #Colombia"},
+  {img:"buckethat.jpeg",emoji:"🧢",likes:278,comments:21,caption:"Bucket Hat Suacha 🔥"},
+  {img:"croptop.jpeg",emoji:"👚",likes:198,comments:15,caption:"Diseños únicos ✨ #SuachaEstilo"}
 ];
 const galleryGrid = document.getElementById('galleryGrid');
 gallery.forEach((g,i) => {
@@ -831,7 +831,7 @@ function actualizarUI() {
         </div>
         <div class="cart-item-info">
           <div class="name">${p.name}</div>
-          <div class="variant">${item.color} · ${item.talla}</div>
+          <div class="variant">Talla ${item.talla}</div>
           <div class="bottom">
             <span class="price">$${(subtotal).toLocaleString('es-CO')}</span>
             <div class="cart-item-qty">
@@ -848,11 +848,11 @@ function actualizarUI() {
   document.getElementById('cartTotal').textContent = '$' + total.toLocaleString('es-CO');
   const msg = cart.map(i => {
     const p = products.find(x => x.id === i.id);
-    return p ? `${p.name} (${i.color}, ${i.talla}) x${i.qty} = $${(parseInt(i.price.replace(/\D/g,''))*i.qty).toLocaleString('es-CO')}` : '';
+    return p ? `${p.name} (Talla ${i.talla}) x${i.qty} = $${(parseInt(i.price.replace(/\D/g,''))*i.qty).toLocaleString('es-CO')}` : '';
   }).join('%0A');
   document.getElementById('cartWspBtn').href = `https://wa.me/573112112023?text=${encodeURIComponent('Hola! Quiero comprar:%0A' + cart.map(i => {
     const p = products.find(x => x.id === i.id);
-    return p ? `• ${p.name} - ${i.color} - ${i.talla} x${i.qty} = $${(parseInt(i.price.replace(/\D/g,''))*i.qty).toLocaleString('es-CO')}` : '';
+    return p ? `• ${p.name} - Talla ${i.talla} x${i.qty} = $${(parseInt(i.price.replace(/\D/g,''))*i.qty).toLocaleString('es-CO')}` : '';
   }).join('%0A') + '%0A%0ATotal: $' + total.toLocaleString('es-CO'))}`;
 }
 
@@ -864,9 +864,9 @@ function toggleCart() {
 function agregarAlCarrito(id) {
   const p = products.find(x => x.id === id);
   if(!p) return;
-  const exist = cart.find(i => i.id === id && i.talla === p.sizes[0] && i.color === p.colors[0]);
+  const exist = cart.find(i => i.id === id && i.talla === p.sizes[0]);
   if(exist) exist.qty++;
-  else cart.push({id,qty:1,talla:p.sizes[0],color:p.colors[0],price:p.price});
+  else cart.push({id,qty:1,talla:p.sizes[0],price:p.price});
   guardarCart();
   toggleCart();
   const cc = document.getElementById('cartCount');
@@ -914,8 +914,9 @@ function openQuickView(id) {
   const stockText = p.stock <= 0 ? '❌ Agotado' : `✅ ${p.stock} en stock`;
 
   let html = `
-    <div class="modal-img-wrap" style="background:linear-gradient(135deg,${p.color});">
-      <div class="fallback" style="font-size:5rem">${p.emoji}</div>
+    <div class="modal-img-wrap">
+      <div class="skeleton skeleton-img" style="position:absolute;inset:0;"></div>
+      <img src="${p.img}" alt="${p.name}" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="fallback" style="display:none;font-size:5rem">${p.emoji}</div>
     </div>
     <div class="modal-info">
       <div class="cat">${p.category}</div>
@@ -934,13 +935,6 @@ function openQuickView(id) {
   });
   html += `</div></div>
       <div class="selector-group">
-        <label>🎨 Color</label>
-        <div class="selector-options" id="qvColors">`;
-  p.colors.forEach(c => {
-    html += `<button class="opt${c === p.colors[0] ? ' active' : ''}" onclick="selectQvOption('color','${c}',this)">${c}</button>`;
-  });
-  html += `</div></div>
-      <div class="selector-group">
         <label>Cantidad</label>
         <div class="selector-options"><button class="opt" onclick="qvQty(-1)">−</button><span style="padding:8px 20px;font-size:1rem;font-weight:600;" id="qvQty">1</span><button class="opt" onclick="qvQty(1)">+</button></div>
       </div>
@@ -955,7 +949,7 @@ function openQuickView(id) {
   const related = products.filter(x => x.id !== p.id && (x.category === p.category));
   related.slice(0,3).forEach(r => {
     html += `<div class="related-item" onclick="closeQuickView();openQuickView(${r.id})">
-      <div class="related-img" style="background:linear-gradient(135deg,${r.color});">${r.emoji}</div>
+      <div class="related-img"><img src="${r.img}" alt="${r.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="fallback" style="display:none;font-size:1.5rem">${r.emoji}</div></div>
       <div class="related-name">${r.name}</div>
       <div class="related-price">${r.price}</div>
     </div>`;
@@ -965,7 +959,6 @@ function openQuickView(id) {
   document.getElementById('quickViewModal').classList.add('open');
   window._qvId = p.id;
   window._qvSize = p.sizes[0];
-  window._qvColor = p.colors[0];
   window._qvQty = 1;
 }
 
@@ -976,8 +969,7 @@ function closeQuickView() {
 function selectQvOption(type, val, btn) {
   btn.parentElement.querySelectorAll('.opt').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  if(type === 'size') window._qvSize = val;
-  else window._qvColor = val;
+  window._qvSize = val;
 }
 
 function qvQty(delta) {
@@ -988,15 +980,15 @@ function qvQty(delta) {
 function qvAddToCart(id) {
   const p = products.find(x => x.id === id);
   if(!p) return;
-  const exist = cart.find(i => i.id === id && i.talla === window._qvSize && i.color === window._qvColor);
+  const exist = cart.find(i => i.id === id && i.talla === window._qvSize);
   if(exist) exist.qty += window._qvQty;
-  else cart.push({id,qty:window._qvQty,talla:window._qvSize,color:window._qvColor,price:p.price});
+  else cart.push({id,qty:window._qvQty,talla:window._qvSize,price:p.price});
   guardarCart();
   closeQuickView();
   toggleCart();
   const cc = document.getElementById('cartCount');
   if(cc) { cc.style.animation='cartBounce .5s ease'; setTimeout(()=>cc.style.animation='',600); }
-  notificar(`✅ ${p.name} (${window._qvColor}, ${window._qvSize}) agregado al carrito`);
+  notificar(`✅ ${p.name} (${window._qvSize}) agregado al carrito`);
 }
 
 // ===== PRELOADER =====

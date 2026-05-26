@@ -150,8 +150,8 @@ h2 span{color:#dc2626;display:inline-block}
 .product-card:hover{transform:translateY(-4px);border-color:rgba(220,38,38,.3);box-shadow:0 12px 40px rgba(0,0,0,.5)}
 .product-card:hover::before{transform:scaleX(1)}
 .product-card:hover .product-img-overlay{opacity:1;pointer-events:auto}
-.product-img-wrap{position:relative;aspect-ratio:1;overflow:hidden;background:#1a1a1a}
-.product-img-wrap img{width:100%;height:100%;object-fit:cover}
+.product-img-wrap{position:relative;aspect-ratio:1;overflow:hidden;background:linear-gradient(135deg,#1a1a2e,#2d1a1a)}
+.product-img-wrap img{display:block;width:100%}
 .product-img-overlay{position:absolute;inset:0;z-index:2;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;opacity:0;transition:all .4s;gap:12px;pointer-events:none}
 .product-img-overlay .overlay-btn{background:#dc2626;color:#fff;border:none;padding:12px 24px;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition:all .3s;text-decoration:none;animation:glow 2s infinite}
 .product-img-overlay .overlay-btn:hover{background:#b91c1c;transform:scale(1.05)}
@@ -508,7 +508,7 @@ footer .brand-name span{color:#dc2626}
   <div class="section-inner">
     <div class="brand-grid">
       <div class="brand-image-wrap reveal-left">
-        <div class="main-img"><img src="identidad.png" alt="Suacha Estilo"></div>
+        <div class="main-img"><img src="identidad.jpeg?v=2" alt="Suacha Estilo"></div>
       </div>
       <div class="reveal-right">
         <p class="section-tag">🎯 Nuestra Historia</p>
@@ -723,7 +723,7 @@ let pid = 1;
 const products = [];
 productCats.forEach(c => {
   for(let i=1;i<=c.count;i++){
-    products.push({id:pid++,name:c.cat,category:c.cat,price:c.price,old:null,  img:c.img+i+'.png',sold:Math.floor(Math.random()*30+10),stock:Math.floor(Math.random()*15+3),sizes:c.sizes,description:c.desc});
+    products.push({id:pid++,name:c.cat,category:c.cat,price:c.price,old:null,img:c.img+i+'.jpeg?v=2',sold:Math.floor(Math.random()*30+10),stock:Math.floor(Math.random()*15+3),sizes:c.sizes,description:c.desc});
   }
 });
 const productGrid = document.getElementById('productGrid');
@@ -750,6 +750,8 @@ products.forEach(p => {
   const i = document.createElement('img');
   i.src = p.img;
   i.alt = p.name;
+  i.style.cssText = 'width:100%;object-fit:cover';
+  i.onerror = function() { this.style.display = 'none'; };
   wrap.appendChild(i);
   productGrid.appendChild(card);
 });
@@ -778,10 +780,10 @@ testimonials.forEach(t => {
 
 // ===== GALLERY =====
 const gallery = [
-  {img:"comunidad1.png",likes:312,comments:24,caption:"Nuestra comunidad 🔥"},
-  {img:"comunidad2.png",likes:287,comments:21,caption:"familia Suacha Estilo 💪"},
-  {img:"comunidad3.png",likes:256,comments:18,caption:"Cultura en movimiento ✨"},
-  {img:"comunidad4.png",likes:234,comments:16,caption:"Más que ropa, identidad 🔥"}
+  {img:"comunidad1.jpeg?v=2",likes:312,comments:24,caption:"Nuestra comunidad 🔥"},
+  {img:"comunidad2.jpeg?v=2",likes:287,comments:21,caption:"familia Suacha Estilo 💪"},
+  {img:"comunidad3.jpeg?v=2",likes:256,comments:18,caption:"Cultura en movimiento ✨"},
+  {img:"comunidad4.jpeg?v=2",likes:234,comments:16,caption:"Más que ropa, identidad 🔥"}
 ];
 const galleryGrid = document.getElementById('galleryGrid');
 gallery.forEach((g,i) => {

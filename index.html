@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="SUACHA-ESTILO rojo.png">
-<link rel="apple-touch-icon" href="SUACHA-ESTILO rojo.png">
+<link rel="icon" type="image/png" href="SUACHA-ESTILO rojo (1).png">
+<link rel="apple-touch-icon" href="SUACHA-ESTILO rojo (1).png">
 <title>Suacha Estilo - Ropa Urbana</title>
 <meta name="description" content="Suacha Estilo - Ropa urbana desde Soacha, Colombia. Camisetas oversize, buzos, gorras y más. Premium algodón peruano. Envíos a todo Colombia.">
 <meta property="og:title" content="Suacha Estilo - Ropa Urbana">
@@ -247,36 +247,6 @@ footer .brand-name span{color:#dc2626}
 .whatsapp-float:hover{transform:scale(1.1);background:#16a34a;box-shadow:0 6px 25px rgba(34,197,94,.4)}
 .whatsapp-float svg{width:30px;height:30px;fill:#fff}
 
-/* Chatbot IA */
-.chat-toggle{position:fixed;bottom:90px;right:24px;z-index:40;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#dc2626,#fca311);border:none;color:#fff;font-size:1.25rem;cursor:pointer;transition:all .3s;box-shadow:0 4px 20px rgba(220,38,38,.35);display:flex;align-items:center;justify-content:center;animation:glow 2s infinite, bounceIn .6s ease 1.2s both}
-.chat-toggle:hover{transform:scale(1.12);box-shadow:0 8px 30px rgba(220,38,38,.5)}
-.chat-box{position:fixed;bottom:160px;right:24px;z-index:45;width:340px;background:#111;border:1px solid rgba(255,255,255,.1);box-shadow:0 20px 60px rgba(0,0,0,.6);display:none;flex-direction:column;overflow:hidden;animation:scaleIn .3s ease}
-.chat-box.open{display:flex}
-.chat-header{background:linear-gradient(135deg,#dc2626,#b91c1c);padding:14px 16px;display:flex;align-items:center;justify-content:space-between}
-.chat-header .left{display:flex;align-items:center;gap:10px}
-.chat-header .avatar{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:1rem}
-.chat-header .info .name{font-weight:600;font-size:.85rem}
-.chat-header .info .status{font-size:.7rem;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:4px}
-.chat-header .info .status .dot{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:pulse 1.5s infinite}
-.chat-header .close-btn{background:0;border:none;color:#fff;font-size:1.25rem;cursor:pointer;opacity:.7;transition:.3s;padding:4px}
-.chat-header .close-btn:hover{opacity:1;transform:rotate(90deg)}
-.chat-messages{flex:1;padding:16px;overflow-y:auto;max-height:320px;display:flex;flex-direction:column;gap:10px;background:#0d0d0d}
-.chat-messages::-webkit-scrollbar{width:4px}
-.chat-messages::-webkit-scrollbar-thumb{background:#333;border-radius:2px}
-.msg{max-width:85%;padding:10px 14px;font-size:.82rem;line-height:1.5;animation:slideDown .3s ease}
-.msg.bot{background:#1a1a1a;color:#ccc;border-radius:0 12px 12px 12px;align-self:flex-start;border:1px solid rgba(255,255,255,.05)}
-.msg.user{background:#dc2626;color:#fff;border-radius:12px 0 12px 12px;align-self:flex-end}
-.msg .typing{display:flex;gap:4px;padding:4px 0}
-.msg .typing span{width:6px;height:6px;border-radius:50%;background:#666;animation:typing 1.4s infinite}
-.msg .typing span:nth-child(2){animation-delay:.2s}
-.msg .typing span:nth-child(3){animation-delay:.4s}
-.chat-input{display:flex;border-top:1px solid rgba(255,255,255,.08);padding:10px 12px;background:#0d0d0d;gap:8px}
-.chat-input input{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:10px 14px;color:#fff;font-size:.82rem;outline:0;transition:border .3s;font-family:'Inter',sans-serif}
-.chat-input input:focus{border-color:#dc2626}
-.chat-input input::placeholder{color:#555}
-.chat-input button{background:#dc2626;border:none;color:#fff;padding:10px 16px;cursor:pointer;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;transition:.3s;font-family:'Inter',sans-serif}
-.chat-input button:hover{background:#b91c1c}
-
 /* Scroll top */
 .scroll-top{position:fixed;bottom:90px;right:24px;z-index:39;width:44px;height:44px;border-radius:50%;background:#dc2626;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .4s;border:none;color:#fff;font-size:1.25rem;opacity:0;visibility:hidden;transform:translateY(10px)}
 .scroll-top.visible{opacity:1;visibility:visible;transform:translateY(0)}
@@ -299,22 +269,25 @@ footer .brand-name span{color:#dc2626}
   .header-cart-mobile{display:flex}
   .brand-grid,.location-grid{grid-template-columns:1fr}
   .brand-features{grid-template-columns:1fr}
-  .gallery-grid{grid-template-columns:repeat(3,1fr)}
+  .gallery-grid{grid-template-columns:repeat(3,1fr);gap:8px}
+  .gallery-item{aspect-ratio:1}
+  .product-grid{grid-template-columns:repeat(2,1fr);gap:.75rem}
+  .product-img-wrap{aspect-ratio:1}
+  .product-img-wrap .emoji-placeholder{font-size:2.5rem}
   .footer-grid{grid-template-columns:1fr;gap:2rem}
   .location-features{grid-template-columns:repeat(2,1fr)}
   .location-buttons{flex-direction:column}
   .testimonial-grid{grid-template-columns:1fr}
   .mobile-bottom{display:block}
   .whatsapp-float{bottom:76px}
-  .chat-box{right:12px;left:12px;width:auto;bottom:150px}
-  .chat-toggle{bottom:76px}
   .scroll-top{bottom:140px}
   section{padding:3rem 1rem}
   .product-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.75rem}
   .product-info{padding:.75rem}
   .product-name{font-size:.85rem}
   .gallery-stats{gap:1rem}
-  .product-img-overlay{opacity:1;background:linear-gradient(transparent,rgba(0,0,0,.85));justify-content:flex-end;padding-bottom:12px}
+  .product-img-overlay{opacity:0;background:linear-gradient(transparent,rgba(0,0,0,.85));justify-content:flex-end;padding-bottom:12px}
+  .product-img-overlay.show{opacity:1}
   .product-img-overlay .overlay-btn{padding:8px 14px;font-size:.65rem}
 }
 /* ===== QUICK VIEW MODAL ===== */
@@ -351,6 +324,15 @@ footer .brand-name span{color:#dc2626}
 .color-opt:hover .tooltip{opacity:1}
 .modal-buttons{display:flex;gap:10px;margin-top:1.5rem}
 .modal-buttons .btn{flex:1;justify-content:center;padding:12px}
+
+.related-products{border-top:1px solid rgba(255,255,255,.08);padding:1.5rem 2rem 2rem}
+.related-products h4{font-family:'Urae Nium','Bebas Neue',cursive;font-size:1.1rem;margin-bottom:1rem;color:#fff}
+.related-grid{display:flex;gap:12px;flex-wrap:wrap}
+.related-item{flex:1;min-width:120px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);padding:12px;text-align:center;cursor:pointer;transition:all .3s}
+.related-item:hover{border-color:rgba(220,38,38,.4);transform:translateY(-2px)}
+.related-img{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:2rem;margin-bottom:8px}
+.related-name{font-size:.75rem;font-weight:600;color:#ccc;margin-bottom:4px;line-height:1.2}
+.related-price{font-family:'Urae Nium','Bebas Neue',cursive;font-size:.95rem;color:#dc2626}
 
 /* ===== CART SIDEBAR ===== */
 .cart-toggle-btn{background:0;border:none;color:#fff;position:relative;cursor:pointer;padding:4px;transition:.3s;display:flex;align-items:center}
@@ -393,6 +375,16 @@ footer .brand-name span{color:#dc2626}
   .cart-sidebar{width:100%}
   .modal-grid{grid-template-columns:1fr}
   .modal-img-wrap{min-height:250px}
+  .modal-img-wrap .fallback{font-size:3rem}
+  .modal-info{padding:1.25rem}
+  .modal-info h3{font-size:1.25rem}
+  .modal-info .price-row .current{font-size:1.35rem}
+  .related-products{padding:1rem}
+  .related-grid{gap:8px}
+  .related-item{min-width:80px;padding:8px}
+  .related-img{font-size:1.5rem}
+  .related-name{font-size:.65rem}
+  .related-price{font-size:.8rem}
 }
 /* ===== PRELOADER ===== */
 .preloader{position:fixed;inset:0;z-index:9999;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:1;visibility:visible;animation:preloaderOut .6s 2s forwards}
@@ -411,7 +403,7 @@ footer .brand-name span{color:#dc2626}
 </head>
 <body>
 <div class="preloader" id="preloader">
-  <div class="preloader-logo"><img src="SUACHA-ESTILO rojo.png" alt="Suacha Estilo"></div>
+  <div class="preloader-logo"><img src="SUACHA-ESTILO rojo (1).png" alt="Suacha Estilo"></div>
   <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
   <div class="preloader-text">Cargando...</div>
 </div>
@@ -421,7 +413,7 @@ footer .brand-name span{color:#dc2626}
 <header>
   <nav>
     <a href="#" class="logo">
-      <img class="logo-img" src="https://scontent.fbog9-1.fna.fbcdn.net/v/t39.30808-1/474683159_1179293957530091_8567917066191410829_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=100&ccb=1-7&_nc_sid=f907e8&_nc_ohc=RVDl0ghXE2kQ7kNvwFW3SWm&_nc_oc=AdpuFKK1EHxIglIY4ah6_HPg9h6HxemPhN_cta8w_1l2rznwChBX0X9NUB-VjBnBNF6fBIoAXBlTRJ1gkKoG7WWt&_nc_zt=24&_nc_ht=scontent.fbog9-1.fna&edm=AKsJ254EAAAA&_nc_gid=NZ37D4fkJPilieT1Ujg9WQ&oh=00_Af4rHv3MwcCtsF_z1LUSUrPNkFWr2pTp0zabrv3P65KD0Q&oe=6A1A39D5" alt="Suacha Estilo">
+      <img class="logo-img" src="SUACHA-ESTILO rojo (1).png" alt="Suacha Estilo">
       SUACHA<span style="color:#dc2626">.</span>ESTILO
     </a>
     <div style="display:flex;align-items:center;gap:4px;">
@@ -663,28 +655,6 @@ footer .brand-name span{color:#dc2626}
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
-<!-- Chatbot IA -->
-<button class="chat-toggle" id="chatToggle" onclick="toggleChat()">🤖</button>
-<div class="chat-box" id="chatBox">
-  <div class="chat-header">
-    <div class="left">
-      <div class="avatar">🤖</div>
-      <div class="info">
-        <div class="name">Asistente Suacha</div>
-        <div class="status"><span class="dot"></span> Online - IA activa</div>
-      </div>
-    </div>
-    <button class="close-btn" onclick="toggleChat()">✕</button>
-  </div>
-  <div class="chat-messages" id="chatMessages">
-    <div class="msg bot">¡Hola! 👋 Soy el asistente virtual de <strong>Suacha Estilo</strong>. Puedo consultar nuestros productos en tiempo real:<br>• 🔍 <strong>Stock:</strong> "¿hay camiseta oversize talla M?"<br>• 🎨 <strong>Colores:</strong> "¿de qué colores está el buzo?"<br>• 📏 <strong>Tallas:</strong> "¿tienen hoodie en XL?"<br>• 💵 <strong>Precios:</strong> "cuánto cuesta la gorra?"<br><br>¿Qué producto buscas? 🤔</div>
-  </div>
-  <div class="chat-input">
-    <input type="text" id="chatInput" placeholder="Escribe tu mensaje..." onkeydown="if(event.key==='Enter')sendMessage()">
-    <button onclick="sendMessage()">Enviar</button>
-  </div>
-</div>
-
 <!-- Scroll Top -->
 <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
@@ -820,129 +790,6 @@ window.addEventListener('scroll', () => {
   const docH = document.documentElement.scrollHeight - window.innerHeight;
   document.getElementById('scrollProgress').style.width = docH > 0 ? (window.scrollY / docH * 100) + '%' : '0%';
 });
-
-// ===== CHATBOT IA =====
-function toggleChat() {
-  const box = document.getElementById('chatBox');
-  box.classList.toggle('open');
-  if(box.classList.contains('open')) {
-    document.getElementById('chatInput').focus();
-  }
-}
-
-document.addEventListener('click', function(e) {
-  const box = document.getElementById('chatBox');
-  const toggle = document.getElementById('chatToggle');
-  if(box.classList.contains('open') && !box.contains(e.target) && !toggle.contains(e.target)) {
-    box.classList.remove('open');
-  }
-});
-
-function buscarProducto(texto) {
-  const t = texto.toLowerCase();
-  let encontrados = [];
-
-  for(const p of products) {
-    const nombre = p.name.toLowerCase();
-    const categoria = p.category.toLowerCase();
-    const colores = p.colors.map(c => c.toLowerCase());
-    if(nombre.includes(t) || categoria.includes(t) || colores.some(c => c.includes(t) || t.includes(c))) {
-      encontrados.push(p);
-    }
-  }
-
-  if(encontrados.length === 0) return null;
-
-  let resp = "";
-  for(const p of encontrados) {
-    const stockText = p.stock > 0 ? `✅ Hay stock (${p.stock} unidades)` : "❌ Agotado";
-    resp += `\n\n${p.emoji} <strong>${p.name}</strong>\n💵 ${p.price}${p.old ? ` <span style="color:#999;text-decoration:line-through;">${p.old}</span>` : ''}\n📦 ${stockText}\n📏 Tallas: ${p.sizes.join(', ')}\n🎨 Colores: ${p.colors.join(', ')}\n📝 ${p.description}`;
-  }
-  return encontrados.length === 1
-    ? `¡Claro! Aquí tienes la info completa:${resp}\n\n¿Quieres comprarla? Te puedo pasar al WhatsApp para concretar el pedido 💬`
-    : `Encontré ${encontrados.length} productos:${resp}\n\n¿Cuál te interesa más? Te doy más detalles o te paso al WhatsApp 💬`;
-}
-
-function sendMessage() {
-  const input = document.getElementById('chatInput');
-  const msg = input.value.trim();
-  if(!msg) return;
-  input.value = '';
-
-  const msgs = document.getElementById('chatMessages');
-  msgs.innerHTML += `<div class="msg user">${msg}</div>`;
-  msgs.scrollTop = msgs.scrollHeight;
-
-  msgs.innerHTML += `<div class="msg bot"><div class="typing"><span></span><span></span><span></span></div></div>`;
-  msgs.scrollTop = msgs.scrollHeight;
-
-  setTimeout(() => {
-    const typingEl = msgs.querySelector('.msg.bot:last-child');
-    if(typingEl) typingEl.remove();
-
-    const lowMsg = msg.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
-
-    // Primero buscar en productos
-    const nombresProductos = products.map(p => p.name.toLowerCase());
-    const palabrasClave = ["camiseta","buzo","hoodie","gorra","jogger","conjunto","set","oversize","urban","colombia","deportivo","accesorio","peruano","exclusivo","bordada","unisex","cultura","urbana","crew"];
-    const mencionaProducto = palabrasClave.some(k => lowMsg.includes(k)) || lowMsg.includes("talla") || lowMsg.includes("color") || lowMsg.includes("stock") || lowMsg.includes("hay") || lowMsg.includes("tiene") || lowMsg.includes("disponible");
-
-    if(mencionaProducto) {
-      // Buscar en nombres completos y categorías
-      let encontrado = null;
-      for(const p of products) {
-        if(lowMsg.includes(p.name.toLowerCase()) || lowMsg.includes(p.category.toLowerCase()) || lowMsg.includes(p.name.split(" ")[0].toLowerCase())) {
-          encontrado = p;
-          break;
-        }
-      }
-
-      if(!encontrado) {
-        // Búsqueda por palabra clave
-        for(const k of palabrasClave) {
-          if(lowMsg.includes(k)) {
-            encontrado = products.find(p => p.name.toLowerCase().includes(k) || p.category.toLowerCase().includes(k));
-            if(encontrado) break;
-          }
-        }
-      }
-
-      if(!encontrado) {
-        // Búsqueda ampliada
-        const res = buscarProducto(lowMsg);
-        if(res) {
-          msgs.innerHTML += `<div class="msg bot">${res}</div>`;
-          msgs.scrollTop = msgs.scrollHeight;
-          return;
-        }
-      }
-
-      if(encontrado) {
-        const stockTxt = encontrado.stock > 0 ? `✅ Sí hay stock. Quedan ${encontrado.stock} unidades.` : "❌ Agotado por el momento.";
-        const resp = `${encontrado.emoji} <strong>${encontrado.name}</strong>\n\n💵 <strong>Precio:</strong> ${encontrado.price}${encontrado.old ? ` (antes ${encontrado.old})` : ''}\n📦 <strong>Disponibilidad:</strong> ${stockTxt}\n📏 <strong>Tallas disponibles:</strong> ${encontrado.sizes.join(', ')}\n🎨 <strong>Colores:</strong> ${encontrado.colors.join(', ')}\n📝 ${encontrado.description}\n\n${encontrado.stock > 0 ? '¿Te interesa? Haz clic en el WhatsApp y la apartamos 😊' : '¡Pero tenemos otras opciones! Pregúntame por más productos 🙌'}`;
-        msgs.innerHTML += `<div class="msg bot">${resp}</div>`;
-        msgs.scrollTop = msgs.scrollHeight;
-        return;
-      }
-    }
-
-    // Respuestas generales (si no encontró producto)
-    let response = "Lo siento, no entendí bien 🤔 Puedes preguntarme:<br>• <strong>Productos:</strong> '¿tienen camisetas?', 'buzos disponibles', 'gorras'<br>• <strong>Stock:</strong> 'hay talla M?', 'colores disponibles', 'cuanto cuesta?'<br>• <strong>Info:</strong> 'ubicación', 'horarios', 'domicilios', 'pagos'<br>• O escríbenos directo al <a href='https://wa.me/573112112023' target='_blank' style='color:#22c55e;'>WhatsApp</a> 💬";
-
-    if(lowMsg.includes("hola")||lowMsg.includes("buenas")||lowMsg.includes("buen")) response = "¡Hola! 👋 Soy el asistente de <strong>Suacha Estilo</strong>. Puedo decirte si tenemos un producto en específico, las tallas, colores y precios. ¿Qué buscas?";
-    else if(lowMsg.includes("precio")||lowMsg.includes("cuanto")||lowMsg.includes("cost")||lowMsg.includes("vale")) response = "Nuestros precios van desde $34.900 hasta $139.900. Dime qué producto te interesa y te doy el precio exacto con todos los detalles 😊";
-    else if(lowMsg.includes("domicilio")||lowMsg.includes("envio")||lowMsg.includes("enví")||lowMsg.includes("entrega")) response = "Hacemos envíos a toda Colombia 🇨🇴 Tiempo de entrega: 3-7 días hábiles. El costo varía por zona. En Soacha puedes pedir con entrega el mismo día 🚀";
-    else if(lowMsg.includes("pago")||lowMsg.includes("transfer")||lowMsg.includes("nequi")||lowMsg.includes("daviplata")||lowMsg.includes("efectivo")) response = "Aceptamos 💳 Transferencias bancarias, Nequi, Daviplata y efectivo contraentrega en Soacha. ¿Cuál te queda mejor?";
-    else if(lowMsg.includes("donde")||lowMsg.includes("ubic")||lowMsg.includes("direc")||lowMsg.includes("mapa")) response = "📍 Estamos en <strong>Cra. 7 #17-26, Soacha Centro</strong>. ¿Quieres la ubicación en Maps?";
-    else if(lowMsg.includes("horario")) response = "🕐 <strong>Horarios:</strong><br>Lunes a Viernes: 9am - 7pm<br>Sábados: 10am - 6pm<br>Domingos: 10am - 4pm";
-    else if(lowMsg.includes("talla")||lowMsg.includes("tamañ")) response = "Manejamos tallas <strong>S, M, L, XL y 2XL</strong> dependiendo del producto. Dime cuál te interesa y te confirmo disponibilidad de esa talla 😊";
-    else if(lowMsg.includes("whatsapp")||lowMsg.includes("contact")) response = "💬 Escríbenos directo: <a href='https://wa.me/573112112023' target='_blank' style='color:#22c55e;font-weight:600;'>+57 311 211 2023</a> O toca el botón verde de WhatsApp en la esquina 👇";
-    else if(lowMsg.includes("gracias")) response = "¡A ti! 🙌 Cuando quieras saber de algún producto, aquí estoy. ¡Buen día! 😊";
-
-    msgs.innerHTML += `<div class="msg bot">${response}</div>`;
-    msgs.scrollTop = msgs.scrollHeight;
-  }, 1200);
-}
 
 // ===== CARRITO =====
 let cart = JSON.parse(localStorage.getItem('suachaCart')) || [];
@@ -1101,7 +948,19 @@ function openQuickView(id) {
         <button class="btn btn-primary" onclick="qvAddToCart(${p.id})">🛒 Agregar al carrito</button>
         <a href="https://wa.me/573112112023?text=${encodeURIComponent('Hola! Quiero ' + p.name + ' - ' + p.price)}" target="_blank" class="btn btn-green">💬 WhatsApp</a>
       </div>
+    </div>
+    <div class="related-products">
+      <h4>Productos relacionados</h4>
+      <div class="related-grid">`;
+  const related = products.filter(x => x.id !== p.id && (x.category === p.category));
+  related.slice(0,3).forEach(r => {
+    html += `<div class="related-item" onclick="closeQuickView();openQuickView(${r.id})">
+      <div class="related-img" style="background:linear-gradient(135deg,${r.color});">${r.emoji}</div>
+      <div class="related-name">${r.name}</div>
+      <div class="related-price">${r.price}</div>
     </div>`;
+  });
+  html += `</div></div>`;
   content.innerHTML = html;
   document.getElementById('quickViewModal').classList.add('open');
   window._qvId = p.id;
@@ -1147,12 +1006,18 @@ setTimeout(()=>{const p=document.getElementById('preloader');if(p)p.style.displa
 document.getElementById('productGrid').addEventListener('click',e=>{
   const c=e.target.closest('.product-card');
   if(!c||e.target.closest('.overlay-btn')) return;
-  const r=c.getBoundingClientRect();
-  c.style.setProperty('--x',((e.clientX-r.left)/r.width*100).toFixed(1)+'%');
-  c.style.setProperty('--y',((e.clientY-r.top)/r.height*100).toFixed(1)+'%');
-  const btn=c.querySelector('.overlay-btn');
-  if(btn) btn.click();
+  if(window.innerWidth<=768){
+    const o=c.querySelector('.product-img-overlay');
+    if(o) o.classList.toggle('show');
+  }else{
+    const r=c.getBoundingClientRect();
+    c.style.setProperty('--x',((e.clientX-r.left)/r.width*100).toFixed(1)+'%');
+    c.style.setProperty('--y',((e.clientY-r.top)/r.height*100).toFixed(1)+'%');
+    const btn=c.querySelector('.overlay-btn');
+    if(btn) btn.click();
+  }
 });
+document.addEventListener('click',e=>{if(!e.target.closest('.product-card'))document.querySelectorAll('.product-img-overlay.show').forEach(o=>o.classList.remove('show'))});
 
 // ===== PARTICLES HERO =====
 (function(){

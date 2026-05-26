@@ -128,9 +128,8 @@ h2 span{color:#dc2626;display:inline-block}
 .product-card:hover{transform:translateY(-4px);border-color:rgba(220,38,38,.3);box-shadow:0 12px 40px rgba(0,0,0,.5)}
 .product-card:hover::before{transform:scaleX(1)}
 .product-card:hover .product-img-overlay{opacity:1}
-.product-img-wrap{position:relative;aspect-ratio:1;overflow:hidden;background:linear-gradient(135deg,#1a1a2e,#2d1a1a);display:flex;align-items:center;justify-content:center}
-.product-img-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.product-img-wrap .emoji-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3.5rem}
+.product-img-wrap{position:relative;aspect-ratio:1;overflow:hidden;background:linear-gradient(135deg,#1a1a2e,#2d1a1a);display:flex;align-items:center;justify-content:center;background-size:cover;background-position:center}
+.product-img-wrap .emoji-placeholder{font-size:3.5rem}
 .product-img-overlay{position:absolute;inset:0;z-index:2;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;opacity:0;transition:all .4s;gap:12px;backdrop-filter:blur(4px)}
 .product-img-overlay .overlay-btn{background:#dc2626;color:#fff;border:none;padding:12px 24px;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition:all .3s;text-decoration:none;animation:glow 2s infinite}
 .product-img-overlay .overlay-btn:hover{background:#b91c1c;transform:scale(1.05)}
@@ -182,9 +181,8 @@ h2 span{color:#dc2626;display:inline-block}
 .gallery{background:#000}
 .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
 .gallery-item{position:relative;aspect-ratio:1;overflow:hidden;cursor:pointer;background:#111}
-.gallery-item .placeholder{width:100%;height:100%;position:relative;overflow:hidden}
-.gallery-item .placeholder img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
-.gallery-item:hover .placeholder img{transform:scale(1.12)}
+.gallery-item .placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(135deg,#1a1a2e,#2d1a1a);background-size:cover;background-position:center;transition:transform .6s}
+.gallery-item:hover .placeholder{transform:scale(1.08)}
 .gallery-item:hover .gallery-overlay{opacity:1}
 .gallery-overlay{position:absolute;inset:0;background:rgba(0,0,0,.75);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:all .4s;padding:1rem;text-align:center;backdrop-filter:blur(4px)}
 .gallery-overlay .stats{display:flex;gap:1rem;margin-bottom:8px}
@@ -298,8 +296,7 @@ footer .brand-name span{color:#dc2626}
 .modal-close{position:absolute;top:12px;right:12px;z-index:2;width:36px;height:36px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.1);color:#fff;font-size:1.25rem;cursor:pointer;transition:.3s;display:flex;align-items:center;justify-content:center}
 .modal-close:hover{background:#dc2626;transform:rotate(90deg)}
 .modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
-.modal-img-wrap{position:relative;min-height:350px;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.modal-img-wrap img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.modal-img-wrap{position:relative;min-height:350px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(135deg,#1a1a2e,#2d1a1a);background-size:cover;background-position:center}
 .modal-img-wrap .fallback{font-size:5rem}
 .modal-info{padding:2rem}
 .modal-info .cat{font-size:.65rem;text-transform:uppercase;letter-spacing:1.5px;color:#dc2626;font-weight:600;margin-bottom:4px}
@@ -332,8 +329,7 @@ footer .brand-name span{color:#dc2626}
 .related-grid{display:flex;gap:12px;flex-wrap:wrap}
 .related-item{flex:1;min-width:120px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);padding:12px;text-align:center;cursor:pointer;transition:all .3s}
 .related-item:hover{border-color:rgba(220,38,38,.4);transform:translateY(-2px)}
-.related-img{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:2rem;margin-bottom:8px;overflow:hidden;position:relative}
-.related-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.related-img{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:2rem;margin-bottom:8px;overflow:hidden;background:linear-gradient(135deg,#1a1a2e,#2d1a1a);background-size:cover;background-position:center}
 .related-name{font-size:.75rem;font-weight:600;color:#ccc;margin-bottom:4px;line-height:1.2}
 .related-price{font-family:'Urae Nium','Bebas Neue',cursive;font-size:.95rem;color:#dc2626}
 
@@ -716,8 +712,7 @@ products.forEach(p => {
   const stockPct = p.stock > 0 ? Math.round(p.sold/(p.sold+p.stock)*100) : 80;
   productGrid.innerHTML += `
     <div class="product-card" data-category="${p.category}" data-name="${p.name.toLowerCase()}">
-      <div class="product-img-wrap">
-        <img src="${p.img}" alt="${p.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="emoji-placeholder" style="display:none">${p.emoji}</div>
+      <div class="product-img-wrap" style="background-image:url('${p.img}')"><div class="emoji-placeholder" style="display:none">${p.emoji}</div>
         <div class="product-img-overlay">
           <button class="overlay-btn" onclick="openQuickView(${p.id})" style="animation:none;background:#222;border:1px solid rgba(255,255,255,.15);">👁 Vista rápida</button>
           <button class="overlay-btn" onclick="agregarAlCarrito(${p.id})">🛒 Agregar</button>
@@ -788,9 +783,7 @@ const galleryGrid = document.getElementById('galleryGrid');
 gallery.forEach((g,i) => {
   galleryGrid.innerHTML += `
     <div class="gallery-item">
-      <div class="placeholder">
-        <img src="${g.img}" alt="" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,${['#2d1b3d #6b2fa0','#1a2a3d #2c5f8a','#3d1a1a #8a2c2c','#1a3d2a #2c8a5f','#2d2d1a #6b6b2f','#1a1a3d #2f2f6b'][i]})';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';this.parentElement.textContent='${g.emoji}'">
-      </div>
+      <div class="placeholder" style="background-image:url('${g.img}')"><div class="fallback" style="display:none;font-size:3rem">${g.emoji}</div>
       <div class="gallery-overlay">
         <div class="stats"><span>❤️ ${g.likes}</span><span>💬 ${g.comments}</span></div>
         <div class="caption">${g.caption}</div>
@@ -853,9 +846,7 @@ function actualizarUI() {
     total += subtotal;
     html += `
       <div class="cart-item">
-        <div class="cart-item-img" style="background:linear-gradient(135deg,${p.color});display:flex;align-items:center;justify-content:center;font-size:1.5rem;">
-          ${p.emoji}
-        </div>
+        <div class="cart-item-img" style="background-image:url('${p.img}');background-size:cover;background-position:center;"></div>
         <div class="cart-item-info">
           <div class="name">${p.name}</div>
           <div class="variant">Talla ${item.talla}</div>
@@ -941,9 +932,7 @@ function openQuickView(id) {
   const stockText = p.stock <= 0 ? '❌ Agotado' : `✅ ${p.stock} en stock`;
 
   let html = `
-    <div class="modal-img-wrap">
-      <div class="skeleton skeleton-img" style="position:absolute;inset:0;"></div>
-      <img src="${p.img}" alt="${p.name}" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="fallback" style="display:none;font-size:5rem">${p.emoji}</div>
+    <div class="modal-img-wrap" style="background-image:url('${p.img}')"><div class="fallback" style="display:none;font-size:5rem">${p.emoji}</div>
     </div>
     <div class="modal-info">
       <div class="cat">${p.category}</div>
@@ -976,7 +965,7 @@ function openQuickView(id) {
   const related = products.filter(x => x.id !== p.id && (x.category === p.category));
   related.slice(0,3).forEach(r => {
     html += `<div class="related-item" onclick="closeQuickView();openQuickView(${r.id})">
-      <div class="related-img"><img src="${r.img}" alt="${r.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="fallback" style="display:none;font-size:1.5rem">${r.emoji}</div></div>
+      <div class="related-img" style="background-image:url('${r.img}')"><div class="fallback" style="display:none;font-size:1.5rem">${r.emoji}</div></div>
       <div class="related-name">${r.name}</div>
       <div class="related-price">${r.price}</div>
     </div>`;

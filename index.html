@@ -150,8 +150,8 @@ h2 span{color:#dc2626;display:inline-block}
 .product-card:hover{transform:translateY(-4px);border-color:rgba(220,38,38,.3);box-shadow:0 12px 40px rgba(0,0,0,.5)}
 .product-card:hover::before{transform:scaleX(1)}
 .product-card:hover .product-img-overlay{opacity:1;pointer-events:auto}
-.product-img-wrap{position:relative;aspect-ratio:1;overflow:hidden;background-color:#1a1a1a}
-.product-img-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.product-img-wrap{position:relative;aspect-ratio:1;overflow:hidden;background:linear-gradient(135deg,#1a1a2e,#2d1a1a)}
+.product-img-wrap img{display:block;width:100%}
 .product-img-overlay{position:absolute;inset:0;z-index:2;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;opacity:0;transition:all .4s;gap:12px;pointer-events:none}
 .product-img-overlay .overlay-btn{background:#dc2626;color:#fff;border:none;padding:12px 24px;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition:all .3s;text-decoration:none;animation:glow 2s infinite}
 .product-img-overlay .overlay-btn:hover{background:#b91c1c;transform:scale(1.05)}
@@ -735,7 +735,6 @@ products.forEach(p => {
   card.dataset.name = p.name.toLowerCase();
   card.innerHTML = `
     <div class="product-img-wrap">
-      <img src="${p.img}" alt="${p.name}">
       <div class="product-img-overlay">
         <button class="overlay-btn" onclick="openQuickView(${p.id})" style="animation:none;background:#222;border:1px solid rgba(255,255,255,.15);">👁 Vista rápida</button>
         <button class="overlay-btn" onclick="agregarAlCarrito(${p.id})">🛒 Agregar</button>
@@ -749,8 +748,9 @@ products.forEach(p => {
     </div>`;
   const wrap = card.querySelector('.product-img-wrap');
   const i = document.createElement('img');
-  i.style.cssText = 'width:100%;height:100%;object-fit:cover;position:absolute;inset:0;display:block';
   i.src = p.img;
+  i.alt = p.name;
+  i.style.cssText = 'width:100%;object-fit:cover';
   i.onerror = function() { this.style.display = 'none'; };
   wrap.appendChild(i);
   productGrid.appendChild(card);

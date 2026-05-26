@@ -8,6 +8,9 @@
 <title>Suacha Estilo - Ropa Urbana</title>
 <meta name="description" content="Suacha Estilo - Ropa urbana desde Soacha, Colombia. Camisetas oversize, buzos, gorras y más. Premium algodón peruano. Envíos a todo Colombia.">
 <meta property="og:title" content="Suacha Estilo - Ropa Urbana">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <meta property="og:description" content="Ropa urbana con actitud. Cultura en movimiento. Premium algodón peruano, diseñado en Soacha para el mundo.">
 <meta property="og:image" content="https://scontent.fbog9-1.fna.fbcdn.net/v/t39.30808-1/474683159_1179293957530091_8567917066191410829_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=100&ccb=1-7&_nc_sid=f907e8&_nc_ohc=RVDl0ghXE2kQ7kNvwFW3SWm&_nc_oc=AdpuFKK1EHxIglIY4ah6_HPg9h6HxemPhN_cta8w_1l2rznwChBX0X9NUB-VjBnBNF6fBIoAXBlTRJ1gkKoG7WWt&_nc_zt=24&_nc_ht=scontent.fbog9-1.fna&edm=AKsJ254EAAAA&_nc_gid=NZ37D4fkJPilieT1Ujg9WQ&oh=00_Af4rHv3MwcCtsF_z1LUSUrPNkFWr2pTp0zabrv3P65KD0Q&oe=6A1A39D5">
 <meta property="og:type" content="website">
@@ -147,9 +150,8 @@ h2 span{color:#dc2626;display:inline-block}
 .product-card:hover{transform:translateY(-4px);border-color:rgba(220,38,38,.3);box-shadow:0 12px 40px rgba(0,0,0,.5)}
 .product-card:hover::before{transform:scaleX(1)}
 .product-card:hover .product-img-overlay{opacity:1;pointer-events:auto}
-.product-img-wrap{position:relative;aspect-ratio:1;overflow:hidden;background:#1a1a1a;display:flex;align-items:center;justify-content:center}
+.product-img-wrap{position:relative;aspect-ratio:1;overflow:hidden;background:#1a1a1a;display:flex;align-items:center;justify-content:center;background-size:cover;background-position:center}
 .product-img-wrap img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:1}
-.product-img-wrap .emoji-placeholder{font-size:3.5rem;z-index:0}
 .product-img-overlay{position:absolute;inset:0;z-index:2;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;opacity:0;transition:all .4s;gap:12px;pointer-events:none}
 .product-img-overlay .overlay-btn{background:#dc2626;color:#fff;border:none;padding:12px 24px;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition:all .3s;text-decoration:none;animation:glow 2s infinite}
 .product-img-overlay .overlay-btn:hover{background:#b91c1c;transform:scale(1.05)}
@@ -201,7 +203,7 @@ h2 span{color:#dc2626;display:inline-block}
 .gallery{background:#000}
 .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
 .gallery-item{position:relative;aspect-ratio:1;overflow:hidden;cursor:pointer;background:#111}
-.gallery-item .placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#1a1a1a;transition:transform .6s;position:relative}
+.gallery-item .placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#1a1a1a;transition:transform .6s;position:relative;background-size:cover;background-position:center}
 .gallery-item .placeholder img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
 .gallery-item:hover .placeholder{transform:scale(1.08)}
 .gallery-item:hover .gallery-overlay{opacity:1}
@@ -293,7 +295,6 @@ footer .brand-name span{color:#dc2626}
   .gallery-item{aspect-ratio:1}
   .product-grid{grid-template-columns:repeat(2,1fr);gap:.75rem}
   .product-img-wrap{aspect-ratio:1}
-  .product-img-wrap .emoji-placeholder{font-size:2.5rem}
   .footer-grid{grid-template-columns:1fr;gap:2rem}
   .location-features{grid-template-columns:repeat(2,1fr)}
   .location-buttons{flex-direction:column}
@@ -317,7 +318,7 @@ footer .brand-name span{color:#dc2626}
 .modal-close{position:absolute;top:12px;right:12px;z-index:2;width:36px;height:36px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.1);color:#fff;font-size:1.25rem;cursor:pointer;transition:.3s;display:flex;align-items:center;justify-content:center}
 .modal-close:hover{background:#dc2626;transform:rotate(90deg)}
 .modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
-.modal-img-wrap{position:relative;min-height:350px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#1a1a1a}
+.modal-img-wrap{position:relative;min-height:350px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#1a1a1a;background-size:cover;background-position:center}
 .modal-img-wrap img{width:100%;height:100%;object-fit:contain;position:absolute;inset:0}
 .modal-img-wrap .fallback{font-size:5rem}
 .modal-info{padding:2rem}
@@ -375,7 +376,7 @@ footer .brand-name span{color:#dc2626}
 .cart-empty .icon{font-size:3rem;margin-bottom:1rem}
 .cart-item{display:flex;gap:12px;padding:12px;border:1px solid rgba(255,255,255,.05);margin-bottom:10px;transition:.3s}
 .cart-item:hover{border-color:rgba(220,38,38,.2)}
-.cart-item-img{width:64px;height:64px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.5rem}
+.cart-item-img{width:64px;height:64px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.5rem;background:#1a1a1a;background-size:cover;background-position:center}
 .cart-item-info{flex:1}
 .cart-item-info .name{font-size:.82rem;font-weight:600;margin-bottom:2px}
 .cart-item-info .variant{font-size:.7rem;color:#666;margin-bottom:4px}
@@ -506,13 +507,6 @@ footer .brand-name span{color:#dc2626}
     <div class="brand-grid">
       <div class="brand-image-wrap reveal-left">
         <div class="main-img" style="background:url('identidad.jpeg') center/cover no-repeat;min-height:400px;"></div>
-        <div class="badge">
-          <div class="badge-icon">🎯</div>
-          <div class="badge-text">
-            <div class="title">Desde 2011</div>
-            <div class="sub">Creciendo juntos</div>
-          </div>
-        </div>
       </div>
       <div class="reveal-right">
         <p class="section-tag">🎯 Nuestra Historia</p>
@@ -717,38 +711,49 @@ function aplicarFiltros() {
 
 // ===== PRODUCTOS =====
 const productCats = [
-  {cat:"Croptops",price:"$45.000",img:"croptop",emoji:"👚",sizes:["S","M","L"],desc:"Croptop oversize 200 g/m². Corte moderno, diseño fresco y juvenil.",count:4},
-  {cat:"Pantaloneta Jean",price:"$90.000",img:"pantaloneta",emoji:"👖",sizes:["M","L","XL"],desc:"Pantaloneta jean urbana corte recto. Mezcla denim con elastic.",count:4},
-  {cat:"Camisetas niño",price:"$40.000",img:"kids",emoji:"👶",sizes:["4","6","8","10","12","16"],desc:"Camiseta infantil 200 g/m², algodón suave. Diseños divertidos.",count:6},
-  {cat:"Camisetas oversize",price:"$90.000",img:"oversize",emoji:"👕",sizes:["S","M","L","XL"],desc:"Camiseta oversize 240 g/m². Estampado exclusivo. Algodón peruano premium.",count:7},
-  {cat:"Buckethat",price:"$70.000",img:"buckethat",emoji:"🧢",sizes:["Única"],desc:"Bucket Hat con logo bordado. Tela ripstop resistente.",count:6}
+  {cat:"Croptops",price:"$45.000",img:"croptop",sizes:["S","M","L"],desc:"Croptop oversize 200 g/m². Corte moderno, diseño fresco y juvenil.",count:4},
+  {cat:"Pantaloneta Jean",price:"$90.000",img:"pantaloneta",sizes:["M","L","XL"],desc:"Pantaloneta jean urbana corte recto. Mezcla denim con elastic.",count:4},
+  {cat:"Camisetas niño",price:"$40.000",img:"kids",sizes:["4","6","8","10","12","16"],desc:"Camiseta infantil 200 g/m², algodón suave. Diseños divertidos.",count:6},
+  {cat:"Camisetas oversize",price:"$90.000",img:"oversize",sizes:["S","M","L","XL"],desc:"Camiseta oversize 240 g/m². Estampado exclusivo. Algodón peruano premium.",count:7},
+  {cat:"Buckethat",price:"$70.000",img:"buckethat",sizes:["Única"],desc:"Bucket Hat con logo bordado. Tela ripstop resistente.",count:6}
 ];
 let pid = 1;
 const products = [];
 productCats.forEach(c => {
   for(let i=1;i<=c.count;i++){
-    products.push({id:pid++,name:c.cat,category:c.cat,price:c.price,old:null,img:c.img+i+'.jpeg',emoji:c.emoji,sold:Math.floor(Math.random()*30+10),stock:Math.floor(Math.random()*15+3),sizes:c.sizes,description:c.desc});
+    products.push({id:pid++,name:c.cat,category:c.cat,price:c.price,old:null,img:c.img+i+'.jpeg',sold:Math.floor(Math.random()*30+10),stock:Math.floor(Math.random()*15+3),sizes:c.sizes,description:c.desc});
   }
 });
 const productGrid = document.getElementById('productGrid');
 products.forEach(p => {
   const stockPct = p.stock > 0 ? Math.round(p.sold/(p.sold+p.stock)*100) : 80;
-  productGrid.innerHTML += `
-    <div class="product-card" data-category="${p.category}" data-name="${p.name.toLowerCase()}">
-      <div class="product-img-wrap">
-        <img src="${p.img}" alt="${p.name}" onerror="this.style.display='none'"><div class="emoji-placeholder">${p.emoji}</div>
-        <div class="product-img-overlay">
-          <button class="overlay-btn" onclick="openQuickView(${p.id})" style="animation:none;background:#222;border:1px solid rgba(255,255,255,.15);">👁 Vista rápida</button>
-          <button class="overlay-btn" onclick="agregarAlCarrito(${p.id})">🛒 Agregar</button>
-        </div>
+  const card = document.createElement('div');
+  card.className = 'product-card';
+  card.dataset.category = p.category;
+  card.dataset.name = p.name.toLowerCase();
+  card.innerHTML = `
+    <div class="product-img-wrap">
+      <div class="product-img-overlay">
+        <button class="overlay-btn" onclick="openQuickView(${p.id})" style="animation:none;background:#222;border:1px solid rgba(255,255,255,.15);">👁 Vista rápida</button>
+        <button class="overlay-btn" onclick="agregarAlCarrito(${p.id})">🛒 Agregar</button>
       </div>
-      <div class="product-info">
-        <p class="product-category">${p.category}</p>
-        <p class="product-name">${p.name}</p>
-        <p class="product-price">${p.price}${p.old ? `<span class="product-old-price">${p.old}</span>` : ''}</p>
-        <div class="product-stock"><span>${p.sold} vendidos</span><div class="bar"><div class="bar-fill" style="width:${stockPct}%"></div></div></div>
-      </div>
+    </div>
+    <div class="product-info">
+      <p class="product-category">${p.category}</p>
+      <p class="product-name">${p.name}</p>
+      <p class="product-price">${p.price}${p.old ? `<span class="product-old-price">${p.old}</span>` : ''}</p>
+      <div class="product-stock"><span>${p.sold} vendidos</span><div class="bar"><div class="bar-fill" style="width:${stockPct}%"></div></div></div>
     </div>`;
+  const img = new Image();
+  img.onload = function() {
+    const wrap = card.querySelector('.product-img-wrap');
+    wrap.style.backgroundImage = `url('${p.img}')`;
+    wrap.style.backgroundSize = 'cover';
+    wrap.style.backgroundPosition = 'center';
+  };
+  img.onerror = function() {};
+  img.src = p.img;
+  productGrid.appendChild(card);
 });
 
 // ===== TESTIMONIOS =====
@@ -775,22 +780,30 @@ testimonials.forEach(t => {
 
 // ===== GALLERY =====
 const gallery = [
-  {img:"comunidad1.jpeg",emoji:"👥",likes:312,comments:24,caption:"Nuestra comunidad 🔥"},
-  {img:"comunidad2.jpeg",emoji:"👥",likes:287,comments:21,caption:"familia Suacha Estilo 💪"},
-  {img:"comunidad3.jpeg",emoji:"👥",likes:256,comments:18,caption:"Cultura en movimiento ✨"},
-  {img:"comunidad4.jpeg",emoji:"👥",likes:234,comments:16,caption:"Más que ropa, identidad 🔥"}
+  {img:"comunidad1.jpeg",likes:312,comments:24,caption:"Nuestra comunidad 🔥"},
+  {img:"comunidad2.jpeg",likes:287,comments:21,caption:"familia Suacha Estilo 💪"},
+  {img:"comunidad3.jpeg",likes:256,comments:18,caption:"Cultura en movimiento ✨"},
+  {img:"comunidad4.jpeg",likes:234,comments:16,caption:"Más que ropa, identidad 🔥"}
 ];
 const galleryGrid = document.getElementById('galleryGrid');
 gallery.forEach((g,i) => {
-  galleryGrid.innerHTML += `
-    <div class="gallery-item">
-      <div class="placeholder">
-        <img src="${g.img}" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="fallback" style="display:none;font-size:3rem">${g.emoji}</div>
+  const item = document.createElement('div');
+  item.className = 'gallery-item';
+  item.innerHTML = `
+    <div class="placeholder" id="galleryPlaceholder${i}">
       <div class="gallery-overlay">
         <div class="stats"><span>❤️ ${g.likes}</span><span>💬 ${g.comments}</span></div>
         <div class="caption">${g.caption}</div>
       </div>
     </div>`;
+  const gImg = new Image();
+  gImg.onload = function() {
+    document.getElementById('galleryPlaceholder' + i).style.backgroundImage = 'url("' + g.img + '")';
+    document.getElementById('galleryPlaceholder' + i).style.backgroundSize = 'cover';
+    document.getElementById('galleryPlaceholder' + i).style.backgroundPosition = 'center';
+  };
+  gImg.src = g.img;
+  galleryGrid.appendChild(item);
 });
 
 // ===== SCROLL REVEAL =====
@@ -848,7 +861,7 @@ function actualizarUI() {
     total += subtotal;
     html += `
       <div class="cart-item">
-        <div class="cart-item-img"><img src="${p.img}" alt="" onerror="this.style.display='none'" style="width:100%;height:100%;object-fit:cover"></div>
+        <div class="cart-item-img" id="cartItemImg${idx}"></div>
         <div class="cart-item-info">
           <div class="name">${p.name}</div>
           <div class="variant">Talla ${item.talla}</div>
@@ -865,6 +878,16 @@ function actualizarUI() {
       </div>`;
   });
   items.innerHTML = html + '<div id="cartEmpty" style="display:none"></div>';
+  cart.forEach((item, idx) => {
+    const p = products.find(x => x.id === item.id);
+    if(!p) return;
+    const cImg = new Image();
+    cImg.onload = function() {
+      const el = document.getElementById('cartItemImg' + idx);
+      if(el) { el.style.backgroundImage = 'url("' + p.img + '")'; el.style.backgroundSize = 'cover'; el.style.backgroundPosition = 'center'; }
+    };
+    cImg.src = p.img;
+  });
   document.getElementById('cartTotal').textContent = '$' + total.toLocaleString('es-CO');
   const msg = cart.map(i => {
     const p = products.find(x => x.id === i.id);
@@ -934,8 +957,7 @@ function openQuickView(id) {
   const stockText = p.stock <= 0 ? '❌ Agotado' : `✅ ${p.stock} en stock`;
 
   let html = `
-    <div class="modal-img-wrap">
-      <img src="${p.img}" alt="${p.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="fallback" style="display:none;font-size:5rem">${p.emoji}</div>
+    <div class="modal-img-wrap" id="modalImgWrap">
     </div>
     <div class="modal-info">
       <div class="cat">${p.category}</div>
@@ -968,17 +990,36 @@ function openQuickView(id) {
   const related = products.filter(x => x.id !== p.id && (x.category === p.category));
   related.slice(0,3).forEach(r => {
     html += `<div class="related-item" onclick="closeQuickView();openQuickView(${r.id})">
-      <div class="related-img"><img src="${r.img}" alt="${r.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="fallback" style="display:none;font-size:1.5rem">${r.emoji}</div></div>
+      <div class="related-img" style="background:#1a1a1a;background-size:cover;background-position:center;"></div>
       <div class="related-name">${r.name}</div>
       <div class="related-price">${r.price}</div>
     </div>`;
   });
   html += `</div></div>`;
   content.innerHTML = html;
-  document.getElementById('quickViewModal').classList.add('open');
+  const mImg = new Image();
+  mImg.onload = function() {
+    document.getElementById('modalImgWrap').style.backgroundImage = `url('${p.img}')`;
+    document.getElementById('modalImgWrap').style.backgroundSize = 'cover';
+    document.getElementById('modalImgWrap').style.backgroundPosition = 'center';
+  };
+  mImg.src = p.img;
+  related.slice(0,3).forEach(r => {
+    const rImg = new Image();
+    rImg.onload = function() {
+      const els = document.querySelectorAll('.related-item');
+      for(let i=0;i<els.length;i++){
+        if(els[i].querySelector('.related-name').textContent === r.name){
+          els[i].querySelector('.related-img').style.backgroundImage = 'url("' + r.img + '")';
+        }
+      }
+    };
+    rImg.src = r.img;
+  });
   window._qvId = p.id;
   window._qvSize = p.sizes[0];
   window._qvQty = 1;
+  document.getElementById('quickViewModal').classList.add('open');
 }
 
 function closeQuickView() {

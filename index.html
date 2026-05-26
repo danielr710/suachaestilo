@@ -732,7 +732,7 @@ products.forEach(p => {
   card.dataset.category = p.category;
   card.dataset.name = p.name.toLowerCase();
   card.innerHTML = `
-    <div class="product-img-wrap">
+    <div class="product-img-wrap" style="background:#1a1a1a url('${p.img}') center/cover no-repeat">
       <div class="product-img-overlay">
         <button class="overlay-btn" onclick="openQuickView(${p.id})" style="animation:none;background:#222;border:1px solid rgba(255,255,255,.15);">👁 Vista rápida</button>
         <button class="overlay-btn" onclick="agregarAlCarrito(${p.id})">🛒 Agregar</button>
@@ -744,13 +744,12 @@ products.forEach(p => {
       <p class="product-price">${p.price}${p.old ? `<span class="product-old-price">${p.old}</span>` : ''}</p>
       <div class="product-stock"><span>${p.sold} vendidos</span><div class="bar"><div class="bar-fill" style="width:${stockPct}%"></div></div></div>
     </div>`;
-  const img = new Image();
-  img.onload = function() {
-    const wrap = card.querySelector('.product-img-wrap');
-    wrap.style.background = `#1a1a1a url('${p.img}') center/cover no-repeat`;
-  };
-  img.onerror = function() {};
-  img.src = p.img;
+  const wrap = card.querySelector('.product-img-wrap');
+  const i = document.createElement('img');
+  i.style.cssText = 'width:100%;height:100%;object-fit:cover;position:absolute;inset:0;display:block';
+  i.src = p.img;
+  i.onerror = function() { this.style.display = 'none'; };
+  wrap.appendChild(i);
   productGrid.appendChild(card);
 });
 
@@ -788,19 +787,12 @@ gallery.forEach((g,i) => {
   const item = document.createElement('div');
   item.className = 'gallery-item';
   item.innerHTML = `
-    <div class="placeholder" id="galleryPlaceholder${i}">
+    <div class="placeholder" id="galleryPlaceholder${i}" style="background:#1a1a1a url('${g.img}') center/cover no-repeat">
       <div class="gallery-overlay">
         <div class="stats"><span>❤️ ${g.likes}</span><span>💬 ${g.comments}</span></div>
         <div class="caption">${g.caption}</div>
       </div>
     </div>`;
-  const gImg = new Image();
-  gImg.onload = function() {
-    document.getElementById('galleryPlaceholder' + i).style.backgroundImage = 'url("' + g.img + '")';
-    document.getElementById('galleryPlaceholder' + i).style.backgroundSize = 'cover';
-    document.getElementById('galleryPlaceholder' + i).style.backgroundPosition = 'center';
-  };
-  gImg.src = g.img;
   galleryGrid.appendChild(item);
 });
 
@@ -859,7 +851,7 @@ function actualizarUI() {
     total += subtotal;
     html += `
       <div class="cart-item">
-        <div class="cart-item-img" id="cartItemImg${idx}"></div>
+        <div class="cart-item-img" id="cartItemImg${idx}" style="background:#1a1a1a url('${p.img}') center/cover no-repeat"></div>
         <div class="cart-item-info">
           <div class="name">${p.name}</div>
           <div class="variant">Talla ${item.talla}</div>
@@ -876,16 +868,6 @@ function actualizarUI() {
       </div>`;
   });
   items.innerHTML = html + '<div id="cartEmpty" style="display:none"></div>';
-  cart.forEach((item, idx) => {
-    const p = products.find(x => x.id === item.id);
-    if(!p) return;
-    const cImg = new Image();
-    cImg.onload = function() {
-      const el = document.getElementById('cartItemImg' + idx);
-      if(el) { el.style.backgroundImage = 'url("' + p.img + '")'; el.style.backgroundSize = 'cover'; el.style.backgroundPosition = 'center'; }
-    };
-    cImg.src = p.img;
-  });
   document.getElementById('cartTotal').textContent = '$' + total.toLocaleString('es-CO');
   const msg = cart.map(i => {
     const p = products.find(x => x.id === i.id);
@@ -955,7 +937,7 @@ function openQuickView(id) {
   const stockText = p.stock <= 0 ? '❌ Agotado' : `✅ ${p.stock} en stock`;
 
   let html = `
-    <div class="modal-img-wrap" id="modalImgWrap">
+    <div class="modal-img-wrap" id="modalImgWrap" style="background:#1a1a1a url('${p.img}') center/cover no-repeat">
     </div>
     <div class="modal-info">
       <div class="cat">${p.category}</div>
@@ -988,32 +970,13 @@ function openQuickView(id) {
   const related = products.filter(x => x.id !== p.id && (x.category === p.category));
   related.slice(0,3).forEach(r => {
     html += `<div class="related-item" onclick="closeQuickView();openQuickView(${r.id})">
-      <div class="related-img" style="background:#1a1a1a;background-size:cover;background-position:center;"></div>
+      <div class="related-img" style="background:#1a1a1a url('${r.img}') center/cover no-repeat;"></div>
       <div class="related-name">${r.name}</div>
       <div class="related-price">${r.price}</div>
     </div>`;
   });
   html += `</div></div>`;
   content.innerHTML = html;
-  const mImg = new Image();
-  mImg.onload = function() {
-    document.getElementById('modalImgWrap').style.backgroundImage = `url('${p.img}')`;
-    document.getElementById('modalImgWrap').style.backgroundSize = 'cover';
-    document.getElementById('modalImgWrap').style.backgroundPosition = 'center';
-  };
-  mImg.src = p.img;
-  related.slice(0,3).forEach(r => {
-    const rImg = new Image();
-    rImg.onload = function() {
-      const els = document.querySelectorAll('.related-item');
-      for(let i=0;i<els.length;i++){
-        if(els[i].querySelector('.related-name').textContent === r.name){
-          els[i].querySelector('.related-img').style.backgroundImage = 'url("' + r.img + '")';
-        }
-      }
-    };
-    rImg.src = r.img;
-  });
   window._qvId = p.id;
   window._qvSize = p.sizes[0];
   window._qvQty = 1;

@@ -471,12 +471,12 @@ footer .brand-name span{color:#dc2626}
     <div class="product-toolbar">
       <div class="product-filters" id="productFilters">
         <button class="filter-btn active" data-filter="todo" onclick="filtrarProductos('todo',this)">Todo</button>
-        <button class="filter-btn" data-filter="Camiseta" onclick="filtrarProductos('Camiseta',this)">👕 Camisetas</button>
-        <button class="filter-btn" data-filter="Buzo" onclick="filtrarProductos('Buzo',this)">🧥 Buzos</button>
-        <button class="filter-btn" data-filter="Hoodie" onclick="filtrarProductos('Hoodie',this)">Hoodies</button>
-        <button class="filter-btn" data-filter="Accesorio" onclick="filtrarProductos('Accesorio',this)">🧢 Accesorios</button>
-        <button class="filter-btn" data-filter="Jogger" onclick="filtrarProductos('Jogger',this)">👖 Joggers</button>
-        <button class="filter-btn" data-filter="Conjunto" onclick="filtrarProductos('Conjunto',this)">👜 Conjuntos</button>
+        <button class="filter-btn" data-filter="Croptops" onclick="filtrarProductos('Croptops',this)">👚 Croptops</button>
+        <button class="filter-btn" data-filter="Pantaloneta Jean" onclick="filtrarProductos('Pantaloneta Jean',this)">👖 Pantaloneta Jean</button>
+        <button class="filter-btn" data-filter="Camisetas Kids" onclick="filtrarProductos('Camisetas Kids',this)">👶 Camisetas Kids</button>
+        <button class="filter-btn" data-filter="Camiseta oversize" onclick="filtrarProductos('Camiseta oversize',this)">👕 Camiseta oversize</button>
+        <button class="filter-btn" data-filter="Buckethat S" onclick="filtrarProductos('Buckethat S',this)">🧢 Buckethat S</button>
+        <button class="filter-btn" data-filter="Chaqueta" onclick="filtrarProductos('Chaqueta',this)">🧥 Chaqueta</button>
       </div>
       <div class="product-search">
         <span class="icon">🔍</span>
@@ -728,21 +728,12 @@ function aplicarFiltros() {
 
 // ===== PRODUCTOS =====
 const products = [
-  {id:1,name:"Oversize Premium Algodón Peruano",category:"Camiseta",price:"$99.900",old:null,color:"#2d1b3d #6b2fa0",emoji:"👕",sold:47,stock:8,sizes:["S","M","L","XL"],colors:["Negro","Blanco","Gris","Rojo"],description:"Camiseta oversize de algodón peruano premium 240 g/m². Corte holgado urbano, costura doble refuerzo, cuello ribeteado. Diseño exclusivo Suacha Estilo."},
-  {id:2,name:"Buzo Urbano Exclusivo",category:"Buzo",price:"$139.900",old:"$159.900",color:"#1a2a3d #2c5f8a",emoji:"🧥",sold:38,stock:12,sizes:["M","L","XL","2XL"],colors:["Negro","Gris","Azul Marino"],description:"Buzo de frisa premium 280 g/m² con capucha forrada y bolsillo canguro amplio. Cordones metálicos, costuras reforzadas, ajuste en mangas con elástico."},
-  {id:3,name:"Full Color Unisex",category:"Camiseta",price:"$74.900",old:null,color:"#3d1a1a #8a2c2c",emoji:"👚",sold:52,stock:5,sizes:["S","M","L","XL"],colors:["Negro","Blanco","Rojo","Azul","Verde"],description:"Camiseta unisex full color 200 g/m². Algodón peinado de alta calidad, ideal para el día a día con estilo urbano."},
-  {id:4,name:"Jogger Urbano Algodón",category:"Jogger",price:"$99.900",old:null,color:"#1a3d2a #2c8a5f",emoji:"👖",sold:29,stock:15,sizes:["S","M","L","XL","2XL"],colors:["Negro","Gris","Oliva"],description:"Jogger de algodón 260 g/m² con elastico en tobillos, cintura ajustable con cordón, bolsillos laterales profundos. Cómodo y fresco para el diario."},
-  {id:5,name:"Gorra Bordada Suacha",category:"Accesorio",price:"$49.900",old:null,color:"#2d2d1a #6b6b2f",emoji:"🧢",sold:44,stock:3,sizes:["Ajustable"],colors:["Negro","Rojo","Blanco"],description:"Gorra bordada con logo de Suacha Estilo en alto relieve. Ajustable con correa trasera, visera curva preformada, material poliéster."},
-  {id:6,name:"Set Deportivo Exclusivo",category:"Conjunto",price:"$159.900",old:"$189.900",color:"#1a1a3d #2f2f6b",emoji:"👜",sold:18,stock:7,sizes:["M","L","XL"],colors:["Negro","Gris"],description:"Set deportivo de dos piezas: buzó más pantalón. Algodón premium 280 g/m² con bordados detallados. Ideal para entrenar o lucir urbano."},
-  {id:7,name:"Hoodie Cultura Urbana",category:"Hoodie",price:"$119.900",old:"$139.900",color:"#3d2d1a #8a6b2f",emoji:"🧥",sold:33,stock:6,sizes:["S","M","L","XL","2XL"],colors:["Negro","Gris","Rojo"],description:"Hoodie cultura urbana 300 g/m². Algodón premium con capucha doble forro, bolsillo canguro con cremallera, puños y cintura acanalados."},
-  {id:8,name:"Camiseta Urban Crew",category:"Camiseta",price:"$69.900",old:"$84.900",color:"#2d1a2d #6b2f6b",emoji:"👕",sold:41,stock:4,sizes:["S","M","L","XL"],colors:["Negro","Blanco"],description:"Camiseta Urban Crew 220 g/m². Estilo callejero con diseño exclusivo serigrafiado, costuras dobles, cuello reforzado."},
-  {id:9,name:"Gorra Colombia Premium",category:"Accesorio",price:"$69.900",old:null,color:"#1a2d1a #2f6b2f",emoji:"🧢",sold:25,stock:10,sizes:["Ajustable"],colors:["Negro","Verde","Amarillo"],description:"Gorra Colombia Premium bordada. Edición especial con detalles tricolor, visera plana, ajuste snapback."},
-  {id:10,name:"Croptop Edición Limitada",category:"Camiseta",price:"$59.900",old:null,color:"#4a1a3d #8a2c6b",emoji:"👚",sold:22,stock:9,sizes:["S","M","L"],colors:["Negro","Blanco","Rojo"],description:"Croptop oversize 200 g/m². Corte moderno, diseño fresco y juvenil. Perfecto para looks urbanos con actitud."},
-  {id:11,name:"Pantaloneta Jean Urbana",category:"Jogger",price:"$89.900",old:"$109.900",color:"#1a2d3d #2c5f8a",emoji:"👖",sold:16,stock:11,sizes:["S","M","L","XL","2XL"],colors:["Negro","Azul","Gris"],description:"Pantaloneta jean urbana corte recto. Mezcla denim con elastico, cintura ajustable, bolsillos utilitarios."},
-  {id:12,name:"Camiseta Infantil Kids",category:"Camiseta",price:"$49.900",old:null,color:"#3d2d1a #8a6b2f",emoji:"👶",sold:31,stock:14,sizes:["4","6","8","10","12"],colors:["Negro","Blanco","Rojo","Azul"],description:"Camiseta infantil 200 g/m², algodón suave. Diseños divertidos y cómodos para los más pequeños. Resistente y fácil de lavar."},
-  {id:13,name:"Camiseta Oversize Ed. Limitada",category:"Camiseta",price:"$89.900",old:"$109.900",color:"#2d1b3d #6b2fa0",emoji:"👕",sold:35,stock:6,sizes:["S","M","L","XL","2XL"],colors:["Negro","Blanco","Morado"],description:"Camiseta oversize edición limitada 240 g/m². Estampado exclusivo frontal y trasero. Algodón peruano premium, diseño único."},
-  {id:14,name:"Bucket Hat Suacha",category:"Accesorio",price:"$34.900",old:null,color:"#1a3d2a #2c8a5f",emoji:"🧢",sold:28,stock:20,sizes:["Única"],colors:["Negro","Verde Militar","Beige"],description:"Bucket Hat con logo bordado. Tela ripstop resistente, fresco y cómodo. El accesorio urbano perfecto."},
-  {id:15,name:"Chaqueta Urbana Rompevientos",category:"Buzo",price:"$149.900",old:null,color:"#1a1a3d #2f2f6b",emoji:"🧥",sold:12,stock:8,sizes:["M","L","XL","2XL"],colors:["Negro","Azul Noche"],description:"Chaqueta rompevientos ligera 100% poliéster. Resistente al agua, cremallera frontal, capucha desmontable, bolsillos con cierre. Ideal para la calle."}
+  {id:1,name:"Croptop Edición Limitada",category:"Croptops",price:"$59.900",old:null,color:"#4a1a3d #8a2c6b",emoji:"👚",sold:22,stock:9,sizes:["S","M","L"],colors:["Negro","Blanco","Rojo"],description:"Croptop oversize 200 g/m². Corte moderno, diseño fresco y juvenil. Perfecto para looks urbanos con actitud."},
+  {id:2,name:"Pantaloneta Jean Urbana",category:"Pantaloneta Jean",price:"$89.900",old:"$109.900",color:"#1a2d3d #2c5f8a",emoji:"👖",sold:16,stock:11,sizes:["S","M","L","XL","2XL"],colors:["Negro","Azul","Gris"],description:"Pantaloneta jean urbana corte recto. Mezcla denim con elastic, cintura ajustable, bolsillos utilitarios."},
+  {id:3,name:"Camiseta Infantil Kids",category:"Camisetas Kids",price:"$49.900",old:null,color:"#3d2d1a #8a6b2f",emoji:"👶",sold:31,stock:14,sizes:["4","6","8","10","12"],colors:["Negro","Blanco","Rojo","Azul"],description:"Camiseta infantil 200 g/m², algodón suave. Diseños divertidos y cómodos para los más pequeños. Resistente y fácil de lavar."},
+  {id:4,name:"Camiseta Oversize Ed. Limitada",category:"Camiseta oversize",price:"$89.900",old:"$109.900",color:"#2d1b3d #6b2fa0",emoji:"👕",sold:35,stock:6,sizes:["S","M","L","XL","2XL"],colors:["Negro","Blanco","Morado"],description:"Camiseta oversize edición limitada 240 g/m². Estampado exclusivo frontal y trasero. Algodón peruano premium, diseño único."},
+  {id:5,name:"Bucket Hat Suacha",category:"Buckethat S",price:"$34.900",old:null,color:"#1a3d2a #2c5f8a",emoji:"🧢",sold:28,stock:20,sizes:["Única"],colors:["Negro","Verde Militar","Beige"],description:"Bucket Hat con logo bordado. Tela ripstop resistente, fresco y cómodo. El accesorio urbano perfecto."},
+  {id:6,name:"Chaqueta Urbana Rompevientos",category:"Chaqueta",price:"$149.900",old:null,color:"#1a1a3d #2f2f6b",emoji:"🧥",sold:12,stock:8,sizes:["M","L","XL","2XL"],colors:["Negro","Azul Noche"],description:"Chaqueta rompevientos ligera 100% poliéster. Resistente al agua, cremallera frontal, capucha desmontable, bolsillos con cierre. Ideal para la calle."}
 ];
 const productGrid = document.getElementById('productGrid');
 products.forEach(p => {
@@ -789,12 +780,12 @@ testimonials.forEach(t => {
 
 // ===== GALLERY =====
 const gallery = [
-  {img:"img1.jpeg",emoji:"👕",likes:234,comments:18,caption:"Nueva colección 🔥 #SuachaEstilo"},
-  {img:"img2.jpeg",emoji:"👥",likes:456,comments:32,caption:"La familia crece 💪 #Comunidad"},
-  {img:"img3.jpeg",emoji:"🧥",likes:189,comments:12,caption:"Detalles que marcan 👌 #UrbanStyle"},
-  {img:"img4.jpeg",emoji:"🇨🇴",likes:312,comments:24,caption:"Soacha con orgullo 🫡 #Colombia"},
-  {img:"img5.jpeg",emoji:"🧥",likes:278,comments:21,caption:"Hoodie Best seller 🔥"},
-  {img:"img6.jpeg",emoji:"👕",likes:198,comments:15,caption:"Diseños únicos ✨ #Camisetas"}
+  {img:"img10.jpeg",emoji:"👕",likes:234,comments:18,caption:"Nueva colección 🔥 #SuachaEstilo"},
+  {img:"img11.jpeg",emoji:"👥",likes:456,comments:32,caption:"La familia crece 💪 #Comunidad"},
+  {img:"img12.jpeg",emoji:"🧥",likes:189,comments:12,caption:"Detalles que marcan 👌 #UrbanStyle"},
+  {img:"img13.jpeg",emoji:"🇨🇴",likes:312,comments:24,caption:"Soacha con orgullo 🫡 #Colombia"},
+  {img:"img14.jpeg",emoji:"🧥",likes:278,comments:21,caption:"Hoodie Best seller 🔥"},
+  {img:"img15.jpeg",emoji:"👕",likes:198,comments:15,caption:"Diseños únicos ✨ #Camisetas"}
 ];
 const galleryGrid = document.getElementById('galleryGrid');
 gallery.forEach((g,i) => {

@@ -390,7 +390,8 @@ footer .brand-name span{color:#dc2626}
 @media(max-width:768px){
   .cart-sidebar{width:100%}
   .modal-grid{grid-template-columns:1fr}
-  .modal-img-wrap{min-height:200px;max-height:40vh}
+  .modal-img-wrap{min-height:auto;max-height:50vh;height:auto}
+  .modal-img-wrap img{object-fit:contain}
   .modal-img-wrap .fallback{font-size:3rem}
   .modal-info{padding:1.25rem}
   .modal-info h3{font-size:1.25rem}
@@ -465,8 +466,7 @@ footer .brand-name span{color:#dc2626}
   <canvas id="particles-canvas"></canvas>
   <div class="hero-bg" style="background:url('BASE 2026.png') center/cover no-repeat,linear-gradient(135deg,#0a0a0a 0,#1a1a2e 30%,#2d1a1a 70%,#0a0a0a 100%)"></div>
   <div class="hero-content">
-    <p class="hero-tag">🔥 Cultura en movimiento</p>
-    <h1 style="margin-bottom:0;"><img src="SUACHA-ESTILO rojo (1).png" alt="Suacha Estilo" style="max-width:90%;width:500px;height:auto;display:block;margin:0 auto;"></h1>
+    <h1 style="margin-bottom:0;"><img src="SUACHA-ESTILO rojo (1).png" alt="Suacha Estilo" style="max-width:80%;width:280px;height:auto;display:block;margin:0 auto;"></h1>
     <p>Somos una marca consolidada desde el 2011 que ha sabido dejar huella a nivel local, nacional e internacional gracias a nuestro compromiso con la cultura hip hop. Nuestra propuesta nace del color, el diseño y el estilo que emanan del graffiti, la danza, el rap y el DJing.</p>
     <div class="btn-group">
       <a href="#productos" class="btn btn-primary">Ver Colección</a>
@@ -880,7 +880,7 @@ function actualizarUI() {
     const p = products.find(x => x.id === i.id);
     if(!p) return '';
     const sub = parseInt(i.price.replace(/\D/g,'')) * i.qty;
-    return `🛍️ ${p.name}\n📏 Talla: ${i.talla} | 🔢 Cant: ${i.qty} | 💵 $${sub.toLocaleString('es-CO')}`;
+    return `🛍️ ${p.name}\n📏 Talla: ${i.talla} | 🔢 Cant: ${i.qty} | 💵 $${sub.toLocaleString('es-CO')}\n🖼️ ${window.location.origin}/${p.image}`;
   }).filter(Boolean).join('\n\n');
   const msgCarrito = `Hola Suacha Estilo! 👋\nQuiero comprar:\n\n${lineas}\n\n💰 TOTAL: $${total.toLocaleString('es-CO')}\n\n¿Pueden confirmar el pedido? ✨`;
   document.getElementById('cartWspBtn').href = `https://wa.me/573112112023?text=${encodeURIComponent(msgCarrito)}`;
@@ -990,7 +990,7 @@ function openQuickView(id) {
   window._qvQty = 1;
   const precioNum = parseInt(p.price.replace(/\D/g,''));
   const subtotal = precioNum * window._qvQty;
-  const wspMsg = `Hola Suacha Estilo! 👋\nQuiero hacer un pedido:\n\n🛍️ ${p.name}\n📏 Talla: ${window._qvSize}\n🔢 Cantidad: ${window._qvQty}\n💰 Precio: ${p.price} c/u\n💵 Subtotal: $${subtotal.toLocaleString('es-CO')}\n\n¿Tienen disponibilidad? ✨`;
+  const wspMsg = `Hola Suacha Estilo! 👋\nQuiero hacer un pedido:\n\n🛍️ ${p.name}\n📏 Talla: ${window._qvSize}\n🔢 Cantidad: ${window._qvQty}\n💰 Precio: ${p.price} c/u\n💵 Subtotal: $${subtotal.toLocaleString('es-CO')}\n🖼️ ${window.location.origin}/${p.image}\n\n¿Tienen disponibilidad? ✨`;
   content.querySelector('.btn-green').href = `https://wa.me/573112112023?text=${encodeURIComponent(wspMsg)}`;
   document.getElementById('quickViewModal').classList.add('open');
 }

@@ -142,20 +142,14 @@ h2 span{color:#dc2626;display:inline-block}
 .skeleton-text{height:14px;margin:8px 0;border-radius:4px}
 .skeleton-text.short{width:60%}
 .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem}
-.product-card{background:#111;border:1px solid rgba(255,255,255,.06);transition:all .4s cubic-bezier(.25,.46,.45,.94);cursor:pointer;position:relative;overflow:hidden;transform:translateY(0);-webkit-tap-highlight-color:transparent;user-select:none}
+.product-card{background:#111;cursor:pointer;opacity:0;transform:translateY(30px);transition:opacity .5s ease,transform .5s ease,box-shadow .4s,border-color .4s}
+.product-card.visible{opacity:1;transform:translateY(0)}
 .product-card:active{transform:scale(.98);transition:transform .15s ease}
-
-.product-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,#dc2626,#fca311);transform:scaleX(0);transform-origin:left;transition:transform .4s}
-.product-card:hover{transform:translateY(-6px);border-color:rgba(220,38,38,.4);box-shadow:0 16px 48px rgba(220,38,38,.25)}
-.product-card:hover::before{transform:scaleX(1)}
-.product-card:hover .product-img-wrap img{transform:scale(1.05)}
-.product-card:hover .product-overlay{opacity:1}
 .product-img-wrap{position:relative;overflow:hidden;background:linear-gradient(135deg,#1a1a2e,#2d1a1a)}
-.product-img-wrap img{display:block;width:100%;height:280px;object-fit:cover;transition:transform .4s ease}
-.product-overlay{position:absolute;inset:0;background:rgba(220,38,38,.85);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s ease;color:#fff;font-size:.82rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;z-index:2}
-.product-overlay .ov-mobile{display:none}
-.product-overlay span{transform:translateY(4px);transition:transform .3s ease}
-.product-card:hover .product-overlay span{transform:translateY(0)}
+.product-img-wrap img{display:block;width:100%;height:280px;object-fit:cover;transition:transform .5s ease}
+.product-card:hover .product-img-wrap img{transform:scale(1.07)}
+.product-img-overlay{position:absolute;inset:0;background:rgba(220,38,38,.55);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.85rem;letter-spacing:1px;opacity:0;transition:opacity .35s ease;z-index:2}
+.product-card:hover .product-img-overlay{opacity:1}
 .product-info{padding:1rem 1.25rem 1.25rem}
 .product-category{font-size:.65rem;text-transform:uppercase;letter-spacing:1.5px;color:#dc2626;font-weight:600}
 .product-name{font-weight:600;font-size:1rem;margin:4px 0 8px;color:#f5f5f5}
@@ -408,29 +402,10 @@ footer .brand-name span{color:#dc2626}
   .related-name{font-size:.65rem}
   .related-price{font-size:.8rem}
   .product-img-wrap img{height:200px}
-  .product-overlay{top:auto;bottom:0;height:40px;opacity:1;background:rgba(220,38,38,.92)}
-  .product-overlay span{font-size:.72rem;transform:none}
-  .product-overlay .ov-desktop{display:none}
-  .product-overlay .ov-mobile{display:inline}
 }
-/* ===== PRODUCT STAGGER ===== */
-.product-grid.stagger-children > .product-card{opacity:0;transform:translateY(30px)}
-.product-grid.stagger-children.active > .product-card{animation:fadeInUp .6s cubic-bezier(.25,.46,.45,.94) forwards}
-.product-grid.stagger-children.active > .product-card:nth-child(1){animation-delay:0s}
-.product-grid.stagger-children.active > .product-card:nth-child(2){animation-delay:.08s}
-.product-grid.stagger-children.active > .product-card:nth-child(3){animation-delay:.16s}
-.product-grid.stagger-children.active > .product-card:nth-child(4){animation-delay:.24s}
-.product-grid.stagger-children.active > .product-card:nth-child(5){animation-delay:.32s}
-.product-grid.stagger-children.active > .product-card:nth-child(6){animation-delay:.4s}
-.product-grid.stagger-children.active > .product-card:nth-child(7){animation-delay:.48s}
-.product-grid.stagger-children.active > .product-card:nth-child(8){animation-delay:.56s}
-.product-grid.stagger-children.active > .product-card:nth-child(9){animation-delay:.64s}
-.product-grid.stagger-children.active > .product-card:nth-child(10){animation-delay:.72s}
-.product-grid.stagger-children.active > .product-card:nth-child(11){animation-delay:.8s}
-.product-grid.stagger-children.active > .product-card:nth-child(12){animation-delay:.88s}
-.product-grid.stagger-children.active > .product-card:nth-child(13){animation-delay:.96s}
-.product-grid.stagger-children.active > .product-card:nth-child(14){animation-delay:1.04s}
-.product-grid.stagger-children.active > .product-card:nth-child(15){animation-delay:1.12s}
+@media(max-width:768px){
+  .product-img-overlay{opacity:1;background:linear-gradient(to top,rgba(220,38,38,.7) 0%,transparent 60%);align-items:flex-end;padding-bottom:10px;font-size:.75rem}
+}
 /* ===== PRELOADER ===== */
 .preloader{position:fixed;inset:0;z-index:9999;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:1;visibility:visible;animation:preloaderOut .6s 2s forwards}
 @keyframes preloaderOut{to{opacity:0;visibility:hidden;pointer-events:none}}
@@ -519,7 +494,7 @@ footer .brand-name span{color:#dc2626}
         <input type="text" id="productSearch" placeholder="Buscar producto..." oninput="buscarProductos(this.value)">
       </div>
     </div>
-    <div class="product-grid stagger-children" id="productGrid"></div>
+    <div class="product-grid" id="productGrid"></div>
   </div>
 </section>
 
@@ -756,7 +731,7 @@ products.forEach(p => {
   card.dataset.name = p.name.toLowerCase();
   card.innerHTML = `
     <div class="product-img-wrap">
-      <div class="product-overlay"><span class="ov-desktop">👁 Vista rápida</span><span class="ov-mobile">Ver detalle</span></div>
+      <div class="product-img-overlay">👁 Vista rápida</div>
     </div>
     <div class="product-info">
       <p class="product-category">${p.category}</p>
@@ -795,6 +770,16 @@ testimonials.forEach(t => {
       </div>
     </div>`;
 });
+
+const cardObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if(entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      cardObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: .1 });
+document.querySelectorAll('.product-card').forEach(c => cardObserver.observe(c));
 
 // ===== GALLERY =====
 const gallery = [
@@ -891,15 +876,14 @@ function actualizarUI() {
   });
   items.innerHTML = html + '<div id="cartEmpty" style="display:none"></div>';
   document.getElementById('cartTotal').textContent = '$' + total.toLocaleString('es-CO');
-  const lines = ['Hola Suacha Estilo! 👋','Quiero hacer un pedido:',''];
-  cart.forEach(i => {
+  const lineas = cart.map(i => {
     const p = products.find(x => x.id === i.id);
-    if(!p) return;
-    const subtotal = parseInt(i.price.replace(/\D/g,'')) * i.qty;
-    lines.push('🛍️ ' + p.name + ' - Talla ' + i.talla + ' x' + i.qty + ' = $' + subtotal.toLocaleString('es-CO'));
-  });
-  lines.push('','💵 Total: $' + total.toLocaleString('es-CO'),'','¿Tienen disponibilidad? ✨');
-  document.getElementById('cartWspBtn').href = 'https://wa.me/573112112023?text=' + encodeURIComponent(lines.join('\n'));
+    if(!p) return '';
+    const sub = parseInt(i.price.replace(/\D/g,'')) * i.qty;
+    return `🛍️ ${p.name}\n📏 Talla: ${i.talla} | 🔢 Cant: ${i.qty} | 💵 $${sub.toLocaleString('es-CO')}`;
+  }).filter(Boolean).join('\n\n');
+  const msgCarrito = `Hola Suacha Estilo! 👋\nQuiero comprar:\n\n${lineas}\n\n💰 TOTAL: $${total.toLocaleString('es-CO')}\n\n¿Pueden confirmar el pedido? ✨`;
+  document.getElementById('cartWspBtn').href = `https://wa.me/573112112023?text=${encodeURIComponent(msgCarrito)}`;
 }
 
 function toggleCart() {
@@ -985,7 +969,7 @@ function openQuickView(id) {
       </div>
       <div class="modal-buttons">
         <button class="btn btn-primary" onclick="qvAddToCart(${p.id})">🛒 Agregar al carrito</button>
-        <button class="btn btn-green" onclick="qvWhatsApp(${p.id})">💬 WhatsApp</button>
+        <a target="_blank" class="btn btn-green">💬 WhatsApp</a>
       </div>
     </div>
     <div class="related-products">
@@ -1004,6 +988,10 @@ function openQuickView(id) {
   window._qvId = p.id;
   window._qvSize = p.sizes[0];
   window._qvQty = 1;
+  const precioNum = parseInt(p.price.replace(/\D/g,''));
+  const subtotal = precioNum * window._qvQty;
+  const wspMsg = `Hola Suacha Estilo! 👋\nQuiero hacer un pedido:\n\n🛍️ ${p.name}\n📏 Talla: ${window._qvSize}\n🔢 Cantidad: ${window._qvQty}\n💰 Precio: ${p.price} c/u\n💵 Subtotal: $${subtotal.toLocaleString('es-CO')}\n\n¿Tienen disponibilidad? ✨`;
+  content.querySelector('.btn-green').href = `https://wa.me/573112112023?text=${encodeURIComponent(wspMsg)}`;
   document.getElementById('quickViewModal').classList.add('open');
 }
 
@@ -1036,37 +1024,13 @@ function qvAddToCart(id) {
   notificar(`✅ ${p.name} (${window._qvSize}) agregado al carrito`);
 }
 
-function qvWhatsApp(id) {
-  const p = products.find(x => x.id === id);
-  if(!p) return;
-  const qty = Math.max(1, window._qvQty || 1);
-  const size = window._qvSize || p.sizes[0];
-  const subtotal = parseInt(p.price.replace(/\D/g,'')) * qty;
-  const lines = [
-    'Hola Suacha Estilo! 👋',
-    'Quiero hacer un pedido:',
-    '',
-    '🛍️ ' + p.name,
-    '📏 Talla: ' + size,
-    '🔢 Cantidad: ' + qty,
-    '💰 Precio: ' + p.price + ' c/u',
-    '💵 Subtotal: $' + subtotal.toLocaleString('es-CO'),
-    '',
-    '¿Tienen disponibilidad? ✨'
-  ];
-  window.open('https://wa.me/573112112023?text=' + encodeURIComponent(lines.join('\n')), '_blank');
-}
-
 // ===== PRELOADER =====
 setTimeout(()=>{const p=document.getElementById('preloader');if(p)p.style.display='none'},2100);
 
 
 document.getElementById('productGrid').addEventListener('click', e => {
   const c = e.target.closest('.product-card');
-  if(c) {
-    const id = parseInt(c.dataset.id);
-    if(id) openQuickView(id);
-  }
+  if(c) { const id = parseInt(c.dataset.id); if(id) openQuickView(id); }
 });
 
 // ===== PARTICLES HERO =====

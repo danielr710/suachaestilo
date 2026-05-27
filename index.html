@@ -722,6 +722,7 @@ products.forEach(p => {
   const stockPct = p.stock > 0 ? Math.round(p.sold/(p.sold+p.stock)*100) : 80;
   const card = document.createElement('div');
   card.className = 'product-card';
+  card.dataset.id = p.id;
   card.dataset.category = p.category;
   card.dataset.name = p.name.toLowerCase();
   card.innerHTML = `
@@ -1008,11 +1009,12 @@ function qvAddToCart(id) {
 setTimeout(()=>{const p=document.getElementById('preloader');if(p)p.style.display='none'},2100);
 
 
-document.getElementById('productGrid').addEventListener('click',e=>{
-  const c=e.target.closest('.product-card');
-  if(!c) return;
-  const btn=c.querySelector('.overlay-btn');
-  if(btn) btn.click();
+document.getElementById('productGrid').addEventListener('click', e => {
+  const c = e.target.closest('.product-card');
+  if(c) {
+    const id = parseInt(c.dataset.id);
+    if(id) openQuickView(id);
+  }
 });
 
 // ===== PARTICLES HERO =====

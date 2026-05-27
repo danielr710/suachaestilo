@@ -148,7 +148,7 @@ h2 span{color:#dc2626;display:inline-block}
 .product-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,#dc2626,#fca311);transform:scaleX(0);transform-origin:left;transition:transform .4s}
 .product-card:hover{transform:translateY(-4px);border-color:rgba(220,38,38,.3);box-shadow:0 12px 40px rgba(0,0,0,.5)}
 .product-img-wrap{position:relative;overflow:hidden;background:linear-gradient(135deg,#1a1a2e,#2d1a1a)}
-.product-img-wrap img{display:block;width:100%}
+.product-img-wrap img{display:block;width:100%;height:280px;object-fit:cover}
 .product-info{padding:1rem 1.25rem 1.25rem}
 .product-category{font-size:.65rem;text-transform:uppercase;letter-spacing:1.5px;color:#dc2626;font-weight:600}
 .product-name{font-weight:600;font-size:1rem;margin:4px 0 8px;color:#f5f5f5}
@@ -310,7 +310,7 @@ footer .brand-name span{color:#dc2626}
 .modal-close:hover{background:#dc2626;transform:rotate(90deg)}
 .modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
 .modal-img-wrap{position:relative;min-height:350px;overflow:hidden;background:#1a1a1a}
-.modal-img-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.modal-img-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .modal-img-wrap .fallback{font-size:5rem}
 .modal-info{padding:2rem}
 .modal-info .cat{font-size:.65rem;text-transform:uppercase;letter-spacing:1.5px;color:#dc2626;font-weight:600;margin-bottom:4px}
@@ -400,6 +400,7 @@ footer .brand-name span{color:#dc2626}
   .related-img{font-size:1.5rem}
   .related-name{font-size:.65rem}
   .related-price{font-size:.8rem}
+  .product-img-wrap img{height:200px}
 }
 /* ===== PRELOADER ===== */
 .preloader{position:fixed;inset:0;z-index:9999;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:1;visibility:visible;animation:preloaderOut .6s 2s forwards}
@@ -703,17 +704,17 @@ function aplicarFiltros() {
 
 // ===== PRODUCTOS =====
 const productCats = [
-  {cat:"Croptops",price:"$45.000",img:"croptop",sizes:["S","M","L"],desc:"Croptop oversize 200 g/m². Corte moderno, diseño fresco y juvenil.",count:4},
-  {cat:"Pantaloneta Jean",price:"$90.000",img:"pantaloneta",sizes:["M","L","XL"],desc:"Pantaloneta jean urbana corte recto. Mezcla denim con elastic.",count:4},
-  {cat:"Camisetas niño",price:"$40.000",img:"kids",sizes:["4","6","8","10","12","16"],desc:"Camiseta infantil 200 g/m², algodón suave. Diseños divertidos.",count:6},
-  {cat:"Camisetas oversize",price:"$90.000",img:"oversize",sizes:["S","M","L","XL"],desc:"Camiseta oversize 240 g/m². Estampado exclusivo. Algodón peruano premium.",count:7},
-  {cat:"Buckethat",price:"$70.000",img:"buckethat",sizes:["Única"],desc:"Bucket Hat con logo bordado. Tela ripstop resistente.",count:6}
+  {cat:"Croptops",price:"$45.000",img:"croptop",image:"croptop",sizes:["S","M","L"],desc:"Croptop oversize 200 g/m². Corte moderno, diseño fresco y juvenil.",count:4},
+  {cat:"Pantaloneta Jean",price:"$90.000",img:"pantaloneta",image:"pantaloneta",sizes:["M","L","XL"],desc:"Pantaloneta jean urbana corte recto. Mezcla denim con elastic.",count:4},
+  {cat:"Camisetas niño",price:"$40.000",img:"kids",image:"kids",sizes:["4","6","8","10","12","16"],desc:"Camiseta infantil 200 g/m², algodón suave. Diseños divertidos.",count:6},
+  {cat:"Camisetas oversize",price:"$90.000",img:"oversize",image:"oversize",sizes:["S","M","L","XL"],desc:"Camiseta oversize 240 g/m². Estampado exclusivo. Algodón peruano premium.",count:7},
+  {cat:"Buckethat",price:"$70.000",img:"buckethat",image:"buckethat",sizes:["Única"],desc:"Bucket Hat con logo bordado. Tela ripstop resistente.",count:6}
 ];
 let pid = 1;
 const products = [];
 productCats.forEach(c => {
   for(let i=1;i<=c.count;i++){
-    products.push({id:pid++,name:c.cat,category:c.cat,price:c.price,old:null,img:c.img+i+'.jpeg?v=2',sold:Math.floor(Math.random()*30+10),stock:Math.floor(Math.random()*15+3),sizes:c.sizes,description:c.desc});
+    products.push({id:pid++,name:c.cat,category:c.cat,price:c.price,old:null,image:c.image+i+'.jpeg?v=2',sold:Math.floor(Math.random()*30+10),stock:Math.floor(Math.random()*15+3),sizes:c.sizes,description:c.desc});
   }
 });
 const productGrid = document.getElementById('productGrid');
@@ -734,9 +735,9 @@ products.forEach(p => {
     </div>`;
   const wrap = card.querySelector('.product-img-wrap');
   const i = document.createElement('img');
-  i.src = p.img;
+  i.src = p.image;
   i.alt = p.name;
-  i.style.cssText = 'width:100%;display:block';
+  i.loading = 'lazy';
   i.onerror = function() { this.style.display = 'none'; };
   wrap.appendChild(i);
   productGrid.appendChild(card);
@@ -841,7 +842,7 @@ function actualizarUI() {
     total += subtotal;
     html += `
       <div class="cart-item">
-        <div class="cart-item-img"><img src="${p.img}" alt=""></div>
+        <div class="cart-item-img"><img src="${p.image}" alt=""></div>
         <div class="cart-item-info">
           <div class="name">${p.name}</div>
           <div class="variant">Talla ${item.talla}</div>
@@ -928,7 +929,7 @@ function openQuickView(id) {
 
   let html = `
     <div class="modal-img-wrap">
-      <img src="${p.img}" alt="${p.name}">
+      <img src="${p.image}" alt="${p.name}">
     </div>
     <div class="modal-info">
       <div class="cat">${p.category}</div>
@@ -961,7 +962,7 @@ function openQuickView(id) {
   const related = products.filter(x => x.id !== p.id && (x.category === p.category));
   related.slice(0,3).forEach(r => {
     html += `<div class="related-item" onclick="closeQuickView();openQuickView(${r.id})">
-      <div class="related-img"><img src="${r.img}" alt="${r.name}"></div>
+      <div class="related-img"><img src="${r.image}" alt="${r.name}"></div>
       <div class="related-name">${r.name}</div>
       <div class="related-price">${r.price}</div>
     </div>`;

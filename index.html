@@ -749,7 +749,7 @@ products.forEach(p => {
   const i = document.createElement('img');
   i.src = p.img;
   i.alt = p.name;
-  i.style.cssText = 'width:100%;height:100%;object-fit:cover';
+  i.style.cssText = 'width:100%;height:100%;object-fit:cover;position:relative;z-index:1';
   i.onerror = function() { this.style.display = 'none'; };
   wrap.appendChild(i);
   productGrid.appendChild(card);
